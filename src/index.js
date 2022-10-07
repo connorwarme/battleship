@@ -1,5 +1,8 @@
-import './style.css';
-import printme from './sec';
+// import './style.css';
+// import printme from './sec';
 
 console.log(`hello, world!`);
-printme();
+const check = (i, e) => {
+    return i+e;
+}
+export { check };
