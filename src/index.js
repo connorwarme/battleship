@@ -36,7 +36,8 @@ const Gameboard = (() => {
         return board;
     }
     const placeShip = (object, axis, x, y) => {
-        if (checkPlace(object.length, axis, x, y)) {
+        if (_checkOnBoard(object.length, axis, x, y) || 
+        _checkPlace(object.length, axis, x, y)) {
             return `Denied.`;
         }
         if (axis) {
@@ -49,7 +50,7 @@ const Gameboard = (() => {
         }
         return `Placed.`
     }
-    const checkPlace = (length, axis, x, y) => {
+    const _checkPlace = (length, axis, x, y) => {
         let array = [];
         let value;
         if (axis) {
@@ -66,6 +67,16 @@ const Gameboard = (() => {
         });
         return value;
     }
+    const _checkOnBoard = (length, axis, x, y) => {
+        let value;
+        if (axis) {
+            value = x + length;
+            return value > board.length;
+        } else {
+            value = y + length;
+            return value > board[x].length;
+        }
+    }
     // const receiveAttack = (x, y) => {
 
     // }
@@ -76,6 +87,6 @@ Gameboard.placeShip(ship, true, 0, 0);
 const ship2 = ShipFactory(5);
 Gameboard.placeShip(ship2, false, 4, 4);
 const ship3 = ShipFactory(3);
-console.log(Gameboard.placeShip(ship3, false, 4, 2));
+
 console.log(board);
 export { ship, board, ship2, Gameboard, ship3 };

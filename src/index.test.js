@@ -39,4 +39,8 @@ test('Deny placeShip if coordinates taken', () => {
   expect(Gameboard.placeShip(ship3, false, 0, 0)).toBe(`Denied.`);
   expect(Gameboard.placeShip(ship3, false, 4, 2)).toBe('Denied.');
 });
+test('Deny placeShip if ship goes off board', () => {
+  expect(Gameboard.placeShip(ship3, true, 8, 2)).toBe('Denied.');
+  expect(Gameboard.placeShip(ship3, true, 2, 8)).toBe('Denied.');
+})
 
