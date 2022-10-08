@@ -9,16 +9,18 @@ test('shipFactory provides length correctly', () => {
 test('ship hit function adds to hits counter', () => {
   expect(ship.getHits()).toBe(3);
 }); 
-test('does isSunk properly assess ship.sunk?', () => {
+test('isSunk properly assesses ship.sunk', () => {
   expect(ship.isSunk()).toBe(false);
 });
-test('does gameboard create a simple board', () => {
+test('Gameboard creates a simple board', () => {
   expect(board.length).toBe(10);
-});
-test('does gameboard create a simple board', () => {
   expect(board[3].length).toBe(10);
-});
-test('does gameboard create a simple board', () => {
   expect(board[7].length).toBe(10);
+});
+test('Gameboard can place ship', () => {
+  expect(board[0][0]).toBe(1);
+  expect(board[1][0]).toBe(1);
+  expect(board[2][0]).toBe(1);
+  expect(board[3][0]).toBe(1);
 });
 
