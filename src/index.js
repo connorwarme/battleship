@@ -47,15 +47,24 @@ const Gameboard = (() => {
                 board[x][y+i] = 1;
             }
         }
+        return `Placed.`
     }
     const checkPlace = (length, axis, x, y) => {
-        for (let i = 0; i<length; i++) {
-            if (board[x+i][y] == 1) {
-                return true;
-            } else {
-                return false;
+        let array = [];
+        let value;
+        if (axis) {
+            for (let i = 0; i<length; i++) {
+                array.push(board[x+i][y] == 1);
+            }
+        } else {
+            for (let i = 0; i<length; i++) {
+                array.push(board[x][y+i] == 1);
             }
         }
+        value = array.find(index => {
+            return index == true;
+        });
+        return value;
     }
     // const receiveAttack = (x, y) => {
 
@@ -65,7 +74,8 @@ const Gameboard = (() => {
 const board = Gameboard.create(10);
 Gameboard.placeShip(ship, true, 0, 0);
 const ship2 = ShipFactory(5);
-Gameboard.placeShip(ship2, false, 4,4);
+Gameboard.placeShip(ship2, false, 4, 4);
 const ship3 = ShipFactory(3);
+console.log(Gameboard.placeShip(ship3, false, 4, 2));
 console.log(board);
 export { ship, board, ship2, Gameboard, ship3 };

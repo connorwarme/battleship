@@ -37,5 +37,6 @@ test('Gameboard can place ship on y axis', () => {
 });
 test('Deny placeShip if coordinates taken', () => {
   expect(Gameboard.placeShip(ship3, false, 0, 0)).toBe(`Denied.`);
-})
+  expect(Gameboard.placeShip(ship3, false, 4, 2)).toBe('Denied.');
+});
 
