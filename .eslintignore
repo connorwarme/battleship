@@ -1,0 +1,2 @@
+# get it to ignore test files
+src/index.test.js

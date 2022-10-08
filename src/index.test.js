@@ -1,6 +1,9 @@
 import {
     ship,
-    board
+    board,
+    Gameboard,
+    ship2,
+    ship3
 } from './index';
 
 test('shipFactory provides length correctly', () => {
@@ -31,5 +34,8 @@ test('Gameboard can place ship on y axis', () => {
   expect(board[4][7]).toBe(1);
   expect(board[4][8]).toBe(1);
   expect(board[4][9]).toBe(0);
+});
+test('Deny placeShip if coordinates taken', () => {
+  expect(Gameboard.placeShip(ship3, false, 0, 0)).toBe(`Denied.`);
 })
 

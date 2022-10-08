@@ -36,7 +36,9 @@ const Gameboard = (() => {
         return board;
     }
     const placeShip = (object, axis, x, y) => {
-        // run check
+        if (checkPlace(object.length, axis, x, y)) {
+            return `Denied.`;
+        }
         if (axis) {
             for (let i = 0; i<object.length; i++) {
                 board[x+i][y] = 1;
@@ -46,7 +48,15 @@ const Gameboard = (() => {
             }
         }
     }
-    // const _put = (length, )
+    const checkPlace = (length, axis, x, y) => {
+        for (let i = 0; i<length; i++) {
+            if (board[x+i][y] == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
     // const receiveAttack = (x, y) => {
 
     // }
@@ -54,8 +64,8 @@ const Gameboard = (() => {
 })();
 const board = Gameboard.create(10);
 Gameboard.placeShip(ship, true, 0, 0);
+const ship2 = ShipFactory(5);
+Gameboard.placeShip(ship2, false, 4,4);
+const ship3 = ShipFactory(3);
 console.log(board);
-const newShip = ShipFactory(5);
-Gameboard.placeShip(newShip, false, 4,4);
-console.log(board);
-export { ship, board, newShip };
+export { ship, board, ship2, Gameboard, ship3 };
