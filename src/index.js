@@ -37,10 +37,14 @@ const Gameboard = (() => {
     }
     const placeShip = (object, axis, x, y) => {
         // run check
-        if (axis === 'x') {
+        if (axis) {
             for (let i = 0; i<object.length; i++) {
                 board[x+i][y] = 1;
-        }}
+        }} else {
+            for (let i = 0; i<object.length; i++) {
+                board[x][y+i] = 1;
+            }
+        }
     }
     // const _put = (length, )
     // const receiveAttack = (x, y) => {
@@ -49,6 +53,9 @@ const Gameboard = (() => {
     return { create, placeShip };
 })();
 const board = Gameboard.create(10);
-Gameboard.placeShip(ship, 'x', 0, 0);
+Gameboard.placeShip(ship, true, 0, 0);
 console.log(board);
-export { ship, board };
+const newShip = ShipFactory(5);
+Gameboard.placeShip(newShip, false, 4,4);
+console.log(board);
+export { ship, board, newShip };
