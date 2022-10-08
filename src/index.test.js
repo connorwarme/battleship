@@ -1,5 +1,6 @@
 import {
-    ship
+    ship,
+    board
 } from './index';
 
 test('shipFactory provides length correctly', () => {
@@ -10,4 +11,14 @@ test('ship hit function adds to hits counter', () => {
 }); 
 test('does isSunk properly assess ship.sunk?', () => {
   expect(ship.isSunk()).toBe(false);
-})
+});
+test('does gameboard create a simple board', () => {
+  expect(board.length).toBe(10);
+});
+test('does gameboard create a simple board', () => {
+  expect(board[3].length).toBe(10);
+});
+test('does gameboard create a simple board', () => {
+  expect(board[7].length).toBe(10);
+});
+

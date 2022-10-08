@@ -19,10 +19,21 @@ const ShipFactory = (input) => {
     return { length, sunk, getHits, hit, isSunk}
     };
 const ship = ShipFactory(4);
-console.log(ship.getHits());
-ship.hit();
-console.log(ship.getHits());
 ship.hit();
 ship.hit();
-console.log(ship.isSunk());
-export { ship };
+ship.hit();
+
+const Gameboard = (length) => {
+    const board = [];
+    for (let i = 0; i<length; i++) {
+        let item = [];
+        board.push(item);
+        for (let j = 0; j<length; j++) {
+            item.push(0);
+        }
+    }
+    return board;
+}
+const board = Gameboard(10);
+
+export { ship, board };
