@@ -2,21 +2,27 @@
 // import printme from './sec';
 
 console.log(`hello, world!`);
-const check = (i, e) => {
-    return i+e;
-}
-const shipFactory = (length) => {
-    let hitCounter = 0;
+
+const ShipFactory = (input) => {
+    const length = input;
+    let hits = 0;
     let sunk = false;
+    const getHits = () => {
+        return hits;
+    }
     const hit = () => {
-        return hitCounter += 1;
+        hits += 1;
     }
     const isSunk = () => {
-        return length == hitCounter ? sunk = true : sunk = false;
+        return length <= hits ? sunk = true : sunk = false;
         }
-    return { length, hitCounter, sunk, hit, isSunk}
+    return { length, sunk, getHits, hit, isSunk}
     };
-const ship = shipFactory(5);
+const ship = ShipFactory(4);
+console.log(ship.getHits());
 ship.hit();
-console.log(ship.hitCounter);
-export { check, ship };
+console.log(ship.getHits());
+ship.hit();
+ship.hit();
+console.log(ship.isSunk());
+export { ship };

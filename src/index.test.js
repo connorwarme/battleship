@@ -1,16 +1,12 @@
 import {
-    check,
     ship
 } from './index';
 
-test('if check provides sum of two arguments', () => {
-    expect(check(1,3)).toBe(4);
-});
 test('shipFactory provides length correctly', () => {
-  expect(ship.length).toBe(5);
+  expect(ship.length).toBe(4);
 });
-test('ship hit function adds to hitCounter', () => {
-  expect(ship.hitCounter).toBe(1);
+test('ship hit function adds to hits counter', () => {
+  expect(ship.getHits()).toBe(3);
 }); 
 test('does isSunk properly assess ship.sunk?', () => {
   expect(ship.isSunk()).toBe(false);
