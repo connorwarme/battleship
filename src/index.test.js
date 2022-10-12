@@ -21,18 +21,18 @@ test('Gameboard creates a simple board', () => {
   expect(board[7].length).toBe(10);
 });
 test('Gameboard can place ship on x axis', () => {
-  expect(board[0][0]).toBe(1);
-  expect(board[1][0]).toBe(1);
-  expect(board[2][0]).toBe(1);
-  expect(board[3][0]).toBe(1);
+  expect(board[0][0]).toBe(4);
+  expect(board[1][0]).toBe(4);
+  expect(board[2][0]).toBe(4);
+  expect(board[3][0]).toBe(4);
 });
 test('Gameboard can place ship on y axis', () => {
   expect(board[4][3]).toBe(0);
-  expect(board[4][4]).toBe(1);
-  expect(board[4][5]).toBe(1);
-  expect(board[4][6]).toBe(1);
-  expect(board[4][7]).toBe(1);
-  expect(board[4][8]).toBe(1);
+  expect(board[4][4]).toBe(5);
+  expect(board[4][5]).toBe(5);
+  expect(board[4][6]).toBe(5);
+  expect(board[4][7]).toBe(5);
+  expect(board[4][8]).toBe(5);
   expect(board[4][9]).toBe(0);
 });
 test('Deny placeShip if coordinates taken', () => {

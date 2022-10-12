@@ -42,10 +42,10 @@ const Gameboard = (() => {
         }
         if (axis) {
             for (let i = 0; i<object.length; i++) {
-                board[x+i][y] = 1;
+                board[x+i][y] = object.length;
         }} else {
             for (let i = 0; i<object.length; i++) {
-                board[x][y+i] = 1;
+                board[x][y+i] = object.length;
             }
         }
         return `Placed.`
@@ -55,11 +55,11 @@ const Gameboard = (() => {
         let value;
         if (axis) {
             for (let i = 0; i<length; i++) {
-                array.push(board[x+i][y] == 1);
+                array.push(board[x+i][y] > 0);
             }
         } else {
             for (let i = 0; i<length; i++) {
-                array.push(board[x][y+i] == 1);
+                array.push(board[x][y+i] > 0);
             }
         }
         value = array.find(index => {
