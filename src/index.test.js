@@ -3,7 +3,8 @@ import {
     board,
     gameboard,
     ship2,
-    ship3
+    ship3,
+    playerFactory
 } from './index';
 
 test('shipFactory provides length correctly', () => {
@@ -59,4 +60,7 @@ test('Reject attack if grid has been previously selected', () => {
 });
 test('Board can announce if all ships are sunk', () => {
   expect(gameboard.allSunk()).toBe(false);
+});
+test('Player factory creates a player', () => {
+  expect(playerFactory('Blamo').codename).toBe('Blamo');
 })

@@ -121,6 +121,9 @@ const boardFactory = () => {
         
     return { create, placeShip, receiveAttack, allSunk };
 };
+const playerFactory = (codename) => {
+    return { codename };
+}
 const gameboard = boardFactory();
 const board = gameboard.create(10);
 gameboard.placeShip(ship, true, 0, 0);
@@ -129,4 +132,4 @@ gameboard.placeShip(ship2, false, 4, 4);
 const ship3 = ShipFactory(3);
 gameboard.placeShip(ship3, false, 9, 0);
 console.log(board);
-export { ship, board, ship2, gameboard, ship3 };
+export { ship, board, ship2, gameboard, ship3, playerFactory };
