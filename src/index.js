@@ -122,16 +122,19 @@ const boardFactory = () => {
     return { create, placeShip, receiveAttack, allSunk };
 };
 const playerFactory = (codename) => {
-    return { codename, wins: 0 };
+    const attack = (coordinates, gameboard) => {
+        return gameboard.receiveAttack(coordinates[0], coordinates[1]);
+    }
+    return { codename, wins: 0, attack };
 }
 const computer = () => {
     const {codename} = playerFactory('Easy AI').codename;
     const _generateRandomAttack = () => {
-        let x = Math.floor(Math.random() * 3);
-        let y = Math.floor(Math.random() * 3);
+        let x = Math.floor(Math.random() * 10);
+        let y = Math.floor(Math.random() * 10);
         return [x, y];
     };
-    const attacksArray = [[0,0], [0,1], [0,2],];
+    const attacksArray = [];
     const available = (array) => {
         let value = true;
         for (let i = 0; i<attacksArray.length; i++) {
@@ -143,12 +146,11 @@ const computer = () => {
         }
         return value;
     }
-    const attack = () => {
+    const attack = (gameboard) => {
         let coord = _generateRandomAttack();
         if (available(coord)) {
             attacksArray.push(coord);
-            console.log(coord);
-            return coord;
+            return gameboard.receiveAttack(coord[0], coord[1]);
         } else {
             console.log('call it again');
             attack();
@@ -171,4 +173,4 @@ ai.attack();
 ai.attack();
 ai.attack();
 ai.attack();
-export { ship, board, ship2, gameboard, ship3, playerFactory };
+export { ship, board, ship2, gameboard, ship3, playerFactory, player };

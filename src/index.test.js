@@ -4,7 +4,8 @@ import {
     gameboard,
     ship2,
     ship3,
-    playerFactory
+    playerFactory,
+    player
 } from './index';
 
 test('shipFactory provides length correctly', () => {
@@ -63,4 +64,7 @@ test('Board can announce if all ships are sunk', () => {
 });
 test('Player factory creates a player', () => {
   expect(playerFactory('Blamo').codename).toBe('Blamo');
+});
+test('Test player can launch attack', () => {
+  expect(player.attack([9,1], gameboard)).toBe(3);
 })
