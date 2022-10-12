@@ -25,7 +25,7 @@ const ShipFactory = (input) => {
     };
 const ship = ShipFactory(4);
 
-const Gameboard = (() => {
+const boardFactory = () => {
     const board = [];
     const create = (length) => {
         for (let i = 0; i<length; i++) {
@@ -115,16 +115,18 @@ const Gameboard = (() => {
             return 'Miss';
         }
     }
-    // pretty sure allSunk is working, but I didn't manipulate the board to have all the ships sunk to test it fyi !!!
+    // pretty sure allSunk is working, 
+    // but I didn't manipulate the board to have all the ships sunk to test it fyi !!!
     const allSunk = () => shipArray.every(index => index.isSunk() === true);
         
     return { create, placeShip, receiveAttack, allSunk };
-})();
-const board = Gameboard.create(10);
-Gameboard.placeShip(ship, true, 0, 0);
+};
+const gameboard = boardFactory();
+const board = gameboard.create(10);
+gameboard.placeShip(ship, true, 0, 0);
 const ship2 = ShipFactory(5);
-Gameboard.placeShip(ship2, false, 4, 4);
+gameboard.placeShip(ship2, false, 4, 4);
 const ship3 = ShipFactory(3);
-Gameboard.placeShip(ship3, false, 9, 0);
+gameboard.placeShip(ship3, false, 9, 0);
 console.log(board);
-export { ship, board, ship2, Gameboard, ship3 };
+export { ship, board, ship2, gameboard, ship3 };

@@ -1,7 +1,7 @@
 import {
     ship,
     board,
-    Gameboard,
+    gameboard,
     ship2,
     ship3
 } from './index';
@@ -36,17 +36,17 @@ test('Gameboard can place ship on y axis', () => {
   expect(board[4][9]).toBe(0);
 });
 test('Deny placeShip if coordinates taken', () => {
-  expect(Gameboard.placeShip(ship3, false, 0, 0)).toBe(`Denied.`);
-  expect(Gameboard.placeShip(ship3, false, 4, 2)).toBe('Denied.');
+  expect(gameboard.placeShip(ship3, false, 0, 0)).toBe(`Denied.`);
+  expect(gameboard.placeShip(ship3, false, 4, 2)).toBe('Denied.');
 });
 test('Deny placeShip if ship goes off board', () => {
-  expect(Gameboard.placeShip(ship3, true, 8, 2)).toBe('Denied.');
-  expect(Gameboard.placeShip(ship3, true, 2, 8)).toBe('Denied.');
+  expect(gameboard.placeShip(ship3, true, 8, 2)).toBe('Denied.');
+  expect(gameboard.placeShip(ship3, true, 2, 8)).toBe('Denied.');
 });
 test('Announce if attack missed or hit a ship & which one', () => {
-  expect(Gameboard.receiveAttack(0,0)).toBe(4);
-  expect(Gameboard.receiveAttack(0,1)).toBe('Miss');
-  expect(Gameboard.receiveAttack(4,4)).toBe(5);
+  expect(gameboard.receiveAttack(0,0)).toBe(4);
+  expect(gameboard.receiveAttack(0,1)).toBe('Miss');
+  expect(gameboard.receiveAttack(4,4)).toBe(5);
 });
 test('Update board grid if attack hits or misses', () => {
   expect(board[0][0]).toBe(14);
@@ -54,9 +54,9 @@ test('Update board grid if attack hits or misses', () => {
   expect(board[4][4]).toBe(15);
 });
 test('Reject attack if grid has been previously selected', () => {
-  expect(Gameboard.receiveAttack(0,0)).toBe('Try again');
-  expect(Gameboard.receiveAttack(4,4)).toBe('Try again');
+  expect(gameboard.receiveAttack(0,0)).toBe('Try again');
+  expect(gameboard.receiveAttack(4,4)).toBe('Try again');
 });
 test('Board can announce if all ships are sunk', () => {
-  expect(Gameboard.allSunk()).toBe(false);
+  expect(gameboard.allSunk()).toBe(false);
 })
