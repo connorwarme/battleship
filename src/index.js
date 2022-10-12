@@ -91,13 +91,14 @@ const boardFactory = () => {
         _addMiss(x, y);
         _updateBoard(x, y, -1);
     }
-    const receiveAttack = (x, y) => {
-        let value = board[x][y];
-        // check if board coordinates have previously been selected
-        // -> if so, reject that attack
-        if (value > 10 || value == -1) {
-            return 'Try again';
+    const _checkAttack = (x, y) => {
+        if (board[x][y] > 10 || board[x][y] == -1) {
+            return false;
         }
+        return true;
+    }
+    const _launchAttack = (x, y) => {
+        let value = board[x][y];
         if (value > 0) {
             // check which ship it is
             // run hit() on that ship
@@ -118,6 +119,13 @@ const boardFactory = () => {
             // needs to switch turns !!!
             return 'Miss';
         }
+    }
+    const receiveAttack = (x, y) => {
+        if (_checkAttack(x, y)) {
+            return _launchAttack(x, y);
+        } 
+        // need to loop back -> need user to give new coordinates
+        return false;
     }
     // pretty sure allSunk is working, 
     // but I didn't manipulate the board to have all the ships sunk to test it fyi !!!
