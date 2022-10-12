@@ -85,10 +85,16 @@ const boardFactory = () => {
         return shipArray.find(index => index.length === input);
     }
     const missedAttacks = [];
-    const _updateMiss = (x, y) => missedAttacks.push([x, y]);
+    const _addMiss = (x, y) => missedAttacks.push([x, y]);
+    const _updateBoard = (x, y, value) => board[x][y] = value;
+    const _updateMiss = (x, y) => {
+        _addMiss(x, y);
+        _updateBoard(x, y, -1);
+    }
     const receiveAttack = (x, y) => {
         let value = board[x][y];
-        // check if board coordinates have previously been selected -> reject that attack
+        // check if board coordinates have previously been selected
+        // -> if so, reject that attack
         if (value > 10 || value == -1) {
             return 'Try again';
         }
@@ -98,18 +104,16 @@ const boardFactory = () => {
             // see if it sunk and update accordingly - send to DOM fn to update display?
             const theShip = _whichShip(value);
             const sunk = theShip.hitPlus();
-            console.log(sunk);
+            // thinking that you call a DOM fn with "sunk" boolean.. !!!
             // update board
-            board[x][y] = value + 10;
+            _updateBoard(x, y, (value + 10));
             // send signal to DOM to update grid with hit mark !!!
             // needs to switch turns !!!
             return theShip.length;
         } else {
-            // update board: -1 for miss
-            board[x][y] = -1;
             // add miss to array
+            // update gameboard w/ -1 (for miss)
             _updateMiss(x, y);
-            console.log(missedAttacks);
             // send signal to DOM function to update grid with miss mark !!!
             // needs to switch turns !!!
             return 'Miss';
@@ -129,13 +133,14 @@ const playerFactory = (codename) => {
 }
 const computer = () => {
     const {codename} = playerFactory('Easy AI').codename;
+    const _generate = () => Math.floor(Math.random() * 10);
     const _generateRandomAttack = () => {
-        let x = Math.floor(Math.random() * 10);
-        let y = Math.floor(Math.random() * 10);
+        let x = _generate();
+        let y = _generate();
         return [x, y];
     };
     const attacksArray = [];
-    const available = (array) => {
+    const _available = (array) => {
         let value = true;
         for (let i = 0; i<attacksArray.length; i++) {
             if (attacksArray[i][0] === array[0]) {
@@ -148,16 +153,19 @@ const computer = () => {
     }
     const attack = (gameboard) => {
         let coord = _generateRandomAttack();
-        if (available(coord)) {
+        if (_available(coord)) {
+            // add coordinates to attacksArray
+            // launch attack on opposition's board
             attacksArray.push(coord);
             return gameboard.receiveAttack(coord[0], coord[1]);
         } else {
-            console.log('call it again');
+            // try again - w/ new coordinates
             attack();
         }
     }
     return { codename, attack, wins: 0};
 }
+// for testing purposes
 const gameboard = boardFactory();
 const board = gameboard.create(10);
 gameboard.placeShip(ship, true, 0, 0);
@@ -169,8 +177,8 @@ console.log(board);
 const player = playerFactory('whamo');
 console.log(player);
 let ai = computer();
-ai.attack();
-ai.attack();
-ai.attack();
-ai.attack();
+ai.attack(gameboard);
+ai.attack(gameboard);
+ai.attack(gameboard);
+ai.attack(gameboard);
 export { ship, board, ship2, gameboard, ship3, playerFactory, player };
