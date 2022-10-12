@@ -97,11 +97,6 @@ const boardFactory = () => {
     const _updateHit = (x, y) => {
         const theShip = _whichShip(board[x][y]);
         const sunk = theShip.hitPlus();
-        // if (sunk) {
-        //     let all = allSunk();
-        //     // if all == true, then game over
-        //     // where to put this?? should it be here, or should _updateHit return the value of sunk.. !!!
-        // }
         _updateBoard(x, y, (board[x][y] + 10));
         return sunk;
     }
@@ -114,7 +109,14 @@ const boardFactory = () => {
     const _launchAttack = (x, y) => {
         let value = board[x][y];
         if (value > 0) {
-            _updateHit(x, y);
+            const sunk = _updateHit(x, y);
+            if (sunk) {
+                if (allSunk()) {
+                    console.log('Game over');
+                    // need to fire gameOver function
+                    // what all is needed inside?
+                };
+            }
             // check which ship it is
             // run hit() on that ship
             // see if it sunk and update accordingly - send to DOM fn to update display?
@@ -193,8 +195,4 @@ console.log(board);
 const player = playerFactory('whamo');
 console.log(player);
 let ai = computer();
-// ai.attack(gameboard);
-// ai.attack(gameboard);
-// ai.attack(gameboard);
-// ai.attack(gameboard);
 export { ship, board, ship2, gameboard, ship3, playerFactory, player };
