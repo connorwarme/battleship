@@ -87,6 +87,6 @@ Gameboard.placeShip(ship, true, 0, 0);
 const ship2 = ShipFactory(5);
 Gameboard.placeShip(ship2, false, 4, 4);
 const ship3 = ShipFactory(3);
-
+Gameboard.placeShip(ship3, false, 9, 0);
 console.log(board);
 export { ship, board, ship2, Gameboard, ship3 };
