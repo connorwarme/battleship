@@ -10,7 +10,7 @@ test('shipFactory provides length correctly', () => {
   expect(ship.length).toBe(4);
 });
 test('ship hit function adds to hits counter', () => {
-  expect(ship.getHits()).toBe(3);
+  expect(ship.getHits()).toBe(0);
 }); 
 test('isSunk properly assesses ship.sunk', () => {
   expect(ship.isSunk()).toBe(false);

@@ -19,9 +19,6 @@ const ShipFactory = (input) => {
     return { length, sunk, getHits, hit, isSunk}
     };
 const ship = ShipFactory(4);
-ship.hit();
-ship.hit();
-ship.hit();
 
 const Gameboard = (() => {
     const board = [];
@@ -80,8 +77,7 @@ const Gameboard = (() => {
         }
     }
     const _whichShip = (input) => {
-    const theShip = shipArray.find(index => index.length === input);
-    return theShip;
+        return shipArray.find(index => index.length === input);
     }
     const receiveAttack = (x, y) => {
         let value = board[x][y];
@@ -89,9 +85,10 @@ const Gameboard = (() => {
             // check which ship it is
             // run hit() on that ship
             // see if it sunk and update accordingly
-            const shipHit = _whichShip(value);
-            console.log(shipHit);
-            return shipHit.length;
+            const theShip = _whichShip(value);
+            theShip.hit();
+            // update board
+            return theShip.length;
         } else {
             // send signal to DOM function to update grid with miss mark
             return 'Miss';
