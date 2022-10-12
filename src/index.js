@@ -35,6 +35,7 @@ const Gameboard = (() => {
         }
         return board;
     }
+    const shipArray = [];
     const placeShip = (object, axis, x, y) => {
         if (_checkOnBoard(object.length, axis, x, y) || 
         _checkPlace(object.length, axis, x, y)) {
@@ -48,6 +49,7 @@ const Gameboard = (() => {
                 board[x][y+i] = object.length;
             }
         }
+        shipArray.push(object);
         return `Placed.`
     }
     const _checkPlace = (length, axis, x, y) => {
@@ -77,14 +79,23 @@ const Gameboard = (() => {
             return value > board[x].length;
         }
     }
+    const _whichShip = (input) => {
+    const theShip = shipArray.find(index => index.length === input);
+    return theShip;
+    }
     const receiveAttack = (x, y) => {
         let value = board[x][y];
         if (value > 0) {
-            return 'Hit';
+            // check which ship it is
+            // run hit() on that ship
+            // see if it sunk and update accordingly
+            const shipHit = _whichShip(value);
+            console.log(shipHit);
+            return shipHit.length;
         } else {
+            // send signal to DOM function to update grid with miss mark
             return 'Miss';
         }
-
     }
     return { create, placeShip, receiveAttack };
 })();
