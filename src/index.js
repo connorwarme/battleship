@@ -86,20 +86,26 @@ const Gameboard = (() => {
     }
     const receiveAttack = (x, y) => {
         let value = board[x][y];
+        if (value > 10 || value == -1) {
+            return 'Try again';
+        }
         if (value > 0) {
             // check which ship it is
             // run hit() on that ship
-            // see if it sunk and update accordingly
+            // see if it sunk and update accordingly - send to DOM fn to update display?
             const theShip = _whichShip(value);
             const sunk = theShip.hitPlus();
             console.log(sunk);
             // update board
             board[x][y] = value + 10;
+            // send signal to DOM to update grid with hit mark !!!
+            // needs to switch turns !!!
             return theShip.length;
         } else {
             // update board: -1 for miss
             board[x][y] = -1;
-            // send signal to DOM function to update grid with miss mark
+            // send signal to DOM function to update grid with miss mark !!!
+            // needs to switch turns !!!
             return 'Miss';
         }
     }

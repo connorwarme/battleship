@@ -52,5 +52,8 @@ test('Update board grid if attack hits or misses', () => {
   expect(board[0][0]).toBe(14);
   expect(board[0][1]).toBe(-1);
   expect(board[4][4]).toBe(15);
+});
+test('Reject attack if grid has been previously selected', () => {
+  expect(Gameboard.receiveAttack(0,0)).toBe('Try again');
+  expect(Gameboard.receiveAttack(4,4)).toBe('Try again');
 })
-
