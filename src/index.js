@@ -84,8 +84,11 @@ const Gameboard = (() => {
     const _whichShip = (input) => {
         return shipArray.find(index => index.length === input);
     }
+    const missedAttacks = [];
+    const _updateMiss = (x, y) => missedAttacks.push([x, y]);
     const receiveAttack = (x, y) => {
         let value = board[x][y];
+        // check if board coordinates have previously been selected -> reject that attack
         if (value > 10 || value == -1) {
             return 'Try again';
         }
@@ -104,12 +107,18 @@ const Gameboard = (() => {
         } else {
             // update board: -1 for miss
             board[x][y] = -1;
+            // add miss to array
+            _updateMiss(x, y);
+            console.log(missedAttacks);
             // send signal to DOM function to update grid with miss mark !!!
             // needs to switch turns !!!
             return 'Miss';
         }
     }
-    return { create, placeShip, receiveAttack };
+    // pretty sure allSunk is working, but I didn't manipulate the board to have all the ships sunk to test it fyi !!!
+    const allSunk = () => shipArray.every(index => index.isSunk() === true);
+        
+    return { create, placeShip, receiveAttack, allSunk };
 })();
 const board = Gameboard.create(10);
 Gameboard.placeShip(ship, true, 0, 0);

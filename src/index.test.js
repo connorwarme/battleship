@@ -56,4 +56,7 @@ test('Update board grid if attack hits or misses', () => {
 test('Reject attack if grid has been previously selected', () => {
   expect(Gameboard.receiveAttack(0,0)).toBe('Try again');
   expect(Gameboard.receiveAttack(4,4)).toBe('Try again');
+});
+test('Board can announce if all ships are sunk', () => {
+  expect(Gameboard.allSunk()).toBe(false);
 })
