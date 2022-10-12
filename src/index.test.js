@@ -47,5 +47,10 @@ test('Announce if attack missed or hit a ship & which one', () => {
   expect(Gameboard.receiveAttack(0,0)).toBe(4);
   expect(Gameboard.receiveAttack(0,1)).toBe('Miss');
   expect(Gameboard.receiveAttack(4,4)).toBe(5);
+});
+test('Update board grid if attack hits or misses', () => {
+  expect(board[0][0]).toBe(14);
+  expect(board[0][1]).toBe(-1);
+  expect(board[4][4]).toBe(15);
 })
 

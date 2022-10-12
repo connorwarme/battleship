@@ -15,8 +15,13 @@ const ShipFactory = (input) => {
     }
     const isSunk = () => {
         return length <= hits ? sunk = true : sunk = false;
-        }
-    return { length, sunk, getHits, hit, isSunk}
+    }
+    // added this - can I set hit and isSunk to private, and only export this one? !!!
+    const hitPlus = () => {
+        hit();
+        return isSunk();
+    }
+    return { length, sunk, getHits, hit, isSunk, hitPlus}
     };
 const ship = ShipFactory(4);
 
@@ -86,10 +91,14 @@ const Gameboard = (() => {
             // run hit() on that ship
             // see if it sunk and update accordingly
             const theShip = _whichShip(value);
-            theShip.hit();
+            const sunk = theShip.hitPlus();
+            console.log(sunk);
             // update board
+            board[x][y] = value + 10;
             return theShip.length;
         } else {
+            // update board: -1 for miss
+            board[x][y] = -1;
             // send signal to DOM function to update grid with miss mark
             return 'Miss';
         }
