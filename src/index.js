@@ -84,12 +84,26 @@ const boardFactory = () => {
     const _whichShip = (input) => {
         return shipArray.find(index => index.length === input);
     }
+    // pretty sure allSunk is working, 
+    // but I didn't manipulate the board to have all the ships sunk to test it fyi !!!
+    const allSunk = () => shipArray.every(index => index.isSunk() === true);
     const missedAttacks = [];
     const _addMiss = (x, y) => missedAttacks.push([x, y]);
     const _updateBoard = (x, y, value) => board[x][y] = value;
     const _updateMiss = (x, y) => {
         _addMiss(x, y);
         _updateBoard(x, y, -1);
+    }
+    const _updateHit = (x, y) => {
+        const theShip = _whichShip(board[x][y]);
+        const sunk = theShip.hitPlus();
+        // if (sunk) {
+        //     let all = allSunk();
+        //     // if all == true, then game over
+        //     // where to put this?? should it be here, or should _updateHit return the value of sunk.. !!!
+        // }
+        _updateBoard(x, y, (board[x][y] + 10));
+        return sunk;
     }
     const _checkAttack = (x, y) => {
         if (board[x][y] > 10 || board[x][y] == -1) {
@@ -100,17 +114,15 @@ const boardFactory = () => {
     const _launchAttack = (x, y) => {
         let value = board[x][y];
         if (value > 0) {
+            _updateHit(x, y);
             // check which ship it is
             // run hit() on that ship
             // see if it sunk and update accordingly - send to DOM fn to update display?
-            const theShip = _whichShip(value);
-            const sunk = theShip.hitPlus();
             // thinking that you call a DOM fn with "sunk" boolean.. !!!
             // update board
-            _updateBoard(x, y, (value + 10));
             // send signal to DOM to update grid with hit mark !!!
             // needs to switch turns !!!
-            return theShip.length;
+            return value;
         } else {
             // add miss to array
             // update gameboard w/ -1 (for miss)
@@ -126,11 +138,7 @@ const boardFactory = () => {
         } 
         // need to loop back -> need user to give new coordinates
         return false;
-    }
-    // pretty sure allSunk is working, 
-    // but I didn't manipulate the board to have all the ships sunk to test it fyi !!!
-    const allSunk = () => shipArray.every(index => index.isSunk() === true);
-        
+    }   
     return { create, placeShip, receiveAttack, allSunk };
 };
 const playerFactory = (codename) => {
@@ -185,8 +193,8 @@ console.log(board);
 const player = playerFactory('whamo');
 console.log(player);
 let ai = computer();
-ai.attack(gameboard);
-ai.attack(gameboard);
-ai.attack(gameboard);
-ai.attack(gameboard);
+// ai.attack(gameboard);
+// ai.attack(gameboard);
+// ai.attack(gameboard);
+// ai.attack(gameboard);
 export { ship, board, ship2, gameboard, ship3, playerFactory, player };
