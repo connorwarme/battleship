@@ -77,10 +77,16 @@ const Gameboard = (() => {
             return value > board[x].length;
         }
     }
-    // const receiveAttack = (x, y) => {
+    const receiveAttack = (x, y) => {
+        let value = board[x][y];
+        if (value > 0) {
+            return 'Hit';
+        } else {
+            return 'Miss';
+        }
 
-    // }
-    return { create, placeShip };
+    }
+    return { create, placeShip, receiveAttack };
 })();
 const board = Gameboard.create(10);
 Gameboard.placeShip(ship, true, 0, 0);
