@@ -1,3 +1,4 @@
 # get it to ignore test files
 src/index.test.js
 src/ship.test.js
+src/board.test.js
