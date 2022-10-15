@@ -184,15 +184,15 @@ const computer = () => {
     return { codename, attack, wins: 0};
 }
 // for testing purposes
-const gameboard = boardFactory();
-const board = gameboard.create(10);
-gameboard.placeShip(ship, true, 0, 0);
-const ship2 = ShipFactory(5);
-gameboard.placeShip(ship2, false, 4, 4);
-const ship3 = ShipFactory(3);
-gameboard.placeShip(ship3, false, 9, 0);
-console.log(board);
-const player = playerFactory('whamo');
-console.log(player);
-let ai = computer();
-export { ship, board, ship2, gameboard, ship3, playerFactory, player };
+// const gameboard = boardFactory();
+// const board = gameboard.create(10);
+// gameboard.placeShip(ship, true, 0, 0);
+// const ship2 = ShipFactory(5);
+// gameboard.placeShip(ship2, false, 4, 4);
+// const ship3 = ShipFactory(3);
+// gameboard.placeShip(ship3, false, 9, 0);
+// console.log(board);
+// const player = playerFactory('whamo');
+// console.log(player);
+// let ai = computer();
+export { ship, playerFactory };

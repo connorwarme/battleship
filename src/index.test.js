@@ -62,9 +62,9 @@ import {
 // test('Board can announce if all ships are sunk', () => {
 //   expect(gameboard.allSunk()).toBe(false);
 // });
-test('Player factory creates a player', () => {
-  expect(playerFactory('Blamo').codename).toBe('Blamo');
-});
-test('Test player can launch attack', () => {
-  // expect(player.attack([9,1], gameboard)).toBe(3);
-})
+// test('Player factory creates a player', () => {
+//   expect(playerFactory('Blamo').codename).toBe('Blamo');
+// });
+// test('Test player can launch attack', () => {
+//   // expect(player.attack([9,1], gameboard)).toBe(3);
+// })

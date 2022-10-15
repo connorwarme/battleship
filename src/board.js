@@ -116,7 +116,7 @@ const BoardFactory = () => {
         // need to loop back -> need user to give new coordinates
         return false;
     }   
-    return { create, placeShip, receiveAttack, allSunk };
+    return { board, create, placeShip, receiveAttack, allSunk };
 };
 
 export default BoardFactory;
