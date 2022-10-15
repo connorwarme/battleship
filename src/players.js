@@ -1,5 +1,7 @@
 // player factory and AI logic
 
+import { playerFactory } from ".";
+
 const PlayerFactory = (codename) => {
     let wins = 0;
     const attack = (coordinates, gameboard) => {
@@ -9,7 +11,7 @@ const PlayerFactory = (codename) => {
     return { codename, wins, attack, addWin };
 }
 const computer = () => {
-    const {codename} = PlayerFactory('Easy AI').codename;
+    const ai = playerFactory('Easy AI');
     const _generate = () => Math.floor(Math.random() * 10);
     const _generateRandomAttack = () => {
         let x = _generate();
@@ -34,13 +36,14 @@ const computer = () => {
             // add coordinates to attacksArray
             // launch attack on opposition's board
             attacksArray.push(coord);
-            return gameboard.receiveAttack(coord[0], coord[1]);
+            gameboard.receiveAttack(coord[0], coord[1]);
+            return coord;
         } else {
             // try again - w/ new coordinates
             attack();
         }
     }
-    return { codename, attack, wins: 0};
+    return Object.assign({}, ai, { attack });
 }
 
 export { PlayerFactory, computer}

@@ -7,7 +7,9 @@ import {
     playerFactory,
     player
 } from './index';
-
+test('not sure about this', () => {
+  
+});
 // test('shipFactory provides length correctly', () => {
 //   expect(ship.length).toBe(4);
 // });
