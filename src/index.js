@@ -1,6 +1,7 @@
+import printMe from "./gameloop";
 // import './style.css';
-// import printme from './sec';
 
+printMe();
 console.log(`hello, world!`);
 
 const ShipFactory = (input) => {

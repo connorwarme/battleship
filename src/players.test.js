@@ -32,9 +32,12 @@ test('Create ai player', () => {
     expect(ai.wins).toBe(0);
 });
 test('AI creates legal attack', () => {
-    expect(ai.attack(gameboard).length).toBe(2);
-    expect(ai.attack(gameboard)[0]).toBeGreaterThan(-1);
-    expect(ai.attack(gameboard)[0]).toBeLessThan(10);
-    expect(ai.attack(gameboard)[1]).toBeGreaterThan(-1);
-    expect(ai.attack(gameboard)[1]).toBeLessThan(10);
+    const coord = ai.attack(gameboard);
+    expect(coord.length).toBe(2);
+    expect(coord[0]).toBeGreaterThan(-1);
+    expect(coord[0]).toBeLessThan(10);
+    expect(coord[1]).toBeGreaterThan(-1);
+    expect(coord[1]).toBeLessThan(10);
+    console.log(coord);
+    console.log(gameboard.board);
 })

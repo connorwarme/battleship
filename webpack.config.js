@@ -7,7 +7,7 @@ module.exports = {
     index: './src/index.js',
     ship: './src/ship.js',
     board: './src/board.js',
-    sec: './src/sec.js',
+    gameloop: './src/gameloop.js',
   },
   devtool: 'inline-source-map',
   plugins: [

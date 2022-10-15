@@ -3,3 +3,4 @@ src/index.test.js
 src/ship.test.js
 src/board.test.js
 src/players.test.js
+src/gameloop.test.js
