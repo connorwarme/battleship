@@ -40,7 +40,24 @@ gb2.placeShip(ship2a, false, 0, 0);
 gb2.placeShip(ship2b, false, 2, 0);
 gb2.placeShip(ship2c, false, 4, 0);
 
+const loop = (() => {
+    let playerTurn = true;
+    const switchTurns = () => playerTurn = !playerTurn;
+    const turn = (input) => {
+        console.log(input);
+        const currentPlayer = playerTurn ? p1 : p2;
+        // does it need a check?
+        if (playerTurn) {
+            gb2.receiveAttack(input[0], input[1]);
+        } else {
+            p2.attack(gb1);
+        }
+        switchTurns();
+        if (!playerTurn) {
+            turn(false);
+        }
+    }
+    return { turn };
+})();
 
-export default function printMe()  {
-    console.log('yo!');
-};
+export default loop;
