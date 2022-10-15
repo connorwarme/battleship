@@ -4,7 +4,11 @@ import ShipFactory from "./ship";
 const gameboard = BoardFactory();
 const board = gameboard.create(10);
 
+const ship = ShipFactory(4);
 const ship1 = ShipFactory(3);
+const ship2 = ShipFactory(5);
+gameboard.placeShip(ship, true, 0, 0);
+gameboard.placeShip(ship2, false, 4, 4);
 
 test('Gameboard creates a simple board', () => {
     expect(board.length).toBe(10);
