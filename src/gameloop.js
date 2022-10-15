@@ -48,9 +48,11 @@ const loop = (() => {
         const currentPlayer = playerTurn ? p1 : p2;
         // does it need a check?
         if (playerTurn) {
-            gb2.receiveAttack(input[0], input[1]);
+            let x = gb2.receiveAttack(input[0], input[1]);
+            console.log(x);
         } else {
-            p2.attack(gb1);
+            let y = p2.attack(gb1);
+            console.log(y)
         }
         switchTurns();
         if (!playerTurn) {
