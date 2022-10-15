@@ -8,15 +8,15 @@ import {
     player
 } from './index';
 
-test('shipFactory provides length correctly', () => {
-  expect(ship.length).toBe(4);
-});
-test('ship hit function adds to hits counter', () => {
-  expect(ship.getHits()).toBe(0);
-}); 
-test('isSunk properly assesses ship.sunk', () => {
-  expect(ship.isSunk()).toBe(false);
-});
+// test('shipFactory provides length correctly', () => {
+//   expect(ship.length).toBe(4);
+// });
+// test('ship hit function adds to hits counter', () => {
+//   expect(ship.getHits()).toBe(0);
+// }); 
+// test('isSunk properly assesses ship.sunk', () => {
+//   expect(ship.isSunk()).toBe(false);
+// });
 test('Gameboard creates a simple board', () => {
   expect(board.length).toBe(10);
   expect(board[3].length).toBe(10);

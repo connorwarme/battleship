@@ -5,6 +5,7 @@ module.exports = {
   mode: 'development',
   entry: {
     index: './src/index.js',
+    ship: './src.ship.js',
     sec: './src/sec.js',
   },
   devtool: 'inline-source-map',
