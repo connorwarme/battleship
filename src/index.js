@@ -4,10 +4,9 @@ import './style.css';
 
 makeInitial();
 
-loop.turn([5, 5]);
-loop.turn([0, 0]);
+// loop.turn([5, 5]);
+// loop.turn([0, 0]);
 
-console.log(`hello, world!`);
 
 // const ShipFactory = (input) => {
 //     const length = input;

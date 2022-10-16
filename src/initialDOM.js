@@ -2,6 +2,7 @@ import createElement from "./utility";
 import Github from './icons/github.svg';
 import LinkedIn from './icons/linkedin.svg';
 import { PlayerFactory } from "./players";
+import loop from "./gameloop";
 // build initial page
 // pt 1 - header and footer 
 // pt 2 - body (title, instructions, user name input, start btn)
@@ -60,7 +61,7 @@ const mainContent = () => {
         // need a check if input is empty !!!
         const p1 = PlayerFactory(input.value);
         // initialize game loop?
-        console.log(p1);
+        loop.turn([0,0]);
     }
     start.addEventListener('click', () => {
         startFn();
