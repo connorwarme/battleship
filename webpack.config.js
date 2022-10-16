@@ -8,6 +8,7 @@ module.exports = {
     ship: './src/ship.js',
     board: './src/board.js',
     gameloop: './src/gameloop.js',
+    initial: './src/initialDOM.js',
   },
   devtool: 'inline-source-map',
   plugins: [
