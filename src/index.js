@@ -1,5 +1,8 @@
 import loop from "./gameloop";
+import makeInitial from './initialDOM';
 // import './style.css';
+
+makeInitial();
 
 loop.turn([5, 5]);
 loop.turn([0, 0]);
