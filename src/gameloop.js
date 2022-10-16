@@ -1,6 +1,7 @@
 import BoardFactory from "./board";
 import { PlayerFactory, computer } from "./players";
 import ShipFactory from "./ship";
+import buildBoard from "./boardDOM";
 
 // game loop
 // initialize w/ p1 and gameboard1
@@ -43,6 +44,9 @@ gb2.placeShip(ship2c, false, 4, 0);
 const loop = (() => {
     let playerTurn = true;
     const switchTurns = () => playerTurn = !playerTurn;
+    const initialTurn = (parentDOM) => {
+        buildBoard(gb1, parentDOM);
+    }
     const turn = (input) => {
         console.log(input);
         const currentPlayer = playerTurn ? p1 : p2;
@@ -59,7 +63,7 @@ const loop = (() => {
             turn(false);
         }
     }
-    return { turn };
+    return { initialTurn, turn };
 })();
 
 export default loop;
