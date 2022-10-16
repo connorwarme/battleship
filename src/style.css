@@ -2,3 +2,30 @@
     padding: 0;
     margin: 0;
 }
+.headerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mainContainer {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    justify-items: center;
+    margin: 100px 0;
+}
+.footerContainer {
+    display: flex;
+    justify-content: center;
+}
+.footerBox {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+.linkContainer {
+    display: flex;
+    justify-content: center;
+}
+.gitIcon,
+.linkIcon {
+    height: 40px;
+}

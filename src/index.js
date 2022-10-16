@@ -1,6 +1,6 @@
 import loop from "./gameloop";
 import makeInitial from './initialDOM';
-// import './style.css';
+import './style.css';
 
 makeInitial();
 
