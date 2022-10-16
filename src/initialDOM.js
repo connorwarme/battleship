@@ -1,6 +1,7 @@
 import createElement from "./utility";
 import Github from './icons/github.svg';
 import LinkedIn from './icons/linkedin.svg';
+import { PlayerFactory } from "./players";
 // build initial page
 // pt 1 - header and footer 
 // pt 2 - body (title, instructions, user name input, start btn)
@@ -50,6 +51,20 @@ const mainContent = () => {
     const input = createElement('input', {type: 'text', id: 'username', class: 'inputField', placeholder: 'Player 1'});
     const inputLabel = createElement('label', {for: 'username'});
     inputLabel.textContent = 'Username:';
+    const startC = createElement('div', {class: 'startContainer'});
+    const start = createElement('button', {class: 'start'});
+    start.textContent = 'Start Game!'
+
+    // listener
+    const startFn = () => {
+        // need a check if input is empty !!!
+        const p1 = PlayerFactory(input.value);
+        // initialize game loop?
+        console.log(p1);
+    }
+    start.addEventListener('click', () => {
+        startFn();
+    })
 
     // append it all together
     mainC.appendChild(infoC);
@@ -57,6 +72,8 @@ const mainContent = () => {
     mainC.appendChild(inputC);
     inputC.appendChild(inputLabel);
     inputC.appendChild(input);
+    mainC.appendChild(startC);
+    startC.appendChild(start);
 
     return mainC;
 }
