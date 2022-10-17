@@ -10,11 +10,13 @@ const com = (() => {
         commC.appendChild(comms);
         return commC;
     }
-    const updateText = (player, boolean) => {
+    const updateText = (player, boolean, hit) => {
         if (boolean) {
             commC.firstChild.textContent = `Attention ${player.codename}: Error! Must select new coordinates.`
+        } else {
+            let strike = hit ? `lands a strike!`: `misses!`
+            commC.firstChild.textContent = `${player.codename} attacks and ${strike}`;
         }
-
     }
     return { buildComms, updateText };
 })();

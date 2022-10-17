@@ -62,13 +62,15 @@ const loop = (() => {
             const hit = gb2.receiveAttack(input[0], input[1]);
             if (hit === 0) {
                 // aka user clicked on coordinates for a second time
-                console.log('try again dumbass');
-                com.updateText(currentPlayer, true);
+                com.updateText(currentPlayer, true, "");
                 // dom function prompting user to try new coordinates
             } else {
                 // user clicked on new coordinates, turn can complete
                 // display the move on ai gameboard
                 markCell(input[0], input[1], hit, compBoardDOM);
+                com.updateText(currentPlayer, false, hit);
+                // check if sunk
+                // display different message...
                 switchTurns();
             }
         } else {
@@ -76,6 +78,7 @@ const loop = (() => {
             // display the move on p1 gameboard
             let y = p2.attack(gb1);
             markCell(y.coord[0], y.coord[1], y.bool, playerBoardDOM);
+            com.updateText(currentPlayer, false, y.bool);
             switchTurns();
         }
         if (!playerTurn) {
