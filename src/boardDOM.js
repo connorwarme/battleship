@@ -2,9 +2,6 @@ import createElement from "./utility";
 import loop from "./gameloop";
 
 
-const cellListenerFn = (a, b) => {
-    console.log(`${a}, ${b}`);
-}
 // render gameboards on page
 const buildBoard = (object, boolean) => {
     const board = object.board;
@@ -35,5 +32,12 @@ const displayShips = (object, boardDOM) => {
         }
     }
 }
+const markCell = (x, y, boolean, boardDOM) => {
+    if (boolean) {
+        boardDOM.children[x].children[y].classList.add('hit');
+    } else {
+        boardDOM.children[x].children[y].classList.add('miss');
+    }
+}
 
-export { buildBoard, displayShips };
+export { buildBoard, displayShips, markCell };

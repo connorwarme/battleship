@@ -31,14 +31,17 @@ const computer = () => {
     const attack = (gameboard) => {
         let coord = _generateRandomAttack();
         if (_available(coord)) {
+            console.log(coord);
             // add coordinates to attacksArray
             // launch attack on opposition's board
             attacksArray.push(coord);
-            gameboard.receiveAttack(coord[0], coord[1]);
+            let value = gameboard.receiveAttack(coord[0], coord[1]);
+            coord.push(value);
+            console.log(coord);
             return coord;
         } else {
             // try again - w/ new coordinates
-            attack();
+            attack(gameboard);
         }
     }
     return Object.assign({}, ai, { attack });

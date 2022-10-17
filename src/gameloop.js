@@ -1,7 +1,7 @@
 import BoardFactory from "./board";
 import { PlayerFactory, computer } from "./players";
 import ShipFactory from "./ship";
-import { buildBoard, displayShips } from "./boardDOM";
+import { buildBoard, displayShips, markCell } from "./boardDOM";
 
 // game loop
 // initialize w/ p1 and gameboard1
@@ -43,23 +43,28 @@ gb2.placeShip(ship2c, false, 9, 0);
 
 const loop = (() => {
     let playerTurn = true;
+    let playerBoardDOM;
+    let compBoardDOM;
     const switchTurns = () => playerTurn = !playerTurn;
     const initialTurn = (parentDOM) => {
         parentDOM.appendChild(buildBoard(gb1, false));
         displayShips(gb1, parentDOM.firstChild);
+        playerBoardDOM = parentDOM.firstChild;
         parentDOM.appendChild(buildBoard(gb2, true));
         displayShips(gb2, parentDOM.lastChild);
+        compBoardDOM = parentDOM.lastChild;
     }
     const turn = (input) => {
         console.log(input);
         const currentPlayer = playerTurn ? p1 : p2;
         // does it need a check?
         if (playerTurn) {
-            let x = gb2.receiveAttack(input[0], input[1]);
-            console.log(x);
+            let hit = gb2.receiveAttack(input[0], input[1]);
+            markCell(input[0], input[1], hit, compBoardDOM);
         } else {
             let y = p2.attack(gb1);
-            console.log(y)
+            console.log(y);
+            markCell(y[0], y[1], y[2], playerBoardDOM);
         }
         switchTurns();
         if (!playerTurn) {

@@ -36,6 +36,12 @@
 .ship {
     background-color: slategray;
 }
+.hit {
+    background-color: darkred;
+}
+.miss {
+    background-color: aquamarine;
+}
 .footerContainer {
     display: flex;
     justify-content: center;

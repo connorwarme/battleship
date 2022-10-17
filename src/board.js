@@ -99,14 +99,15 @@ const BoardFactory = () => {
             // update board
             // send signal to DOM to update grid with hit mark !!!
             // needs to switch turns !!!
-            return value;
+            // change return from value to true
+            return true;
         } else {
             // add miss to array
             // update gameboard w/ -1 (for miss)
             _updateMiss(x, y);
             // send signal to DOM function to update grid with miss mark !!!
             // needs to switch turns !!!
-            return 'Miss';
+            return false;
         }
     }
     const receiveAttack = (x, y) => {
