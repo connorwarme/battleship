@@ -43,6 +43,7 @@ const computer = () => {
             return obj;
         } else {
             // try again - w/ new coordinates
+            console.log('try again');
             attack(gameboard);
         }
     }
