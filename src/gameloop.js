@@ -45,7 +45,7 @@ const loop = (() => {
     let playerTurn = true;
     const switchTurns = () => playerTurn = !playerTurn;
     const initialTurn = (parentDOM) => {
-        buildBoard(gb1, parentDOM);
+        parentDOM.appendChild(buildBoard(gb1));
     }
     const turn = (input) => {
         console.log(input);

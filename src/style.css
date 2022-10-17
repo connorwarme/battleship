@@ -14,9 +14,18 @@
     justify-items: center;
     margin: 100px 0;
 }
-.mainContainer > div > div {
-    height: 50px;
-    width: 50px;
+.displayBoard {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 2px;
+}
+.col {
+    display: grid;
+    gap: 2px;
+}
+.cell {
+    height: 48px;
+    width: 48px;
     border: 1px solid black;
 }
 .footerContainer {
