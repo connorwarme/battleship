@@ -9,7 +9,7 @@ const buildBoard = (object) => {
         const gridCol = createElement('div', {class: `col`, id: `${i}`});
         displayBoard.appendChild(gridCol);
         for (let j = 0; j < board[i].length; j++) {
-            const gridCell = createElement('div', {class: `cell`, id: `[${i}, ${j}]`});
+            const gridCell = createElement('div', {class: `cell`, id: `${i}${j}`});
             gridCol.appendChild(gridCell);
         }
     }
