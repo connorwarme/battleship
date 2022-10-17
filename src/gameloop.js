@@ -37,17 +37,17 @@ gb2.create(10);
 const ship2a = ShipFactory(5);
 const ship2b = ShipFactory(4);
 const ship2c = ShipFactory(3);
-gb2.placeShip(ship2a, false, 0, 0);
-gb2.placeShip(ship2b, false, 2, 0);
-gb2.placeShip(ship2c, false, 4, 0);
+gb2.placeShip(ship2a, false, 5, 0);
+gb2.placeShip(ship2b, false, 7, 0);
+gb2.placeShip(ship2c, false, 9, 0);
 
 const loop = (() => {
     let playerTurn = true;
     const switchTurns = () => playerTurn = !playerTurn;
     const initialTurn = (parentDOM) => {
-        parentDOM.appendChild(buildBoard(gb1));
+        parentDOM.appendChild(buildBoard(gb1, false));
         displayShips(gb1, parentDOM.firstChild);
-        parentDOM.appendChild(buildBoard(gb2));
+        parentDOM.appendChild(buildBoard(gb2, true));
         displayShips(gb2, parentDOM.lastChild);
     }
     const turn = (input) => {

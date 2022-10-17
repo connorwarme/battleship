@@ -1,8 +1,12 @@
 import createElement from "./utility";
+import loop from "./gameloop";
 
+
+const cellListenerFn = (a, b) => {
+    console.log(`${a}, ${b}`);
+}
 // render gameboards on page
-
-const buildBoard = (object) => {
+const buildBoard = (object, boolean) => {
     const board = object.board;
     const displayBoard = createElement('div', {class: 'displayBoard'});
     for (let i = 0; i<board.length; i++) {
@@ -10,11 +14,17 @@ const buildBoard = (object) => {
         displayBoard.appendChild(gridCol);
         for (let j = 0; j < board[i].length; j++) {
             const gridCell = createElement('div', {class: `cell`, id: `${i}${j}`});
+            if (boolean) {
+                gridCell.addEventListener('click', () => {
+                    loop.turn([i, j]);
+                })
+            }
             gridCol.appendChild(gridCell);
         }
     }
     return displayBoard;
 }
+
 const displayShips = (object, boardDOM) => {
     const board = object.board;
     for (let i = 0; i<board.length; i++) {
