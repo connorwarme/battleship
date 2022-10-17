@@ -36,9 +36,11 @@ const computer = () => {
             // launch attack on opposition's board
             attacksArray.push(coord);
             let value = gameboard.receiveAttack(coord[0], coord[1]);
-            coord.push(value);
-            console.log(coord);
-            return coord;
+            const obj = {};
+            obj.coord = coord;
+            obj.bool = value;
+            console.log(obj);
+            return obj;
         } else {
             // try again - w/ new coordinates
             attack(gameboard);
