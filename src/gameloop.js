@@ -1,7 +1,7 @@
 import BoardFactory from "./board";
 import { PlayerFactory, computer } from "./players";
 import ShipFactory from "./ship";
-import buildBoard from "./boardDOM";
+import { buildBoard, displayShips } from "./boardDOM";
 
 // game loop
 // initialize w/ p1 and gameboard1
@@ -46,6 +46,9 @@ const loop = (() => {
     const switchTurns = () => playerTurn = !playerTurn;
     const initialTurn = (parentDOM) => {
         parentDOM.appendChild(buildBoard(gb1));
+        displayShips(gb1, parentDOM.firstChild);
+        parentDOM.appendChild(buildBoard(gb2));
+        displayShips(gb2, parentDOM.lastChild);
     }
     const turn = (input) => {
         console.log(input);

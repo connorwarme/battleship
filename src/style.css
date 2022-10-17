@@ -28,6 +28,9 @@
     width: 48px;
     border: 1px solid black;
 }
+.ship {
+    background-color: slategray;
+}
 .footerContainer {
     display: flex;
     justify-content: center;

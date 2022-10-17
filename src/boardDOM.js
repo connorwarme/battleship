@@ -15,5 +15,15 @@ const buildBoard = (object) => {
     }
     return displayBoard;
 }
+const displayShips = (object, boardDOM) => {
+    const board = object.board;
+    for (let i = 0; i<board.length; i++) {
+        for (let j = 0; j<board[i].length; j++) {
+            if (board[i][j] > 0) {
+                boardDOM.children[i].children[j].classList.add('ship');
+            }
+        }
+    }
+}
 
-export default buildBoard;
+export { buildBoard, displayShips };
