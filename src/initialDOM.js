@@ -45,6 +45,7 @@ const footer = () => {
 // 
 const mainContent = () => {
     const mainC = createElement('div', {class: 'mainContainer'});
+    const initialC = createElement('div', {class: 'initialContent'});
     const infoC = createElement('div', {class: 'instructionsContainer'});
     const instruct = createElement('div', {class: 'instructions'});
     instruct.textContent = 'Eliminate the enemy';
@@ -75,12 +76,13 @@ const mainContent = () => {
     })
 
     // append it all together
-    mainC.appendChild(infoC);
+    mainC.appendChild(initialC);
+    initialC.appendChild(infoC);
     infoC.appendChild(instruct);
-    mainC.appendChild(inputC);
+    initialC.appendChild(inputC);
     inputC.appendChild(inputLabel);
     inputC.appendChild(input);
-    mainC.appendChild(startC);
+    initialC.appendChild(startC);
     startC.appendChild(start);
 
     return mainC;

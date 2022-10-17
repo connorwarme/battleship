@@ -8,16 +8,21 @@
     align-items: center;
 }
 .mainContainer {
+    display: flex;
+    justify-content: center;
+    margin: 100px 0;
+}
+.initialContent {
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
-    gap: 20px;
     justify-items: center;
-    margin: 100px 0;
+    gap: 20px;
 }
 .displayBoard {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     gap: 2px;
+    margin: 0 auto;
 }
 .col {
     display: grid;
