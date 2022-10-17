@@ -60,13 +60,19 @@ const loop = (() => {
         // does it need a check?
         if (playerTurn) {
             let hit = gb2.receiveAttack(input[0], input[1]);
-            markCell(input[0], input[1], hit, compBoardDOM);
+            if (hit === 0) {
+                console.log('try again dumbass');
+                // dom function prompting user to try new coordinates
+            } else {
+                markCell(input[0], input[1], hit, compBoardDOM);
+                switchTurns();
+            }
         } else {
             let y = p2.attack(gb1);
             console.log(y);
             markCell(y.coord[0], y.coord[1], y.bool, playerBoardDOM);
+            switchTurns();
         }
-        switchTurns();
         if (!playerTurn) {
             turn(false);
         }

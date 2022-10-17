@@ -116,7 +116,7 @@ const BoardFactory = () => {
         } 
         // need to loop back -> need user to give new coordinates
         console.log('loop back');
-        return false;
+        return 0;
     }   
     return { board, create, placeShip, receiveAttack, allSunk };
 };
