@@ -55,20 +55,22 @@ const loop = (() => {
         displayShips(gb2, parentDOM.lastChild);
         compBoardDOM = parentDOM.lastChild;
     }
+    let currentPlayer = {};
+    let currentResult = {};
     const turn = (input) => {
-        const currentPlayer = playerTurn ? p1 : p2;
+        currentPlayer = playerTurn ? p1 : p2;
         // does it need a check?
         if (playerTurn) {
-            const hit = gb2.receiveAttack(input[0], input[1]);
-            if (hit === 0) {
+            const result = gb2.receiveAttack(input[0], input[1]);
+            if (result === 0) {
                 // aka user clicked on coordinates for a second time
                 com.updateText(currentPlayer, true, "");
                 // dom function prompting user to try new coordinates
             } else {
                 // user clicked on new coordinates, turn can complete
                 // display the move on ai gameboard
-                markCell(input[0], input[1], hit, compBoardDOM);
-                com.updateText(currentPlayer, false, hit);
+                markCell(input[0], input[1], result.value, compBoardDOM);
+                com.updateText(currentPlayer, false, result.value, result.sunk, result.ship, true);
                 // check if sunk
                 // display different message...
                 switchTurns();
@@ -77,8 +79,8 @@ const loop = (() => {
             // ai player makes attack
             // display the move on p1 gameboard
             let y = p2.attack(gb1);
-            markCell(y.coord[0], y.coord[1], y.bool, playerBoardDOM);
-            com.updateText(currentPlayer, false, y.bool);
+            markCell(y.coord[0], y.coord[1], y.obj.value, playerBoardDOM);
+            com.updateText(currentPlayer, false, y.obj.value, y.obj.sunk, y.obj.ship, false);
             switchTurns();
         }
         if (!playerTurn) {

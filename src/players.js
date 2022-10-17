@@ -42,7 +42,7 @@ const computer = () => {
             attacksArray.push(coord);
             const obj = {};
             obj.coord = coord;
-            obj.bool = gameboard.receiveAttack(coord[0], coord[1]);
+            obj.obj = gameboard.receiveAttack(coord[0], coord[1]);
             return obj;
     }
     return Object.assign({}, ai, { attack });

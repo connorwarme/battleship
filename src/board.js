@@ -82,16 +82,23 @@ const BoardFactory = () => {
         return true;
     }
     const _launchAttack = (x, y) => {
-        let value = board[x][y];
-        if (value > 0) {
+        const obj = {
+            sunk: false,
+            allSunk: false,
+        };
+        obj.value = board[x][y];
+        if (obj.value > 0) {
             const sunk = _updateHit(x, y);
             if (sunk) {
+                obj.sunk = true;
                 if (allSunk()) {
+                    obj.allSunk = true;
                     console.log('Game over');
                     // need to fire gameOver function
                     // what all is needed inside?
                 };
             }
+            obj.ship = obj.value;
             // check which ship it is
             // run hit() on that ship
             // see if it sunk and update accordingly - send to DOM fn to update display?
@@ -100,15 +107,16 @@ const BoardFactory = () => {
             // send signal to DOM to update grid with hit mark !!!
             // needs to switch turns !!!
             // change return from value to true
-            return true;
+            obj.value = true
         } else {
             // add miss to array
             // update gameboard w/ -1 (for miss)
             _updateMiss(x, y);
+            obj.value = false;
             // send signal to DOM function to update grid with miss mark !!!
             // needs to switch turns !!!
-            return false;
         }
+        return obj;
     }
     const receiveAttack = (x, y) => {
         if (_checkAttack(x, y)) {
