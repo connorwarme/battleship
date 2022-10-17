@@ -3,6 +3,7 @@ import Github from './icons/github.svg';
 import LinkedIn from './icons/linkedin.svg';
 import { PlayerFactory } from "./players";
 import loop from "./gameloop";
+import { com } from "./comsDOM";
 // build initial page
 // pt 1 - header and footer 
 // pt 2 - body (title, instructions, user name input, start btn)
@@ -93,6 +94,7 @@ const makeInitial = () => {
     const page = document.querySelector('body');
     const body = createElement('div', {class: 'body'});
     body.appendChild(header());
+    body.appendChild(com.buildComms());
     body.appendChild(mainContent());
     body.appendChild(footer());
     page.appendChild(body);

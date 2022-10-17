@@ -2,6 +2,7 @@ import BoardFactory from "./board";
 import { PlayerFactory, computer } from "./players";
 import ShipFactory from "./ship";
 import { buildBoard, displayShips, markCell } from "./boardDOM";
+import { com } from './comsDOM';
 
 // game loop
 // initialize w/ p1 and gameboard1
@@ -20,7 +21,7 @@ import { buildBoard, displayShips, markCell } from "./boardDOM";
 //      -> miss
 //          -> switch turns
 
-const p1 = PlayerFactory('p1');
+const p1 = PlayerFactory('Alfredo');
 const gb1 = BoardFactory();
 gb1.create(10);
 const ship1a = ShipFactory(5);
@@ -55,21 +56,25 @@ const loop = (() => {
         compBoardDOM = parentDOM.lastChild;
     }
     const turn = (input) => {
-        console.log(input);
         const currentPlayer = playerTurn ? p1 : p2;
         // does it need a check?
         if (playerTurn) {
-            let hit = gb2.receiveAttack(input[0], input[1]);
+            const hit = gb2.receiveAttack(input[0], input[1]);
             if (hit === 0) {
+                // aka user clicked on coordinates for a second time
                 console.log('try again dumbass');
+                com.updateText(currentPlayer, true);
                 // dom function prompting user to try new coordinates
             } else {
+                // user clicked on new coordinates, turn can complete
+                // display the move on ai gameboard
                 markCell(input[0], input[1], hit, compBoardDOM);
                 switchTurns();
             }
         } else {
+            // ai player makes attack
+            // display the move on p1 gameboard
             let y = p2.attack(gb1);
-            console.log(y);
             markCell(y.coord[0], y.coord[1], y.bool, playerBoardDOM);
             switchTurns();
         }

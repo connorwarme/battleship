@@ -1,7 +1,6 @@
 import createElement from "./utility";
 import loop from "./gameloop";
 
-
 // render gameboards on page
 const buildBoard = (object, boolean) => {
     const board = object.board;
@@ -21,7 +20,6 @@ const buildBoard = (object, boolean) => {
     }
     return displayBoard;
 }
-
 const displayShips = (object, boardDOM) => {
     const board = object.board;
     for (let i = 0; i<board.length; i++) {
@@ -39,5 +37,6 @@ const markCell = (x, y, boolean, boardDOM) => {
         boardDOM.children[x].children[y].classList.add('miss');
     }
 }
+
 
 export { buildBoard, displayShips, markCell };
