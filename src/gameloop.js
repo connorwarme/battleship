@@ -64,7 +64,7 @@ const loop = (() => {
         } else {
             let y = p2.attack(gb1);
             console.log(y);
-            markCell(y.coord[0], y.coord[1], y.value, playerBoardDOM);
+            markCell(y.coord[0], y.coord[1], y.bool, playerBoardDOM);
         }
         switchTurns();
         if (!playerTurn) {
