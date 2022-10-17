@@ -56,12 +56,19 @@ const mainContent = () => {
     const start = createElement('button', {class: 'start'});
     start.textContent = 'Start Game!'
 
-    // listener
+    // listener and helpers
+    const clearMain = () => {
+        while (mainC.children.length > 0) {
+            mainC.removeChild(mainC.firstChild);
+        }
+    }
     const startFn = () => {
         // need a check if input is empty !!!
         const p1 = PlayerFactory(input.value);
+        // clear main container -> prep for board display
+        clearMain();
         // initialize game loop?
-        loop.turn([0,0]);
+        loop.initialTurn(mainC);
     }
     start.addEventListener('click', () => {
         startFn();
