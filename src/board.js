@@ -81,11 +81,7 @@ const BoardFactory = () => {
         }
         return true;
     }
-    const _launchAttack = (x, y) => {
-        const obj = {
-            sunk: false,
-            allSunk: false,
-        };
+    const _launchAttack = (x, y, obj) => {
         obj.value = board[x][y];
         if (obj.value > 0) {
             const sunk = _updateHit(x, y);
@@ -119,12 +115,16 @@ const BoardFactory = () => {
         return obj;
     }
     const receiveAttack = (x, y) => {
+        const obj = {
+            sunk: false,
+            allSunk: false,
+        };
         if (_checkAttack(x, y)) {
-            return _launchAttack(x, y);
+            return _launchAttack(x, y, obj);
         } 
         // need to loop back -> need user to give new coordinates
-        console.log('loop back');
-        return 0;
+        obj.value = 0;
+        return obj;
     }   
     return { board, create, placeShip, receiveAttack, allSunk };
 };

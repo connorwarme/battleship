@@ -59,10 +59,11 @@ const loop = (() => {
     let currentResult = {};
     const turn = (input) => {
         currentPlayer = playerTurn ? p1 : p2;
+        let result;
         // does it need a check?
         if (playerTurn) {
-            const result = gb2.receiveAttack(input[0], input[1]);
-            if (result === 0) {
+            result = gb2.receiveAttack(input[0], input[1]);
+            if (result.value === 0) {
                 // aka user clicked on coordinates for a second time
                 com.updateText(currentPlayer, true, "");
                 // dom function prompting user to try new coordinates
@@ -78,13 +79,19 @@ const loop = (() => {
         } else {
             // ai player makes attack
             // display the move on p1 gameboard
-            let y = p2.attack(gb1);
-            markCell(y.coord[0], y.coord[1], y.obj.value, playerBoardDOM);
-            com.updateText(currentPlayer, false, y.obj.value, y.obj.sunk, y.obj.ship, false);
+            result = p2.attack(gb1);
+            markCell(result.coord[0], result.coord[1], result.obj.value, playerBoardDOM);
+            com.updateText(currentPlayer, false, result.obj.value, result.obj.sunk, result.obj.ship, false);
             switchTurns();
         }
-        if (!playerTurn) {
+        if (!playerTurn && (!result.allSunk)) {
             turn(false);
+        }
+        if (result.allSunk) {
+            // switch turns (back to winning player)
+            switchTurns();
+            // run gameover fn
+            console.log('loop throwing game over');
         }
     }
     return { initialTurn, turn };
