@@ -45,7 +45,25 @@ const computer = () => {
             obj.obj = gameboard.receiveAttack(coord[0], coord[1]);
             return obj;
     }
-    return Object.assign({}, ai, { attack });
+    const _randomAxis = () => {
+        const axis = Math.floor(Math.random * 2);
+        if (axis == 0) {
+            return true;
+        }
+        return false;
+    }
+    const placeFleet = (player) => {
+        let axis = _randomAxis();
+        let coord = _generateRandomAttack();
+        // for each ship, randomly generate coordinates and axis
+        player.fleet.forEach(ship => {
+            while (!(player.gb.placeShip(ship, axis, coord[0], coord[1]))) {
+                axis = _randomAxis();
+                coord = _generateRandomAttack();
+            };
+        });
+    };
+    return Object.assign({}, ai, { attack }, { placeFleet });
 }
 
 export { PlayerFactory, computer}

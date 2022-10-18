@@ -73,7 +73,7 @@ const loop = (() => {
     const startGame = () => {
         const p1 = initialize('Player 1');
         const p2 = initialize(false);
-
+        return { p1, p2 }
     }
     const restartFn = () => {
         // new players

@@ -31,12 +31,12 @@ test('Gameboard creates a simple board', () => {
     expect(board[4][9]).toBe(0);
   });
   test('Deny placeShip if coordinates taken', () => {
-    expect(gameboard.placeShip(ship1, false, 0, 0)).toBe(`Denied.`);
-    expect(gameboard.placeShip(ship1, false, 4, 2)).toBe('Denied.');
+    expect(gameboard.placeShip(ship1, false, 0, 0)).toBe(false);
+    expect(gameboard.placeShip(ship1, false, 4, 2)).toBe(false);
   });
   test('Deny placeShip if ship goes off board', () => {
-    expect(gameboard.placeShip(ship1, true, 8, 2)).toBe('Denied.');
-    expect(gameboard.placeShip(ship1, true, 2, 8)).toBe('Denied.');
+    expect(gameboard.placeShip(ship1, true, 8, 2)).toBe(false);
+    expect(gameboard.placeShip(ship1, true, 2, 8)).toBe(false);
   });
   test('Announce if attack missed or hit a ship & which one', () => {
     expect(gameboard.receiveAttack(0,0)).toBe(4);

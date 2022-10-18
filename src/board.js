@@ -16,7 +16,7 @@ const BoardFactory = () => {
     const placeShip = (object, axis, x, y) => {
         if (_checkOnBoard(object.length, axis, x, y) || 
         _checkPlace(object.length, axis, x, y)) {
-            return `Denied.`;
+            return false;
         }
         if (axis) {
             for (let i = 0; i<object.length; i++) {
@@ -27,7 +27,7 @@ const BoardFactory = () => {
             }
         }
         shipArray.push(object);
-        return `Placed.`
+        return true;
     }
     const _checkPlace = (length, axis, x, y) => {
         let array = [];
