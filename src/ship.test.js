@@ -1,4 +1,4 @@
-import ShipFactory from "./ship";
+import { ShipFactory } from "./ship";
 
 const shipTest = ShipFactory(5);
 const ship2 = ShipFactory(4);

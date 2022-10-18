@@ -1,6 +1,6 @@
 import { PlayerFactory, computer } from './players';
 import BoardFactory from './board';
-import ShipFactory from './ship';
+import { ShipFactory } from './ship';
 
 const blamo = PlayerFactory('Blamo');
 blamo.wins = blamo.addWin();
@@ -23,16 +23,16 @@ test('Add to wins tally on player object', () => {
     expect(blamo.wins).toBe(1);
 });
 test('Test player can launch attack', () => {
-    expect(blamo.attack([9,1], gameboard)).toBe(3);
-    expect(blamo.attack([0,0], gameboard)).toBe(4);
-    expect(blamo.attack([0,1], gameboard)).toBe('Miss');
+    expect(blamo.attack([9,1], gameboard).value).toBe(true);
+    expect(blamo.attack([0,0], gameboard).value).toBe(true);
+    expect(blamo.attack([0,1], gameboard).value).toBe(false);
 });
 test('Create ai player', () => {
     expect(ai.codename).toBe('AI Player');
     expect(ai.wins).toBe(0);
 });
 test('AI creates legal attack', () => {
-    const coord = ai.attack(gameboard);
+    const coord = ai.attack(gameboard).coord;
     expect(coord.length).toBe(2);
     expect(coord[0]).toBeGreaterThan(-1);
     expect(coord[0]).toBeLessThan(10);

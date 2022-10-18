@@ -20,10 +20,10 @@ const BoardFactory = () => {
         }
         if (axis) {
             for (let i = 0; i<object.length; i++) {
-                board[x+i][y] = object.length;
+                board[x+i][y] = object.marker;
         }} else {
             for (let i = 0; i<object.length; i++) {
-                board[x][y+i] = object.length;
+                board[x][y+i] = object.marker;
             }
         }
         shipArray.push(object);
@@ -57,7 +57,7 @@ const BoardFactory = () => {
         }
     }
     const _whichShip = (input) => {
-        return shipArray.find(index => index.length === input);
+        return shipArray.find(index => index.marker === input);
     }
     // pretty sure allSunk is working, 
     // but I didn't manipulate the board to have all the ships sunk to test it fyi !!!

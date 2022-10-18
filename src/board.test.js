@@ -1,5 +1,5 @@
 import BoardFactory from "./board";
-import ShipFactory from "./ship";
+import { ShipFactory } from "./ship";
 
 const gameboard = BoardFactory();
 const board = gameboard.create(10);
@@ -39,9 +39,9 @@ test('Gameboard creates a simple board', () => {
     expect(gameboard.placeShip(ship1, true, 2, 8)).toBe(false);
   });
   test('Announce if attack missed or hit a ship & which one', () => {
-    expect(gameboard.receiveAttack(0,0)).toBe(4);
-    expect(gameboard.receiveAttack(0,1)).toBe('Miss');
-    expect(gameboard.receiveAttack(4,4)).toBe(5);
+    expect(gameboard.receiveAttack(0,0).value).toBe(true);
+    expect(gameboard.receiveAttack(0,1).value).toBe(false);
+    expect(gameboard.receiveAttack(4,4).value).toBe(true);
   });
   test('Update board grid if attack hits or misses', () => {
     expect(board[0][0]).toBe(14);
@@ -49,8 +49,8 @@ test('Gameboard creates a simple board', () => {
     expect(board[4][4]).toBe(15);
   });
   test('Reject attack if grid has been previously selected', () => {
-    expect(gameboard.receiveAttack(0,0)).toBe(false);
-    expect(gameboard.receiveAttack(4,4)).toBe(false);
+    expect(gameboard.receiveAttack(0,0).value).toBe(0);
+    expect(gameboard.receiveAttack(4,4).value).toBe(0);
   });
   test('Board can announce if all ships are sunk', () => {
     expect(gameboard.allSunk()).toBe(false);

@@ -1,9 +1,13 @@
 // ship logic
 
-const ShipFactory = (input) => {
+const ShipFactory = (input, mark) => {
     const length = input;
     let hits = 0;
     let sunk = false;
+    let marker = length;
+    if (mark) {
+        marker = mark;
+    }
     const getHits = () => {
         return hits;
     }
@@ -18,10 +22,10 @@ const ShipFactory = (input) => {
         hit();
         return isSunk();
     }
-    return { length, sunk, getHits, hit, isSunk, hitPlus}
+    return { length, sunk, marker, getHits, hit, isSunk, hitPlus}
 };
 const buildFleet = () => {
-    const sub = ShipFactory(3);
+    const sub = ShipFactory(3, 1);
     const patrol = ShipFactory(2);
     const destroyer = ShipFactory(3);
     const battleship = ShipFactory(4);

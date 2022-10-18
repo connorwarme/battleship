@@ -1,6 +1,6 @@
 import BoardFactory from "./board";
 import { PlayerFactory, computer } from "./players";
-import ShipFactory from "./ship";
+import { ShipFactory } from "./ship";
 
 const p1 = PlayerFactory('p1');
 const gb1 = BoardFactory();
