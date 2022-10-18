@@ -73,6 +73,9 @@ const loop = (() => {
     const startGame = () => {
         const p1 = initialize('Player 1');
         const p2 = initialize(false);
+        // have AI place fleet, randomly
+        // needs to be checked !!!
+        p2.player.placeFleet(p2);
         return { p1, p2 }
     }
     const restartFn = () => {
