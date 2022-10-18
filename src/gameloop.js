@@ -92,6 +92,7 @@ const loop = (() => {
             switchTurns();
             // run gameover fn
             console.log('loop throwing game over');
+            com.endGame(currentPlayer);
         }
     }
     return { initialTurn, turn };

@@ -1,4 +1,4 @@
-import createElement from "./utility";
+import { createElement, clearDiv } from "./utility";
 import Github from './icons/github.svg';
 import LinkedIn from './icons/linkedin.svg';
 import { PlayerFactory } from "./players";
@@ -59,11 +59,8 @@ const mainContent = () => {
     start.textContent = 'Start Game!'
 
     // listener and helpers
-    const clearMain = () => {
-        while (mainC.children.length > 0) {
-            mainC.removeChild(mainC.firstChild);
-        }
-    }
+    const clearMain = () => clearDiv(mainC);
+    
     const startFn = () => {
         // need a check if input is empty !!!
         const p1 = PlayerFactory(input.value);

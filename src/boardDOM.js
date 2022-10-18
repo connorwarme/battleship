@@ -1,4 +1,4 @@
-import createElement from "./utility";
+import { createElement } from "./utility";
 import loop from "./gameloop";
 
 // render gameboards on page

@@ -12,4 +12,9 @@ const setAttributes = (element, attributes) => {
         element.setAttribute(key, value);
     })
 }
-export default createElement;
+const clearDiv = (div) => {
+    while (div.children.length > 0) {
+        div.removeChild(div.firstChild);
+    }
+}
+export { createElement, clearDiv };

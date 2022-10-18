@@ -1,4 +1,4 @@
-import createElement from "./utility";
+import { createElement, clearDiv } from "./utility";
 
 // build communication div - for displaying updates / prompts
 const com = (() => {
@@ -24,7 +24,22 @@ const com = (() => {
             commC.firstChild.textContent = `${playerName.codename} attacks and ${strike}`;
         }
     }
-    return { buildComms, updateText };
+    const endGame = (player) => {
+        const mainC = commC.nextElementSibling;
+        // clear comms and main
+        clearDiv(commC);
+        clearDiv(mainC);
+        // build content
+        const endC = createElement('div', {class: 'endContainer'});
+        const banner = createElement('div', {class: 'banner'});
+        banner.textContent = 'Game Over!'
+        const winner = createElement('div', {class: 'winner'});
+        winner.textContent = `Winner: ${player.codename}`;
+        mainC.appendChild(endC);
+        endC.appendChild(banner);
+        endC.appendChild(winner);
+    }
+    return { buildComms, updateText, endGame };
 })();
 
 export { com };
