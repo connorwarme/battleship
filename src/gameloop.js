@@ -50,11 +50,11 @@ const initialize = (playerName) => {
     } else {
         player = PlayerFactory(`${playerName}`);
     }
-    const board = BoardFactory();
-    board.create(10);
+    const gb = BoardFactory();
+    gb.create(10);
     const fleet = buildFleet();
 
-    return { player, board, fleet }
+    return { player, gb, fleet }
 }
 
 const loop = (() => {

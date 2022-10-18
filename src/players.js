@@ -9,7 +9,7 @@ const PlayerFactory = (codename) => {
     return { codename, wins, attack, addWin };
 }
 const computer = () => {
-    const ai = PlayerFactory('Easy AI');
+    const ai = PlayerFactory('AI Player');
     const _generate = () => Math.floor(Math.random() * 10);
     const _generateRandomAttack = () => {
         let x = _generate();

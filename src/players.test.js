@@ -28,7 +28,7 @@ test('Test player can launch attack', () => {
     expect(blamo.attack([0,1], gameboard)).toBe('Miss');
 });
 test('Create ai player', () => {
-    expect(ai.codename).toBe('Easy AI');
+    expect(ai.codename).toBe('AI Player');
     expect(ai.wins).toBe(0);
 });
 test('AI creates legal attack', () => {
