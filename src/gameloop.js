@@ -1,6 +1,6 @@
 import BoardFactory from "./board";
 import { PlayerFactory, computer } from "./players";
-import ShipFactory from "./ship";
+import { ShipFactory, buildFleet } from "./ship";
 import { buildBoard, displayShips, markCell } from "./boardDOM";
 import { com } from './comsDOM';
 
@@ -42,6 +42,21 @@ gb2.placeShip(ship2a, false, 5, 0);
 gb2.placeShip(ship2b, false, 7, 0);
 gb2.placeShip(ship2c, false, 9, 0);
 
+// create players and their respective gameboard
+const initialize = (playerName) => {
+    let player;
+    if (!playerName) {
+        player = computer();
+    } else {
+        player = PlayerFactory(`${playerName}`);
+    }
+    const board = BoardFactory();
+    board.create(10);
+    const fleet = buildFleet();
+
+    return { player, board, fleet }
+}
+
 const loop = (() => {
     let playerTurn = true;
     let playerBoardDOM;
@@ -55,7 +70,11 @@ const loop = (() => {
         displayShips(gb2, parentDOM.lastChild);
         compBoardDOM = parentDOM.lastChild;
     }
+    const startGame = () => {
+        const p1 = initialize('Player 1');
+        const p2 = initialize(false);
 
+    }
     const restartFn = () => {
         // new players
         // new gameboards

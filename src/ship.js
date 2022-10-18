@@ -20,5 +20,13 @@ const ShipFactory = (input) => {
     }
     return { length, sunk, getHits, hit, isSunk, hitPlus}
 };
+const buildFleet = () => {
+    const sub = ShipFactory(3);
+    const patrol = ShipFactory(2);
+    const destroyer = ShipFactory(3);
+    const battleship = ShipFactory(4);
+    const carrier = ShipFactory(5);
+    return { sub, patrol, destroyer, battleship, carrier }
+}
 
-export default ShipFactory;
+export { ShipFactory, buildFleet };

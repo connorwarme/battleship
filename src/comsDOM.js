@@ -1,4 +1,5 @@
 import { createElement, clearDiv } from "./utility";
+import makeInitial from "./initialDOM";
 
 // build communication div - for displaying updates / prompts
 const com = (() => {
@@ -44,7 +45,12 @@ const com = (() => {
 
         // add listener
         playAgain.addEventListener('click', () => {
+            // clear main content
+            clearDiv(mainC);
+            //
             restartFn();
+            //
+            makeInitial();
         });
     }
     return { buildComms, updateText, endGame };
