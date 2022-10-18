@@ -24,7 +24,7 @@ const com = (() => {
             commC.firstChild.textContent = `${playerName.codename} attacks and ${strike}`;
         }
     }
-    const endGame = (player) => {
+    const endGame = (player, restartFn) => {
         const mainC = commC.nextElementSibling;
         // clear comms and main
         clearDiv(commC);
@@ -35,9 +35,17 @@ const com = (() => {
         banner.textContent = 'Game Over!'
         const winner = createElement('div', {class: 'winner'});
         winner.textContent = `Winner: ${player.codename}`;
+        const playAgain = createElement('button', {class: 'playAgain'});
+        playAgain.textContent = `Play Again`;
         mainC.appendChild(endC);
         endC.appendChild(banner);
         endC.appendChild(winner);
+        endC.appendChild(playAgain);
+
+        // add listener
+        playAgain.addEventListener('click', () => {
+            restartFn();
+        });
     }
     return { buildComms, updateText, endGame };
 })();

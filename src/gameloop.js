@@ -55,7 +55,20 @@ const loop = (() => {
         displayShips(gb2, parentDOM.lastChild);
         compBoardDOM = parentDOM.lastChild;
     }
+
+    const restartFn = () => {
+        // new players
+        // new gameboards
+        // new ship locations
+        // display ^^these
+        // -> go to initial page, need user input
+        // -> go to place ships page, need user input
+        // -> go to main page, let battle begin
+        // what else?
+        console.log('restartfn'); 
+    }
     let currentPlayer = {};
+    // do i need ? !!!
     let currentResult = {};
     const turn = (input) => {
         currentPlayer = playerTurn ? p1 : p2;
@@ -92,7 +105,8 @@ const loop = (() => {
             switchTurns();
             // run gameover fn
             console.log('loop throwing game over');
-            com.endGame(currentPlayer);
+            // needs restartFn !!!
+            com.endGame(currentPlayer, restartFn);
         }
     }
     return { initialTurn, turn };
