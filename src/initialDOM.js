@@ -63,11 +63,12 @@ const mainContent = () => {
     
     const startFn = () => {
         // need a check if input is empty !!!
-        const p1 = PlayerFactory(input.value);
+        const callsign = input.value;
         // clear main container -> prep for board display
         clearMain();
         // initialize game loop?
-        loop.initialTurn(mainC);
+        // loop.initialTurn(mainC);
+        loop.startGame(callsign, mainC);
     }
     start.addEventListener('click', () => {
         startFn();

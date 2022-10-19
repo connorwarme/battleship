@@ -62,24 +62,27 @@ const loop = (() => {
     let playerBoardDOM;
     let compBoardDOM;
     const switchTurns = () => playerTurn = !playerTurn;
-    const initialTurn = (parentDOM) => {
+    const initialTurn = (board2, parentDOM) => {
         parentDOM.appendChild(buildBoard(gb1, false));
         displayShips(gb1, parentDOM.firstChild);
         playerBoardDOM = parentDOM.firstChild;
-        parentDOM.appendChild(buildBoard(gb2, true));
-        displayShips(gb2, parentDOM.lastChild);
+        parentDOM.appendChild(buildBoard(board2, true));
+        displayShips(board2, parentDOM.lastChild);
         compBoardDOM = parentDOM.lastChild;
     }
     const startGame = (callsign, parentDOM) => {
         const p1 = initialize(`${callsign}`);
         const p2 = initialize(false);
+        console.log(p1);
+        console.log(p2);
         // have AI place fleet, randomly
         // needs to be checked !!!
         p2.player.placeFleet(p2);
         // needs to invoke fn for user to place their ships...
         // initial turn ?
         // need to pass in p1.board and p2.board (change initial turn fn)
-        initialTurn(parentDOM)
+        console.log(p2.gb.board);
+        initialTurn(p2.gb, parentDOM)
         return { p1, p2 }
     }
     const restartFn = () => {

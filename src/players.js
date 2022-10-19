@@ -56,7 +56,8 @@ const computer = () => {
         let axis = _randomAxis();
         let coord = _generateRandomAttack();
         // for each ship, randomly generate coordinates and axis
-        player.fleet.forEach(ship => {
+        const fleetArray = Array.from(player.fleet);
+        fleetArray.forEach(ship => {
             while (!(player.gb.placeShip(ship, axis, coord[0], coord[1]))) {
                 axis = _randomAxis();
                 coord = _generateRandomAttack();
