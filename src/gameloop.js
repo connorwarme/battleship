@@ -83,9 +83,10 @@ const loop = (() => {
         // p2.player.placeFleet(p1);
         p2.player.placeFleet(p2);
         // needs to invoke fn for user to place their ships... !!!
-        parentDOM.appendChild(buildBoard(p1.gb, true, ((x) => {
+        parentDOM.appendChild(buildBoard(p1.gb, true, ((x, e) => {
             console.log(x);
-            place.fleet(p1, x);
+            console.log(e.target.id);
+            console.log(e.target);
         })));
         // initial turn ?
         // need to pass in p1.board and p2.board (change initial turn fn)

@@ -11,8 +11,8 @@ const buildBoard = (object, boolean, funct) => {
         for (let j = 0; j < board[i].length; j++) {
             const gridCell = createElement('div', {class: `cell`, id: `${i}${j}`});
             if (boolean) {
-                gridCell.addEventListener('click', () => {
-                    funct([i, j]);
+                gridCell.addEventListener('click', (e) => {
+                    funct([i, j], e);
                 })
             }
             gridCol.appendChild(gridCell);

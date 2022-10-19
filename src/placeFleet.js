@@ -27,6 +27,7 @@ const place = (() => {
 
     }
     const fleet = (player, input) => {
+        // need to only create ONE new board, and get all the ships placed on it.
         const board = createEmpty();
         ship(board, player.fleet.carrier, input)
         // const shipArray = Object.keys(player.fleet);
