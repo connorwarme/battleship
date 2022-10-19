@@ -53,6 +53,7 @@ const computer = () => {
         return false;
     }
     const placeFleet = (player) => {
+        // i think this can be used for either player...maybe make a button for user (in initial) !!!
         // for each ship, randomly generate coordinates and axis
         const fleetKeys = Object.keys(player.fleet);
         fleetKeys.forEach(ship => {
