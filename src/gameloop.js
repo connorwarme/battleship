@@ -132,7 +132,9 @@ const loop = (() => {
             switchTurns();
         }
         if (!playerTurn && (!result.allSunk)) {
-            turn(false);
+            setTimeout(() => {
+                turn(false); 
+            }, 2000);
         }
         if (result.allSunk) {
             // switch turns (back to winning player)
