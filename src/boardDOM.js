@@ -2,7 +2,7 @@ import { createElement } from "./utility";
 import loop from "./gameloop";
 
 // render gameboards on page
-const buildBoard = (object, boolean) => {
+const buildBoard = (object, boolean, funct) => {
     const board = object.board;
     const displayBoard = createElement('div', {class: 'displayBoard'});
     for (let i = 0; i<board.length; i++) {
@@ -12,7 +12,7 @@ const buildBoard = (object, boolean) => {
             const gridCell = createElement('div', {class: `cell`, id: `${i}${j}`});
             if (boolean) {
                 gridCell.addEventListener('click', () => {
-                    loop.turn([i, j]);
+                    funct([i, j]);
                 })
             }
             gridCol.appendChild(gridCell);
