@@ -45,8 +45,8 @@ const com = (() => {
 
         // add listener
         playAgain.addEventListener('click', () => {
-            // clear main content
-            clearDiv(mainC);
+            // clear content
+            clearDiv(mainC.parentElement.parentElement);
             //
             restartFn();
             //
