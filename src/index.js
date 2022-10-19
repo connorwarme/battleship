@@ -1,5 +1,5 @@
 import loop from "./gameloop";
-import makeInitial from './initialDOM';
+import { makeInitial } from './initialDOM';
 import './style.css';
 
 makeInitial();

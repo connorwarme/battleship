@@ -97,4 +97,8 @@ const makeInitial = () => {
     body.appendChild(footer());
     page.appendChild(body);
 }
-export default makeInitial;
+const makeInitialLite = () => {
+    const body = document.querySelector('div.body');
+    body.insertBefore(mainContent(), body.children[2]);
+}
+export { makeInitial, makeInitialLite };
