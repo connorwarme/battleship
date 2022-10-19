@@ -1,6 +1,7 @@
 import BoardFactory from "./board";
 import { PlayerFactory, computer } from "./players";
 import { ShipFactory, buildFleet } from "./ship";
+import place from "./placeFleet";
 import { buildBoard, displayShips, markCell } from "./boardDOM";
 import { com } from './comsDOM';
 
@@ -82,7 +83,10 @@ const loop = (() => {
         // p2.player.placeFleet(p1);
         p2.player.placeFleet(p2);
         // needs to invoke fn for user to place their ships... !!!
-        parentDOM.appendChild(buildBoard(p1.gb, true, ((x) => console.log(x))));
+        parentDOM.appendChild(buildBoard(p1.gb, true, ((x) => {
+            console.log(x);
+            place.fleet(p1, x);
+        })));
         // initial turn ?
         // need to pass in p1.board and p2.board (change initial turn fn)
         console.log(p2.gb.board);

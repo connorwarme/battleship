@@ -10,23 +10,32 @@ import BoardFactory from "./board";
 // after last ship, takes board and makes it p1.gb.board
 // page fades out, then load loop.initialturn 
 
-const place = () => {
+const place = (() => {
     const createEmpty = () => {
         const board = BoardFactory();
         board.create(10);
         return board;
     }
-    const ship = () => {
+    const ship = (board, ship, input) => {
         // call dom function -> display instruction: 'place your ship'
-        
+        if (!(board.placeShip(ship, true, input[0], input[1]))) {
+            console.log('not valid ese!')
+        } else {
+        console.log('that went..?');
+        }
+        console.log(board);
+
     }
-    const fleet = (player) => {
-        const board = createEmpty().board;
-        const shipArray = Object.keys(player.fleet);
-        shipArray.forEach(ship => {
+    const fleet = (player, input) => {
+        const board = createEmpty();
+        ship(board, player.fleet.carrier, input)
+        // const shipArray = Object.keys(player.fleet);
+        // shipArray.forEach(ship => {
 
-        })
+        // })
     }
+    return { ship, fleet };
 
+})();
 
-}
+export default place;
