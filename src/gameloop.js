@@ -59,6 +59,8 @@ const initialize = (playerName) => {
 
 const loop = (() => {
     let playerTurn = true;
+    let playerOne;
+    let playerTwo;
     let playerBoardDOM;
     let compBoardDOM;
     const switchTurns = () => playerTurn = !playerTurn;
@@ -84,6 +86,8 @@ const loop = (() => {
         // need to pass in p1.board and p2.board (change initial turn fn)
         console.log(p2.gb.board);
         initialTurn(p1.gb, p2.gb, parentDOM)
+        playerOne = p1;
+        playerTwo = p2;
         return { p1, p2 }
     }
     const restartFn = () => {
@@ -101,11 +105,11 @@ const loop = (() => {
     // do i need ? !!!
     let currentResult = {};
     const turn = (input) => {
-        currentPlayer = playerTurn ? p1 : p2;
+        currentPlayer = playerTurn ? playerOne.player : playerTwo.player;
         let result;
         // does it need a check?
         if (playerTurn) {
-            result = gb2.receiveAttack(input[0], input[1]);
+            result = playerTwo.gb.receiveAttack(input[0], input[1]);
             if (result.value === 0) {
                 // aka user clicked on coordinates for a second time
                 com.updateText(currentPlayer, true, "");
@@ -122,7 +126,7 @@ const loop = (() => {
         } else {
             // ai player makes attack
             // display the move on p1 gameboard
-            result = p2.attack(gb1);
+            result = playerTwo.player.attack(playerOne.gb);
             markCell(result.coord[0], result.coord[1], result.obj.value, playerBoardDOM);
             com.updateText(currentPlayer, false, result.obj.value, result.obj.sunk, result.obj.ship, false);
             switchTurns();
