@@ -1,6 +1,6 @@
 import { createElement } from "./utility";
 
-
+// right now, checkCell has hardcode values for length and axis !!!
 const checkCell = (gameboard, x, y) => {
     if (gameboard.checkOnBoard(5, true, x, y) || 
     gameboard.checkPlace(5, true, x, y)) {
@@ -10,27 +10,30 @@ const checkCell = (gameboard, x, y) => {
 }
 const highlightLength = (element, length) => {
     const coord = Array.from(element.id);
-    for (let i = 1; i < length; i++) {
+    for (let i = 0; i < length; i++) {
         const newId = `${Number(coord[0])+i}${coord[1]}`;
         const cell = document.getElementById(newId);
         cell.style.backgroundColor = "lightgray";
     }
-
-
 }
 const hover = (element, gameboard) => {
+    let appliedListener = false;
     // on enter, highlight
     element.addEventListener('mouseenter', () => {
-        const x = Number(Array.from(element.id)[0]);
-        const y = Number(Array.from(element.id)[1]);
+        const x = Number(element.id.charAt(0));
+        const y = Number(element.id.charAt(1));
         // could add a class...
         if (checkCell(gameboard, x, y)) {
-            element.style.backgroundColor = "lightgray";
             highlightLength(element, 5);
+            // add click listener to allow placement...
+            appliedListener = true;
         };
     })
     element.addEventListener('mouseout', () => {
-        element.style.backgroundColor = "white";
+        if (appliedListener) {
+            // remove click listener for ship placement
+            appliedListener = false;
+        }
         const grid = Array.from(document.querySelectorAll('div.cell'));
         grid.forEach(cell => {
             cell.style.backgroundColor = "white";
