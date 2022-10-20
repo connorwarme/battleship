@@ -88,7 +88,7 @@ const loop = (() => {
             console.log(x);
             console.log(e.target.id);
             console.log(e.target);
-            hover(e.target);
+            hover(e.target, p1.gb);
         })));
         // initial turn ?
         // need to pass in p1.board and p2.board (change initial turn fn)

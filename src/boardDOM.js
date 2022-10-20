@@ -13,7 +13,7 @@ const buildBoard = (object, boolean, funct) => {
             const gridCell = createElement('div', {class: `cell`, id: `${i}${j}`});
             if (boolean) {
                 // need to be able to delineate event listener for place ships and other for actual gameplay
-                hover(gridCell);
+                hover(gridCell, object);
                 gridCell.addEventListener('click', (e) => {
                     funct([i, j], e);
                 })
