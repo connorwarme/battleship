@@ -14,8 +14,8 @@ const BoardFactory = () => {
     }
     const shipArray = [];
     const placeShip = (object, axis, x, y) => {
-        if (_checkOnBoard(object.length, axis, x, y) || 
-        _checkPlace(object.length, axis, x, y)) {
+        if (checkOnBoard(object.length, axis, x, y) || 
+        checkPlace(object.length, axis, x, y)) {
             return false;
         }
         if (axis) {
@@ -29,7 +29,7 @@ const BoardFactory = () => {
         shipArray.push(object);
         return true;
     }
-    const _checkPlace = (length, axis, x, y) => {
+    const checkPlace = (length, axis, x, y) => {
         let array = [];
         let value;
         if (axis) {
@@ -46,7 +46,7 @@ const BoardFactory = () => {
         });
         return value;
     }
-    const _checkOnBoard = (length, axis, x, y) => {
+    const checkOnBoard = (length, axis, x, y) => {
         let value;
         if (axis) {
             value = x + length;
@@ -126,7 +126,7 @@ const BoardFactory = () => {
         obj.value = 0;
         return obj;
     }   
-    return { board, create, placeShip, receiveAttack, allSunk };
+    return { board, create, placeShip, checkPlace, checkOnBoard, receiveAttack, allSunk };
 };
 
 export default BoardFactory;
