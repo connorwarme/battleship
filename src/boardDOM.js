@@ -1,5 +1,6 @@
 import { createElement } from "./utility";
 import loop from "./gameloop";
+import { hover } from './placeFleetDOM';
 
 // render gameboards on page
 const buildBoard = (object, boolean, funct) => {
@@ -11,6 +12,8 @@ const buildBoard = (object, boolean, funct) => {
         for (let j = 0; j < board[i].length; j++) {
             const gridCell = createElement('div', {class: `cell`, id: `${i}${j}`});
             if (boolean) {
+                // need to be able to delineate event listener for place ships and other for actual gameplay
+                hover(gridCell);
                 gridCell.addEventListener('click', (e) => {
                     funct([i, j], e);
                 })

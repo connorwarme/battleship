@@ -4,6 +4,7 @@ import { ShipFactory, buildFleet } from "./ship";
 import place from "./placeFleet";
 import { buildBoard, displayShips, markCell } from "./boardDOM";
 import { com } from './comsDOM';
+import { hover } from './placeFleetDOM';
 
 // game loop
 // initialize w/ p1 and gameboard1
@@ -87,6 +88,7 @@ const loop = (() => {
             console.log(x);
             console.log(e.target.id);
             console.log(e.target);
+            hover(e.target);
         })));
         // initial turn ?
         // need to pass in p1.board and p2.board (change initial turn fn)
