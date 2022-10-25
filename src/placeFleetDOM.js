@@ -1,6 +1,31 @@
 import { createElement } from "./utility";
 import { buildBoard } from "./boardDOM";
 
+const createPlaceDisplay = () => {
+    const container = createElement('div', {class: "placeContainer"});
+    const instructions = createElement('div', {class: 'placeInstructions'});
+    const buttonC = createElement('div', {class: 'placeBtnContainer'});
+    const axisBtn = createElement('button', {class: 'axisBtn'});
+    axisBtn.textContent = 'Change Axis';
+    const randomBtn = createElement('button', {class: 'randomBtn'});
+    randomBtn.textContent = 'Random';
+
+    // add listeners
+    axisBtn.addEventListener('click', () => {
+        console.log('shift axis!');
+    })
+    randomBtn.addEventListener('click', () => {
+        console.log('place fleet randomly!');
+    })
+
+    // append it all together
+    container.appendChild(instructions);
+    container.appendChild(buttonC);
+    buttonC.appendChild(axisBtn);
+    buttonC.appendChild(randomBtn);
+
+    return container;
+}
 // right now, checkCell has hardcode values for length and axis !!!
 const checkCell = (gameboard, x, y) => {
     if (gameboard.checkOnBoard(5, true, x, y) || 
@@ -53,6 +78,7 @@ const addCellListeners = (gameboard) => {
     })
 }
 const main = (parentDOM, playerBoard) => {
+    parentDOM.appendChild(createPlaceDisplay());
     parentDOM.appendChild(buildBoard(playerBoard, true));
     addCellListeners(playerBoard);
 
