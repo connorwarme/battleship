@@ -19,7 +19,9 @@ const createPlaceDisplay = () => {
         axis = !axis;
         let text = axis ? 'X' : 'Y';
         axisBtn.textContent = `Axis: ${text}`;
+        // delete current board
         currentDOM.removeChild(currentDOM.lastChild);
+        // build new board w/ correct listeners
         perShip(currentDOM, currentBoard, currentShip);
     })
     randomBtn.addEventListener('click', () => {
