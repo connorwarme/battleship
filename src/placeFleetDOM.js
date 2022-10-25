@@ -30,9 +30,9 @@ const createPlaceDisplay = () => {
     return container;
 }
 // right now, checkCell has hardcode values for length and axis !!!
-const checkCell = (gameboard, x, y) => {
-    if (gameboard.checkOnBoard(5, axis, x, y) || 
-    gameboard.checkPlace(5, axis, x, y)) {
+const checkCell = (gameboard, ship, x, y) => {
+    if (gameboard.checkOnBoard(ship.length, axis, x, y) || 
+    gameboard.checkPlace(ship.length, axis, x, y)) {
         return false;
     }
     return true;
@@ -54,19 +54,19 @@ const highlightLength = (element, length) => {
 const clickListener = (x, y) => {
     console.log([x, y]);
 }
-const click = (element, gameboard, x, y) => {
-    if (checkCell(gameboard, x, y)) {
+const click = (element, gameboard, ship, x, y) => {
+    if (checkCell(gameboard, ship, x, y)) {
         element.addEventListener('click', () => {
             clickListener(x, y);
         })
     }
 }
-const hover = (element, gameboard, x, y) => {
+const hover = (element, gameboard, ship, x, y) => {
     // on enter, highlight
     element.addEventListener('mouseenter', () => {
         // could add a class...
-        if (checkCell(gameboard, x, y)) {
-            highlightLength(element, 5);
+        if (checkCell(gameboard, ship, x, y)) {
+            highlightLength(element, ship.length);
         };
     })
     element.addEventListener('mouseout', () => {
@@ -76,19 +76,22 @@ const hover = (element, gameboard, x, y) => {
         })
     })
 }
-const addCellListeners = (gameboard) => {
+const addCellListeners = (gameboard, ship) => {
     const cellArray = Array.from(document.querySelectorAll('div.cell'));
     cellArray.forEach(cell => {
         const x = Number(cell.id.charAt(0));
         const y = Number(cell.id.charAt(1));
-        hover(cell, gameboard, x, y);
-        click(cell, gameboard, x, y);
+        hover(cell, gameboard, ship, x, y);
+        click(cell, gameboard, ship, x, y);
     })
 }
-const main = (parentDOM, playerBoard) => {
-    parentDOM.appendChild(createPlaceDisplay());
+const perShip = (parentDOM, playerBoard, ship) => {
     parentDOM.appendChild(buildBoard(playerBoard, true));
-    addCellListeners(playerBoard);
+    addCellListeners(playerBoard, ship);
+}
+const main = (parentDOM, playerBoard, ship) => {
+    parentDOM.appendChild(createPlaceDisplay());
+    perShip(parentDOM, playerBoard, ship);
 
 }
 export { hover, main };

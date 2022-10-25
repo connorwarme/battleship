@@ -83,7 +83,7 @@ const loop = (() => {
         // p2.player.placeFleet(p1);
         p2.player.placeFleet(p2);
         // needs to invoke fn for user to place their ships... !!!
-        main(parentDOM, p1.gb);
+        main(parentDOM, p1.gb, p1.fleet.destroyer);
         // parentDOM.appendChild(buildBoard(p1.gb, true, ((x, e) => {
         //     console.log(x);
         //     console.log(e.target.id);
