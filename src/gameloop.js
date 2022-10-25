@@ -4,7 +4,7 @@ import { ShipFactory, buildFleet } from "./ship";
 import place from "./placeFleet";
 import { buildBoard, displayShips, markCell } from "./boardDOM";
 import { com } from './comsDOM';
-import { hover } from './placeFleetDOM';
+import { hover, addHover, main } from './placeFleetDOM';
 
 // game loop
 // initialize w/ p1 and gameboard1
@@ -83,12 +83,14 @@ const loop = (() => {
         // p2.player.placeFleet(p1);
         p2.player.placeFleet(p2);
         // needs to invoke fn for user to place their ships... !!!
-        parentDOM.appendChild(buildBoard(p1.gb, true, ((x, e) => {
-            console.log(x);
-            console.log(e.target.id);
-            console.log(e.target);
-            hover(e.target, p1.gb);
-        })));
+        main(parentDOM, p1.gb);
+        // parentDOM.appendChild(buildBoard(p1.gb, true, ((x, e) => {
+        //     console.log(x);
+        //     console.log(e.target.id);
+        //     console.log(e.target);
+        //     hover(e.target, p1.gb);
+        // })));
+        // addHover(p1.gb);
         // initial turn ?
         // need to pass in p1.board and p2.board (change initial turn fn)
         console.log(p2.gb.board);
