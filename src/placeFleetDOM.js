@@ -1,18 +1,21 @@
 import { createElement } from "./utility";
 import { buildBoard } from "./boardDOM";
 
+let axis = true;
 const createPlaceDisplay = () => {
     const container = createElement('div', {class: "placeContainer"});
     const instructions = createElement('div', {class: 'placeInstructions'});
     const buttonC = createElement('div', {class: 'placeBtnContainer'});
     const axisBtn = createElement('button', {class: 'axisBtn'});
-    axisBtn.textContent = 'Change Axis';
+    axisBtn.textContent = `Axis: X`
     const randomBtn = createElement('button', {class: 'randomBtn'});
     randomBtn.textContent = 'Random';
 
     // add listeners
     axisBtn.addEventListener('click', () => {
-        console.log('shift axis!');
+        axis = !axis;
+        let text = axis ? 'X' : 'Y';
+        axisBtn.textContent = `Axis: ${text}`;
     })
     randomBtn.addEventListener('click', () => {
         console.log('place fleet randomly!');
