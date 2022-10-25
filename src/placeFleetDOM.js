@@ -31,16 +31,21 @@ const createPlaceDisplay = () => {
 }
 // right now, checkCell has hardcode values for length and axis !!!
 const checkCell = (gameboard, x, y) => {
-    if (gameboard.checkOnBoard(5, true, x, y) || 
-    gameboard.checkPlace(5, true, x, y)) {
+    if (gameboard.checkOnBoard(5, axis, x, y) || 
+    gameboard.checkPlace(5, axis, x, y)) {
         return false;
     }
     return true;
 }
 const highlightLength = (element, length) => {
     const coord = Array.from(element.id);
+    let newId;
     for (let i = 0; i < length; i++) {
-        const newId = `${Number(coord[0])+i}${coord[1]}`;
+        if (axis) {
+            newId = `${Number(coord[0])+i}${coord[1]}`;
+        } else {
+            newId = `${coord[0]}${Number(coord[1])+i}`;
+        }
         const cell = document.getElementById(newId);
         cell.style.backgroundColor = "lightgray";
     }
