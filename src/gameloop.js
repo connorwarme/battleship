@@ -32,7 +32,6 @@ const ship1c = ShipFactory(3);
 gb1.placeShip(ship1a, false, 0, 0);
 gb1.placeShip(ship1b, false, 2, 0);
 gb1.placeShip(ship1c, false, 4, 0);
-console.log(gb1.board);
 
 const p2 = computer();
 const gb2 = BoardFactory();

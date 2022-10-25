@@ -16,50 +16,30 @@ const highlightLength = (element, length) => {
         cell.style.backgroundColor = "lightgray";
     }
 }
-const mouseEnter = (element, gameboard) => {
-    const x = Number(element.id.charAt(0));
-    const y = Number(element.id.charAt(1));
-    // could add a class...
-    if (checkCell(gameboard, x, y)) {
-        highlightLength(element, 5);
-        // add click listener to allow placement...
-        element.addEventListener('click', () => {
-            clickListener(x, y);
-        });
-    };
-}
-const mouseOut = () => {
-    const grid = Array.from(document.querySelectorAll('div.cell'));
-    grid.forEach(cell => {
-        cell.style.backgroundColor = "white";
-    });
-}
+
 const clickListener = (x, y) => {
     console.log([x, y]);
 }
 const hover = (element, gameboard) => {
     // on enter, highlight
     element.addEventListener('mouseenter', () => {
-        mouseEnter(element, gameboard);
-        // const x = Number(element.id.charAt(0));
-        // const y = Number(element.id.charAt(1));
-        // // could add a class...
-        // if (checkCell(gameboard, x, y)) {
-        //     highlightLength(element, 5);
-        //     // add click listener to allow placement...
-        //     element.addEventListener('click', () => {
-        //         clickListener(x, y);
-        //     });
-        // };
+        const x = Number(element.id.charAt(0));
+        const y = Number(element.id.charAt(1));
+        // could add a class...
+        if (checkCell(gameboard, x, y)) {
+            highlightLength(element, 5);
+            // add click listener to allow placement...
+            element.addEventListener('click', () => {
+                clickListener(x, y);
+            });
+        };
     })
     element.addEventListener('mouseout', () => {
-        mouseOut();
-        // const grid = Array.from(document.querySelectorAll('div.cell'));
-        // grid.forEach(cell => {
-        //     cell.style.backgroundColor = "white";
-        // })
+        const grid = Array.from(document.querySelectorAll('div.cell'));
+        grid.forEach(cell => {
+            cell.style.backgroundColor = "white";
+        })
     })
 }
-
 
 export { hover };
