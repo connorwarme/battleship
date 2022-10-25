@@ -16,8 +16,10 @@ const highlightLength = (element, length) => {
         cell.style.backgroundColor = "lightgray";
     }
 }
+const clickListener = (x, y) => {
+    console.log([x, y]);
+}
 const hover = (element, gameboard) => {
-    let appliedListener = false;
     // on enter, highlight
     element.addEventListener('mouseenter', () => {
         const x = Number(element.id.charAt(0));
@@ -26,14 +28,12 @@ const hover = (element, gameboard) => {
         if (checkCell(gameboard, x, y)) {
             highlightLength(element, 5);
             // add click listener to allow placement...
-            appliedListener = true;
+            element.addEventListener('click', () => {
+                clickListener(x, y);
+            });
         };
     })
     element.addEventListener('mouseout', () => {
-        if (appliedListener) {
-            // remove click listener for ship placement
-            appliedListener = false;
-        }
         const grid = Array.from(document.querySelectorAll('div.cell'));
         grid.forEach(cell => {
             cell.style.backgroundColor = "white";
