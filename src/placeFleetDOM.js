@@ -19,6 +19,8 @@ const createPlaceDisplay = () => {
         axis = !axis;
         let text = axis ? 'X' : 'Y';
         axisBtn.textContent = `Axis: ${text}`;
+        currentDOM.removeChild(currentDOM.lastChild);
+        perShip(currentDOM, currentBoard, currentShip);
     })
     randomBtn.addEventListener('click', () => {
         console.log('place fleet randomly!');
@@ -88,9 +90,18 @@ const addCellListeners = (gameboard, ship) => {
         click(cell, gameboard, ship, x, y);
     })
 }
+let currentBoard;
+let currentShip;
+let currentDOM;
+const updateCurrents = (parent, board, ship) => {
+    currentDOM = parent;
+    currentBoard = board;
+    currentShip = ship;
+}
 const perShip = (parentDOM, playerBoard, ship) => {
     parentDOM.appendChild(buildBoard(playerBoard, true));
     addCellListeners(playerBoard, ship);
+    updateCurrents(parentDOM, playerBoard, ship);
 }
 const main = (parentDOM, playerBoard, ship) => {
     parentDOM.appendChild(createPlaceDisplay());
