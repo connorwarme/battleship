@@ -2,6 +2,9 @@ import { createElement } from "./utility";
 import { buildBoard } from "./boardDOM";
 
 let axis = true;
+const currentAxis = () => {
+    return axis;
+}
 const createPlaceDisplay = () => {
     const container = createElement('div', {class: "placeContainer"});
     const instructions = createElement('div', {class: 'placeInstructions'});
@@ -29,8 +32,8 @@ const createPlaceDisplay = () => {
 
     return container;
 }
-// right now, checkCell has hardcode values for length and axis !!!
-const checkCell = (gameboard, ship, x, y) => {
+// 
+const checkCell = (gameboard, ship, axis, x, y) => {
     if (gameboard.checkOnBoard(ship.length, axis, x, y) || 
     gameboard.checkPlace(ship.length, axis, x, y)) {
         return false;
@@ -50,14 +53,14 @@ const highlightLength = (element, length) => {
         cell.style.backgroundColor = "lightgray";
     }
 }
-
 const clickListener = (x, y) => {
     console.log([x, y]);
 }
 const click = (element, gameboard, ship, x, y) => {
-    if (checkCell(gameboard, ship, x, y)) {
+    if (checkCell(gameboard, ship, currentAxis(), x, y)) {
         element.addEventListener('click', () => {
             clickListener(x, y);
+            console.log(currentAxis());
         })
     }
 }
@@ -65,7 +68,7 @@ const hover = (element, gameboard, ship, x, y) => {
     // on enter, highlight
     element.addEventListener('mouseenter', () => {
         // could add a class...
-        if (checkCell(gameboard, ship, x, y)) {
+        if (checkCell(gameboard, ship, currentAxis(), x, y)) {
             highlightLength(element, ship.length);
         };
     })
@@ -92,6 +95,5 @@ const perShip = (parentDOM, playerBoard, ship) => {
 const main = (parentDOM, playerBoard, ship) => {
     parentDOM.appendChild(createPlaceDisplay());
     perShip(parentDOM, playerBoard, ship);
-
 }
 export { hover, main };
