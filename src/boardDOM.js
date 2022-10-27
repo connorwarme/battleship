@@ -1,6 +1,31 @@
 import { createElement } from "./utility";
 import loop from "./gameloop";
 
+const attackHover = (element) => {
+        // on enter, highlight
+        element.addEventListener('mouseenter', () => {
+            // check if cell has been clicked already
+            if (element.classList.value == 'cell') {
+                element.style.cursor = "crosshair";
+                element.style.backgroundColor = "green";
+            } else {
+                element.style.cursor = "not-allowed";
+                element.style.backgroundColor = "red";
+            }
+        })
+        element.addEventListener('mouseout', () => {
+            const grid = Array.from(document.querySelectorAll('div.cell'));
+            grid.forEach(cell => {
+                if (cell.classList.length == 1) {
+                    cell.style.backgroundColor = "white";
+                } else if (cell.classList.value == "cell hit") {
+                    cell.style.backgroundColor = "slategray";
+                } else if (cell.classList.value == "cell miss") {
+                    cell.style.backgroundColor = "aquamarine";
+                }
+            })
+        })
+    }
 // render gameboards on page
 const buildBoard = (object, boolean, funct) => {
     const board = object.board;
@@ -15,6 +40,7 @@ const buildBoard = (object, boolean, funct) => {
                 gridCell.addEventListener('click', (e) => {
                     funct([i, j], e);
                 })
+                attackHover(gridCell);
             }
             gridCol.appendChild(gridCell);
         }

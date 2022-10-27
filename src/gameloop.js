@@ -69,7 +69,7 @@ const loop = (() => {
         displayShips(board1, parentDOM.firstChild);
         playerBoardDOM = parentDOM.firstChild;
         parentDOM.appendChild(buildBoard(board2, true, loop.turn));
-        displayShips(board2, parentDOM.lastChild);
+        // displayShips(board2, parentDOM.lastChild);
         compBoardDOM = parentDOM.lastChild;
         com.message(playerOne.player, `launch an attack!`);
     }
