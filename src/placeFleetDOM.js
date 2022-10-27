@@ -53,7 +53,7 @@ const highlightLength = (element, length) => {
             newId = `${coord[0]}${Number(coord[1])+i}`;
         }
         const cell = document.getElementById(newId);
-        cell.style.backgroundColor = "lightgray";
+        cell.style.backgroundColor = "slategray";
     }
 }
 const clickListener = (x, y) => {
@@ -76,14 +76,20 @@ const hover = (element, gameboard, ship, x, y) => {
     element.addEventListener('mouseenter', () => {
         // could add a class...
         if (checkCell(gameboard, ship, currentAxis(), x, y)) {
+            element.style.cursor = "pointer";
             highlightLength(element, ship.length);
-        };
+        } else {
+            element.style.cursor = "not-allowed";
+            element.style.backgroundColor = "red";
+        }
     })
     element.addEventListener('mouseout', () => {
         const grid = Array.from(document.querySelectorAll('div.cell'));
         grid.forEach(cell => {
             if (cell.classList.length == 1) {
                 cell.style.backgroundColor = "white";
+            } else if (cell.classList.length == 2) {
+                cell.style.backgroundColor = "slategray";
             }
         })
     })
