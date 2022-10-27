@@ -59,12 +59,11 @@ const highlightLength = (element, length) => {
     }
 }
 const clickListener = (x, y) => {
-    console.log(`Place ship at ${[x, y]}`);
+    // should I make this it's own function? !!!
     currentObj.gb.placeShip(currentShip, axis, x, y);
     count++;
     currentDOM.removeChild(currentDOM.lastChild);
     nextShip(currentDOM, currentObj);
-    console.log(currentObj.gb.board);
 }
 const click = (element, gameboard, ship, x, y) => {
     if (checkCell(gameboard, ship, currentAxis(), x, y)) {
