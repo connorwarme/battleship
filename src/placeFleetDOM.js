@@ -60,7 +60,10 @@ const highlightLength = (element, length) => {
 }
 const clickListener = (x, y) => {
     console.log(`Place ship at ${[x, y]}`);
+    currentDOM.removeChild(currentDOM.lastChild);
     nextShip(currentDOM, currentObj);
+    count++;
+    console.log(currentObj.gb.board);
 }
 const click = (element, gameboard, ship, x, y) => {
     if (checkCell(gameboard, ship, currentAxis(), x, y)) {
