@@ -1,5 +1,5 @@
 import { createElement } from "./utility";
-import { buildBoard } from "./boardDOM";
+import { buildBoard, displayShips } from "./boardDOM";
 import { com } from './comsDOM';
 
 let axis = true;
@@ -60,6 +60,7 @@ const highlightLength = (element, length) => {
 }
 const clickListener = (x, y) => {
     console.log(`Place ship at ${[x, y]}`);
+    currentObj.gb.placeShip(currentShip, axis, x, y);
     currentDOM.removeChild(currentDOM.lastChild);
     nextShip(currentDOM, currentObj);
     count++;
@@ -117,9 +118,11 @@ const nextShip = (parentDOM, playerObj) => {
     }
 }
 const perShip = (parentDOM, playerBoard, ship) => {
-    parentDOM.appendChild(buildBoard(playerBoard, true));
-    addCellListeners(playerBoard, ship);
     updateCurrents(parentDOM, playerBoard, ship);
+    parentDOM.appendChild(buildBoard(playerBoard, true));
+    console.log(currentDOM);
+    displayShips(currentBoard, currentDOM.children[1]);
+    addCellListeners(playerBoard, ship);
 }
 const main = (parentDOM, playerObj) => {
     parentDOM.appendChild(createPlaceDisplay());
