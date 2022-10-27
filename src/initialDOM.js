@@ -68,7 +68,7 @@ const mainContent = () => {
         clearMain();
         // initialize game loop?
         // loop.initialTurn(mainC);
-        loop.startGame(callsign, mainC);
+        loop.initializeGame(callsign, mainC);
     }
     start.addEventListener('click', () => {
         startFn();

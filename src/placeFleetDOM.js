@@ -1,6 +1,7 @@
 import { createElement } from "./utility";
 import { buildBoard, displayShips } from "./boardDOM";
 import { com } from './comsDOM';
+import loop from './gameloop';
 
 let axis = true;
 const currentAxis = () => {
@@ -122,6 +123,7 @@ const nextShip = (parentDOM, playerObj) => {
         perShip(parentDOM, playerObj.gb, playerObj.fleet[fleetKeys[count]]);
     } else {
         console.log('next step of gameloop!');
+        placeFinish();
     }
 }
 const perShip = (parentDOM, playerBoard, ship) => {
@@ -134,5 +136,11 @@ const placeStart = (parentDOM, playerObj) => {
     parentDOM.appendChild(createPlaceDisplay());
     updateAllCurrents(parentDOM, playerObj);
     nextShip(parentDOM, playerObj);
+}
+const placeFinish = () => {
+    // clear placeContainer div
+    currentDOM.removeChild(currentDOM.firstChild);
+    // invoke gameloop step2 -> where 2 boards are displayed
+    loop.launchGame(currentDOM);
 }
 export { hover, placeStart };

@@ -73,7 +73,7 @@ const loop = (() => {
         displayShips(board2, parentDOM.lastChild);
         compBoardDOM = parentDOM.lastChild;
     }
-    const startGame = (callsign, parentDOM) => {
+    const initializeGame = (callsign, parentDOM) => {
         const p1 = initialize(`${callsign}`);
         const p2 = initialize(false);
         console.log(p1);
@@ -97,7 +97,11 @@ const loop = (() => {
         // initialTurn(p1.gb, p2.gb, parentDOM)
         playerOne = p1;
         playerTwo = p2;
+        // need this return value? !!!
         return { p1, p2 }
+    }
+    const launchGame = (parentDOM) => {
+        initialTurn(playerOne.gb, playerTwo.gb, parentDOM);
     }
     const restartFn = () => {
         // new players
@@ -154,7 +158,7 @@ const loop = (() => {
             com.endGame(currentPlayer, restartFn);
         }
     }
-    return { initialTurn, startGame, turn };
+    return { initialTurn, initializeGame, launchGame, turn };
 })();
 
 export default loop;
