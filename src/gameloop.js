@@ -71,6 +71,7 @@ const loop = (() => {
         parentDOM.appendChild(buildBoard(board2, true, loop.turn));
         displayShips(board2, parentDOM.lastChild);
         compBoardDOM = parentDOM.lastChild;
+        com.message(playerOne.player, `launch an attack!`);
     }
     const initializeGame = (callsign, parentDOM) => {
         const p1 = initialize(`${callsign}`);

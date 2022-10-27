@@ -129,7 +129,7 @@ const place = (() => {
     }
     const perShip = (parentDOM, playerBoard, ship) => {
         updateCurrentShip(ship);
-        parentDOM.appendChild(buildBoard(playerBoard, true));
+        parentDOM.appendChild(buildBoard(playerBoard, false));
         displayShips(currentBoard, currentDOM.children[1]);
         addCellListeners(playerBoard, ship);
     }

@@ -18,6 +18,9 @@ const com = (() => {
         const comms = commC.firstChild;
         comms.textContent = `Admiral ${player.codename}: Place your ${ship}.`;
     }
+    const message = (player, content) => {
+        commC.firstChild.textContent = `Admiral ${player.codename}: ${content}`;
+    }
     const shipArray = ['empty', 'submarine', 'patrol boat', 'cruiser', 'destroyer', 'battle carrier'];
     const pronounArray = [{0: 'you', 1: 'their'}, {0: 'they', 1: 'your'}];
     const updateText = (playerName, boolean, hit, sunk, ship, player) => {
@@ -61,7 +64,7 @@ const com = (() => {
             makeInitialLite();
         });
     }
-    return { buildComms, clear, instruct, updateText, endGame };
+    return { buildComms, clear, instruct, message, updateText, endGame };
 })();
 
 export { com };
