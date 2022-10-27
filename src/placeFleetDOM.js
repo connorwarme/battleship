@@ -138,9 +138,10 @@ const placeStart = (parentDOM, playerObj) => {
     nextShip(parentDOM, playerObj);
 }
 const placeFinish = () => {
-    // clear placeContainer div
+    com.clear();
     currentDOM.removeChild(currentDOM.firstChild);
     // invoke gameloop step2 -> where 2 boards are displayed
+    // a way to transition this (ease-in)? !!!
     loop.launchGame(currentDOM);
 }
 export { hover, placeStart };

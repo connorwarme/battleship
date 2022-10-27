@@ -11,6 +11,9 @@ const com = (() => {
         commC.appendChild(comms);
         return commC;
     }
+    const clear = () => {
+        commC.firstChild.textContent = "";
+    }
     const instruct = (player, ship) => {
         const comms = commC.firstChild;
         comms.textContent = `Admiral ${player.codename}: Place your ${ship}.`;
@@ -58,7 +61,7 @@ const com = (() => {
             makeInitialLite();
         });
     }
-    return { buildComms, instruct, updateText, endGame };
+    return { buildComms, clear, instruct, updateText, endGame };
 })();
 
 export { com };
