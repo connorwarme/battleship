@@ -1,10 +1,9 @@
 import BoardFactory from "./board";
 import { PlayerFactory, computer } from "./players";
 import { ShipFactory, buildFleet } from "./ship";
-import place from "./placeFleet";
 import { buildBoard, displayShips, markCell } from "./boardDOM";
 import { com } from './comsDOM';
-import { hover, addHover, placeStart } from './placeFleetDOM';
+import { place } from './placeFleetDOM';
 
 // game loop
 // initialize w/ p1 and gameboard1
@@ -83,7 +82,7 @@ const loop = (() => {
         // p2.player.placeFleet(p1);
         p2.player.placeFleet(p2);
         // needs to invoke fn for user to place their ships... !!!
-        placeStart(parentDOM, p1);
+        place.start(parentDOM, p1);
         // parentDOM.appendChild(buildBoard(p1.gb, true, ((x, e) => {
         //     console.log(x);
         //     console.log(e.target.id);
