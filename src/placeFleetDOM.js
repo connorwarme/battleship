@@ -1,5 +1,6 @@
 import { createElement } from "./utility";
 import { buildBoard } from "./boardDOM";
+import { com } from './comsDOM';
 
 let axis = true;
 const currentAxis = () => {
@@ -95,23 +96,21 @@ const addCellListeners = (gameboard, ship) => {
 let currentBoard;
 let currentShip;
 let currentDOM;
-let count = 0;
+let count = 2;
 const updateCurrents = (parent, board, ship) => {
     currentDOM = parent;
     currentBoard = board;
     currentShip = ship;
-}
-const instruct = (ship) => {
-    const comms = document.querySelector('div.comms');
-    comms.textContent = `Admiral ${player.codename}: Place your ${ship}.`;
 }
 const perShip = (parentDOM, playerBoard, ship) => {
     parentDOM.appendChild(buildBoard(playerBoard, true));
     addCellListeners(playerBoard, ship);
     updateCurrents(parentDOM, playerBoard, ship);
 }
-const main = (parentDOM, playerBoard, ship) => {
+const main = (parentDOM, player, playerBoard, fleet) => {
     parentDOM.appendChild(createPlaceDisplay());
-    perShip(parentDOM, playerBoard, ship[count]);
+    const shipsArray = Object.keys(fleet);
+    com.instruct(player, shipsArray[count]);
+    perShip(parentDOM, playerBoard, fleet[shipsArray[count]]);
 }
 export { hover, main };
