@@ -25,12 +25,12 @@ const ShipFactory = (input, mark) => {
     return { length, sunk, marker, getHits, hit, isSunk, hitPlus}
 };
 const buildFleet = () => {
-    const sub = ShipFactory(3, 1);
+    const submarine = ShipFactory(3, 1);
     const patrol = ShipFactory(2);
     const destroyer = ShipFactory(3);
     const battleship = ShipFactory(4);
     const carrier = ShipFactory(5);
-    return { sub, patrol, destroyer, battleship, carrier }
+    return { submarine, patrol, destroyer, battleship, carrier }
 }
 
 export { ShipFactory, buildFleet };

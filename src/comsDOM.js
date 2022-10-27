@@ -11,6 +11,10 @@ const com = (() => {
         commC.appendChild(comms);
         return commC;
     }
+    const instruct = (player, ship) => {
+        const comms = commC.firstChild;
+        comms.textContent = `Admiral ${player.codename}: Place your ${ship}.`;
+    }
     const shipArray = ['empty', 'submarine', 'patrol boat', 'cruiser', 'destroyer', 'battle carrier'];
     const pronounArray = [{0: 'you', 1: 'their'}, {0: 'they', 1: 'your'}];
     const updateText = (playerName, boolean, hit, sunk, ship, player) => {
@@ -54,7 +58,7 @@ const com = (() => {
             makeInitialLite();
         });
     }
-    return { buildComms, updateText, endGame };
+    return { buildComms, instruct, updateText, endGame };
 })();
 
 export { com };

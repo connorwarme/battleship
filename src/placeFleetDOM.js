@@ -95,10 +95,15 @@ const addCellListeners = (gameboard, ship) => {
 let currentBoard;
 let currentShip;
 let currentDOM;
+let count = 0;
 const updateCurrents = (parent, board, ship) => {
     currentDOM = parent;
     currentBoard = board;
     currentShip = ship;
+}
+const instruct = (ship) => {
+    const comms = document.querySelector('div.comms');
+    comms.textContent = `Admiral ${player.codename}: Place your ${ship}.`;
 }
 const perShip = (parentDOM, playerBoard, ship) => {
     parentDOM.appendChild(buildBoard(playerBoard, true));
@@ -107,6 +112,6 @@ const perShip = (parentDOM, playerBoard, ship) => {
 }
 const main = (parentDOM, playerBoard, ship) => {
     parentDOM.appendChild(createPlaceDisplay());
-    perShip(parentDOM, playerBoard, ship);
+    perShip(parentDOM, playerBoard, ship[count]);
 }
 export { hover, main };
