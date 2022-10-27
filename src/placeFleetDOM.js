@@ -61,9 +61,9 @@ const highlightLength = (element, length) => {
 const clickListener = (x, y) => {
     console.log(`Place ship at ${[x, y]}`);
     currentObj.gb.placeShip(currentShip, axis, x, y);
+    count++;
     currentDOM.removeChild(currentDOM.lastChild);
     nextShip(currentDOM, currentObj);
-    count++;
     console.log(currentObj.gb.board);
 }
 const click = (element, gameboard, ship, x, y) => {
@@ -112,6 +112,7 @@ const updateCurrents = (parent, board, ship) => {
     currentShip = ship;
 }
 const nextShip = (parentDOM, playerObj) => {
+    console.log(count);
     if (count < 5) {
         com.instruct(playerObj.player, fleetKeys[count]);
         perShip(parentDOM, playerObj.gb, playerObj.fleet[fleetKeys[count]]);
