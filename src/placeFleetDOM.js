@@ -8,7 +8,6 @@ const currentAxis = () => {
 }
 const createPlaceDisplay = () => {
     const container = createElement('div', {class: "placeContainer"});
-    const instructions = createElement('div', {class: 'placeInstructions'});
     const buttonC = createElement('div', {class: 'placeBtnContainer'});
     const axisBtn = createElement('button', {class: 'axisBtn'});
     axisBtn.textContent = `Axis: X`
@@ -30,7 +29,6 @@ const createPlaceDisplay = () => {
     })
 
     // append it all together
-    container.appendChild(instructions);
     container.appendChild(buttonC);
     buttonC.appendChild(axisBtn);
     buttonC.appendChild(randomBtn);
