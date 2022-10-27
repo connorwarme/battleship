@@ -59,7 +59,8 @@ const highlightLength = (element, length) => {
     }
 }
 const clickListener = (x, y) => {
-    console.log([x, y]);
+    console.log(`Place ship at ${[x, y]}`);
+    nextShip(currentDOM, currentObj);
 }
 const click = (element, gameboard, ship, x, y) => {
     if (checkCell(gameboard, ship, currentAxis(), x, y)) {
@@ -93,24 +94,35 @@ const addCellListeners = (gameboard, ship) => {
         click(cell, gameboard, ship, x, y);
     })
 }
+let currentObj;
 let currentBoard;
 let currentShip;
+let fleetKeys;
 let currentDOM;
-let count = 2;
+let count = 0;
 const updateCurrents = (parent, board, ship) => {
     currentDOM = parent;
     currentBoard = board;
     currentShip = ship;
+}
+const nextShip = (parentDOM, playerObj) => {
+    if (count < 5) {
+        com.instruct(playerObj.player, fleetKeys[count]);
+        perShip(parentDOM, playerObj.gb, playerObj.fleet[fleetKeys[count]]);
+    } else {
+        console.log('next step of gameloop!');
+    }
 }
 const perShip = (parentDOM, playerBoard, ship) => {
     parentDOM.appendChild(buildBoard(playerBoard, true));
     addCellListeners(playerBoard, ship);
     updateCurrents(parentDOM, playerBoard, ship);
 }
-const main = (parentDOM, player, playerBoard, fleet) => {
+const main = (parentDOM, playerObj) => {
     parentDOM.appendChild(createPlaceDisplay());
-    const shipsArray = Object.keys(fleet);
-    com.instruct(player, shipsArray[count]);
-    perShip(parentDOM, playerBoard, fleet[shipsArray[count]]);
+    currentObj = playerObj;
+    // update all currents? then a smaller one to run on each perShip? !!!
+    fleetKeys = Object.keys(playerObj.fleet);
+    nextShip(parentDOM, playerObj);
 }
 export { hover, main };
