@@ -116,7 +116,6 @@ const loop = (() => {
     }
     let currentPlayer = {};
     // do i need ? !!!
-    let currentResult = {};
     const turn = (input) => {
         currentPlayer = playerTurn ? playerOne.player : playerTwo.player;
         let result;

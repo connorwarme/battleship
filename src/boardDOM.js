@@ -39,6 +39,7 @@ const buildBoard = (object, boolean, funct) => {
                 // need to be able to delineate event listener for place ships and other for actual gameplay
                 gridCell.addEventListener('click', (e) => {
                     funct([i, j], e);
+                    console.log([i, j]);
                 })
                 attackHover(gridCell);
             }
