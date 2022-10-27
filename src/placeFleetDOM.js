@@ -85,7 +85,9 @@ const hover = (element, gameboard, ship, x, y) => {
     element.addEventListener('mouseout', () => {
         const grid = Array.from(document.querySelectorAll('div.cell'));
         grid.forEach(cell => {
-            cell.style.backgroundColor = "white";
+            if (cell.classList.length == 1) {
+                cell.style.backgroundColor = "white";
+            }
         })
     })
 }
