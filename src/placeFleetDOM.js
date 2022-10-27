@@ -8,7 +8,7 @@ const place = (() => {
     const currentAxis = () => {
         return axis;
     }
-    const createDisplay = () => {
+    const createDisplay = (opponent) => {
         const container = createElement('div', {class: "placeContainer"});
         const buttonC = createElement('div', {class: 'placeBtnContainer'});
         const axisBtn = createElement('button', {class: 'axisBtn'});
@@ -27,7 +27,9 @@ const place = (() => {
             perShip(currentDOM, currentBoard, currentShip);
         })
         randomBtn.addEventListener('click', () => {
-            console.log('place fleet randomly!');
+            opponent.player.placeFleet(currentObj);
+            currentDOM.removeChild(currentDOM.lastChild);
+            finish();
         })
 
         // append it all together
@@ -133,8 +135,8 @@ const place = (() => {
         displayShips(currentBoard, currentDOM.children[1]);
         addCellListeners(playerBoard, ship);
     }
-    const start = (parentDOM, playerObj) => {
-        parentDOM.appendChild(createDisplay());
+    const start = (parentDOM, playerObj, opponentObj) => {
+        parentDOM.appendChild(createDisplay(opponentObj));
         updateAllCurrents(parentDOM, playerObj);
         nextShip(parentDOM, playerObj);
     }
