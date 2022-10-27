@@ -147,7 +147,7 @@ const loop = (() => {
         if (!playerTurn && (!result.allSunk)) {
             setTimeout(() => {
                 turn(false); 
-            }, 2000);
+            }, 500);
         }
         if (result.allSunk) {
             // switch turns (back to winning player)

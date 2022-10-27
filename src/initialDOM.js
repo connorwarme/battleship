@@ -99,6 +99,7 @@ const makeInitial = () => {
 }
 const makeInitialLite = () => {
     const body = document.querySelector('div.body');
+    body.insertBefore(com.buildComms(), body.children[1]);
     body.insertBefore(mainContent(), body.children[2]);
 }
 export { makeInitial, makeInitialLite };

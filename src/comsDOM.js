@@ -58,6 +58,7 @@ const com = (() => {
             // clear content
             // clearDiv(mainC.parentElement.parentElement);
             mainC.parentElement.removeChild(mainC);
+            commC.parentElement.removeChild(commC);
             //
             restartFn();
             //

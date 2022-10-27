@@ -1,6 +1,5 @@
 import { createElement } from "./utility";
 import loop from "./gameloop";
-import { hover } from './placeFleetDOM';
 
 // render gameboards on page
 const buildBoard = (object, boolean, funct) => {
