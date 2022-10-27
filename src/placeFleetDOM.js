@@ -56,8 +56,7 @@ const highlightLength = (element, length) => {
         cell.style.backgroundColor = "slategray";
     }
 }
-const clickListener = (x, y) => {
-    // should I make this it's own function? !!!
+const clickFn = (x, y) => {
     currentObj.gb.placeShip(currentShip, axis, x, y);
     count++;
     currentDOM.removeChild(currentDOM.lastChild);
@@ -66,8 +65,7 @@ const clickListener = (x, y) => {
 const click = (element, gameboard, ship, x, y) => {
     if (checkCell(gameboard, ship, currentAxis(), x, y)) {
         element.addEventListener('click', () => {
-            clickListener(x, y);
-            console.log(currentAxis());
+            clickFn(x, y);
         })
     }
 }
@@ -109,13 +107,16 @@ let currentShip;
 let fleetKeys;
 let currentDOM;
 let count = 0;
-const updateCurrents = (parent, board, ship) => {
+const updateAllCurrents = (parent, object) => {
     currentDOM = parent;
-    currentBoard = board;
+    currentObj = object;
+    currentBoard = object.gb;
+    fleetKeys = fleetKeys = Object.keys(object.fleet);
+}
+const updateCurrentShip = (ship) => {
     currentShip = ship;
 }
 const nextShip = (parentDOM, playerObj) => {
-    console.log(count);
     if (count < 5) {
         com.instruct(playerObj.player, fleetKeys[count]);
         perShip(parentDOM, playerObj.gb, playerObj.fleet[fleetKeys[count]]);
@@ -124,17 +125,14 @@ const nextShip = (parentDOM, playerObj) => {
     }
 }
 const perShip = (parentDOM, playerBoard, ship) => {
-    updateCurrents(parentDOM, playerBoard, ship);
+    updateCurrentShip(ship);
     parentDOM.appendChild(buildBoard(playerBoard, true));
-    console.log(currentDOM);
     displayShips(currentBoard, currentDOM.children[1]);
     addCellListeners(playerBoard, ship);
 }
-const main = (parentDOM, playerObj) => {
+const placeStart = (parentDOM, playerObj) => {
     parentDOM.appendChild(createPlaceDisplay());
-    currentObj = playerObj;
-    // update all currents? then a smaller one to run on each perShip? !!!
-    fleetKeys = Object.keys(playerObj.fleet);
+    updateAllCurrents(parentDOM, playerObj);
     nextShip(parentDOM, playerObj);
 }
-export { hover, main };
+export { hover, placeStart };
