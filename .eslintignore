@@ -4,6 +4,7 @@ src/ship.test.js
 src/board.test.js
 src/players.test.js
 src/gameloop.test.js
+src/smartAI.test.js
 
 .eslintrc.js
 webpack.config.js
