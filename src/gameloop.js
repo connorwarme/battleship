@@ -63,6 +63,9 @@ const loop = (() => {
     let playerTwo;
     let playerBoardDOM;
     let compBoardDOM;
+    const getTurn = () => {
+        return playerTurn;
+    }
     const switchTurns = () => playerTurn = !playerTurn;
     const initialTurn = (board1, board2, parentDOM) => {
         parentDOM.appendChild(buildBoard(board1, false));
@@ -157,7 +160,7 @@ const loop = (() => {
             com.endGame(currentPlayer, restartFn);
         }
     }
-    return { initialTurn, initializeGame, launchGame, turn };
+    return { getTurn, initialTurn, initializeGame, launchGame, turn };
 })();
 
 export default loop;
