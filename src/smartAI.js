@@ -1,5 +1,6 @@
 import BoardFactory from "./board";
 import { computer } from "./players";
+import { buildFleet } from "./ship";
 // implement improved tactics for AI player
 
 const target = (() => {
@@ -50,7 +51,7 @@ const target = (() => {
     return { neighborCells, checkCoordsArray, getStack, launchAttack, afterHit };
 })();
 
-target.main([0, 0]);
+target.afterHit([0, 0]);
 console.log(target.getStack());
 console.log(target.launchAttack());
 console.log(target.getStack());
@@ -59,5 +60,46 @@ console.log(target.getStack());
 // utilizing math concept of parity, based on (shortest) ship's length 
 
 // probability / heat map
+const ai = () => {
+    const gb = BoardFactory();
+    gb.create(10);
+    const player = computer();
+    const fleet = buildFleet();
+    return { player, gb, fleet }
+}
+const aiP = ai();
+const probBoard = BoardFactory();
+probBoard.create(10);
+const addToProbBoard = (board, length, boolean, x, y) => {
+    for (let i = 0; i<length; i++) {
+        if (boolean) {
+            board[Number(x)+i][y] += 1;
+        } else {
+            board[x][Number(y)+i] += 1;
+        }
+    }
+}
+const carrierProb = (gb, ship) => {
+    for (let i = 0; i<gb.board.length; i++) {
+        for (let j = 0; j<gb.board[i].length; j++) {
+            if (!(gb.checkOnBoard(ship.length, true, i, j) || 
+            gb.checkPlace(ship.length, true, i, j))) {
+                addToProbBoard(probBoard.board, 5, true, i, j);
+            }
+        }
+    }
+    for (let i = 0; i<gb.board.length; i++) {
+        for (let j = 0; j<gb.board[i].length; j++) {
+            if (!(gb.checkOnBoard(ship.length, false, i, j) || 
+            gb.checkPlace(ship.length, false, i, j))) {
+                addToProbBoard(probBoard.board, 5, false, i, j);
+            }
+        }
+    }
+}
+carrierProb(aiP.gb, aiP.fleet.carrier);
+console.log(probBoard.board);
+
+
 
 export { target };

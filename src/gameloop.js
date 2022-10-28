@@ -83,21 +83,14 @@ const loop = (() => {
         console.log(p2);
         // have AI place fleet, randomly
         // needs to be checked !!!
-        // p2.player.placeFleet(p1);
         p2.player.placeFleet(p2);
         // needs to invoke fn for user to place their ships... !!!
         place.start(parentDOM, p1, p2);
-        // parentDOM.appendChild(buildBoard(p1.gb, true, ((x, e) => {
-        //     console.log(x);
-        //     console.log(e.target.id);
-        //     console.log(e.target);
-        //     hover(e.target, p1.gb);
-        // })));
-        // addHover(p1.gb);
+;
         // initial turn ?
         // need to pass in p1.board and p2.board (change initial turn fn)
         console.log(p2.gb.board);
-        // initialTurn(p1.gb, p2.gb, parentDOM)
+    
         playerOne = p1;
         playerTwo = p2;
         // need this return value? !!!
