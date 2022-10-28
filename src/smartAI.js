@@ -79,12 +79,12 @@ const addToProbBoard = (board, length, boolean, x, y) => {
         }
     }
 }
-const carrierProb = (gb, ship) => {
+const shipProb = (gb, ship) => {
     for (let i = 0; i<gb.board.length; i++) {
         for (let j = 0; j<gb.board[i].length; j++) {
             if (!(gb.checkOnBoard(ship.length, true, i, j) || 
             gb.checkPlace(ship.length, true, i, j))) {
-                addToProbBoard(probBoard.board, 5, true, i, j);
+                addToProbBoard(probBoard.board, ship.length, true, i, j);
             }
         }
     }
@@ -92,12 +92,18 @@ const carrierProb = (gb, ship) => {
         for (let j = 0; j<gb.board[i].length; j++) {
             if (!(gb.checkOnBoard(ship.length, false, i, j) || 
             gb.checkPlace(ship.length, false, i, j))) {
-                addToProbBoard(probBoard.board, 5, false, i, j);
+                addToProbBoard(probBoard.board, ship.length, false, i, j);
             }
         }
     }
 }
-carrierProb(aiP.gb, aiP.fleet.carrier);
+const fleetProb = (board, fleet) => {
+    const ships = Object.keys(fleet);
+    ships.forEach(ship => {
+        shipProb(aiP.gb, fleet[ship]);
+    });
+}
+fleetProb(aiP.gb, aiP.fleet);
 console.log(probBoard.board);
 
 
