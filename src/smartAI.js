@@ -80,7 +80,7 @@ const shipProb = (gb, ship) => {
     for (let i = 0; i<gb.board.length; i++) {
         for (let j = 0; j<gb.board[i].length; j++) {
             if (!((gb.checkOnBoard(ship.length, true, i, j)) || 
-            (gb.checkPlace(ship.length, true, i, j)))) {
+            (gb.checkMiss(ship.length, true, i, j)))) {
                 addToProbBoard(probBoard.board, ship.length, true, i, j);
             }
         }
@@ -88,7 +88,7 @@ const shipProb = (gb, ship) => {
     for (let i = 0; i<gb.board.length; i++) {
         for (let j = 0; j<gb.board[i].length; j++) {
             if (!(gb.checkOnBoard(ship.length, false, i, j) || 
-            gb.checkPlace(ship.length, false, i, j))) {
+            gb.checkMiss(ship.length, false, i, j))) {
                 addToProbBoard(probBoard.board, ship.length, false, i, j);
             }
         }

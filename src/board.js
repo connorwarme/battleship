@@ -34,11 +34,28 @@ const BoardFactory = () => {
         let value;
         if (axis) {
             for (let i = 0; i<length; i++) {
-                array.push(board[x+i][y] > 0 || board[x+i][y] == -1);
+                array.push(board[x+i][y] > 0);
             }
         } else {
             for (let i = 0; i<length; i++) {
-                array.push((board[x][y+i] > 0) || (board[x][y+i] == -1));
+                array.push(board[x][y+i] > 0);
+            }
+        }
+        value = array.find(index => {
+            return index == true;
+        });
+        return value;
+    }
+    const checkMiss = (length, axis, x, y) => {
+        let array = [];
+        let value;
+        if (axis) {
+            for (let i = 0; i<length; i++) {
+                array.push(board[x+i][y] == -1);
+            }
+        } else {
+            for (let i = 0; i<length; i++) {
+                array.push(board[x][y+i] == -1);
             }
         }
         value = array.find(index => {
@@ -126,7 +143,7 @@ const BoardFactory = () => {
         obj.value = 0;
         return obj;
     }   
-    return { board, create, placeShip, checkPlace, checkOnBoard, receiveAttack, allSunk };
+    return { board, create, placeShip, checkPlace, checkMiss, checkOnBoard, receiveAttack, allSunk };
 };
 
 export default BoardFactory;
