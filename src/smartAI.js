@@ -51,10 +51,7 @@ const target = (() => {
     return { neighborCells, checkCoordsArray, getStack, launchAttack, afterHit };
 })();
 
-target.afterHit([0, 0]);
-console.log(target.getStack());
-console.log(target.launchAttack());
-console.log(target.getStack());
+// target.afterHit([0, 0]);
 // hunt mode (random) improved: only attack every other square (while patrol boat exists)
 // -> then every 3rd, etc.
 // utilizing math concept of parity, based on (shortest) ship's length 
@@ -82,8 +79,8 @@ const addToProbBoard = (board, length, boolean, x, y) => {
 const shipProb = (gb, ship) => {
     for (let i = 0; i<gb.board.length; i++) {
         for (let j = 0; j<gb.board[i].length; j++) {
-            if (!(gb.checkOnBoard(ship.length, true, i, j) || 
-            gb.checkPlace(ship.length, true, i, j))) {
+            if (!((gb.checkOnBoard(ship.length, true, i, j)) || 
+            (gb.checkPlace(ship.length, true, i, j)))) {
                 addToProbBoard(probBoard.board, ship.length, true, i, j);
             }
         }
@@ -105,6 +102,7 @@ const fleetProb = (board, fleet) => {
 }
 aiP.gb.board[4][4] = -1;
 fleetProb(aiP.gb, aiP.fleet);
+// shipProb(aiP.gb, aiP.fleet.carrier);
 console.log(probBoard.board);
 
 

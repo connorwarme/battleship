@@ -34,11 +34,11 @@ const BoardFactory = () => {
         let value;
         if (axis) {
             for (let i = 0; i<length; i++) {
-                array.push(board[x+i][y] > 0);
+                array.push(board[x+i][y] > 0 || board[x+i][y] == -1);
             }
         } else {
             for (let i = 0; i<length; i++) {
-                array.push(board[x][y+i] > 0);
+                array.push((board[x][y+i] > 0) || (board[x][y+i] == -1));
             }
         }
         value = array.find(index => {
