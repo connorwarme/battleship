@@ -67,12 +67,18 @@ const ai = () => {
 const aiP = ai();
 const probBoard = BoardFactory();
 probBoard.create(10);
-const addToProbBoard = (board, length, boolean, x, y) => {
+const addToProbBoard = (gb, proBboard, length, boolean, x, y) => {
     for (let i = 0; i<length; i++) {
         if (boolean) {
-            board[Number(x)+i][y] += 1;
+            if (gb.checkPlace(length, boolean, x, y)) {
+                proBboard[Number(x)+i][y] += 5;
+            }
+            proBboard[Number(x)+i][y] += 1;
         } else {
-            board[x][Number(y)+i] += 1;
+            if (gb.checkPlace(length, boolean, x, y)) {
+                proBboard[x][Number(y)+i] += 5;
+            }
+            proBboard[x][Number(y)+i] += 1;
         }
     }
 }
@@ -81,7 +87,7 @@ const shipProb = (gb, ship) => {
         for (let j = 0; j<gb.board[i].length; j++) {
             if (!((gb.checkOnBoard(ship.length, true, i, j)) || 
             (gb.checkMiss(ship.length, true, i, j)))) {
-                addToProbBoard(probBoard.board, ship.length, true, i, j);
+                addToProbBoard(gb, probBoard.board, ship.length, true, i, j);
             }
         }
     }
@@ -89,7 +95,7 @@ const shipProb = (gb, ship) => {
         for (let j = 0; j<gb.board[i].length; j++) {
             if (!(gb.checkOnBoard(ship.length, false, i, j) || 
             gb.checkMiss(ship.length, false, i, j))) {
-                addToProbBoard(probBoard.board, ship.length, false, i, j);
+                addToProbBoard(gb, probBoard.board, ship.length, false, i, j);
             }
         }
     }
@@ -100,7 +106,7 @@ const fleetProb = (board, fleet) => {
         shipProb(board, fleet[ship]);
     });
 }
-aiP.gb.board[4][4] = -1;
+aiP.gb.board[4][4] = 1;
 fleetProb(aiP.gb, aiP.fleet);
 // shipProb(aiP.gb, aiP.fleet.carrier);
 console.log(probBoard.board);
