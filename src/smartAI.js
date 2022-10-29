@@ -100,9 +100,10 @@ const shipProb = (gb, ship) => {
 const fleetProb = (board, fleet) => {
     const ships = Object.keys(fleet);
     ships.forEach(ship => {
-        shipProb(aiP.gb, fleet[ship]);
+        shipProb(board, fleet[ship]);
     });
 }
+aiP.gb.board[4][4] = -1;
 fleetProb(aiP.gb, aiP.fleet);
 console.log(probBoard.board);
 
