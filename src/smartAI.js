@@ -67,18 +67,29 @@ const ai = () => {
 const aiP = ai();
 const probBoard = BoardFactory();
 probBoard.create(10);
-const addToProbBoard = (gb, proBboard, length, boolean, x, y) => {
+const addToProbBoard = (gb, probBoard, length, boolean, x, y) => {
     for (let i = 0; i<length; i++) {
+        const hit = gb.checkPlace(length, boolean, x, y);
         if (boolean) {
-            if (gb.checkPlace(length, boolean, x, y)) {
-                proBboard[Number(x)+i][y] += 5;
+            if (hit) {
+                probBoard[Number(x)+i][y] += 5;
             }
-            proBboard[Number(x)+i][y] += 1;
+            probBoard[Number(x)+i][y] += 1;
         } else {
-            if (gb.checkPlace(length, boolean, x, y)) {
-                proBboard[x][Number(y)+i] += 5;
+            if (hit) {
+                probBoard[x][Number(y)+i] += 5;
             }
-            proBboard[x][Number(y)+i] += 1;
+            probBoard[x][Number(y)+i] += 1;
+        }
+    }
+    removeHits(gb, probBoard);
+}
+const removeHits = (gb, probBoard) => {
+    for (let i = 0; i<gb.board.length; i++) {
+        for (let j = 0; j<gb.board[i].length; j++) {
+            if (gb.board[i][j] > 0) {
+                probBoard[i][j] = 0;
+            }
         }
     }
 }
@@ -106,7 +117,9 @@ const fleetProb = (board, fleet) => {
         shipProb(board, fleet[ship]);
     });
 }
-aiP.gb.board[4][4] = 1;
+aiP.gb.board[4][4] = -1;
+aiP.gb.board[5][5] = 1;
+aiP.gb.board[5][6] = 1;
 fleetProb(aiP.gb, aiP.fleet);
 // shipProb(aiP.gb, aiP.fleet.carrier);
 console.log(probBoard.board);
