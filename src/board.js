@@ -63,6 +63,20 @@ const BoardFactory = () => {
         });
         return value;
     }
+    const checkProb = (length, axis, x, y) => {
+        let weight = 1;
+        const shipCoords = [];
+        for (let i=0; i<length; i++) {
+            if (axis) {
+                shipCoords.push([Number(x)+i, y]);
+            } else {
+                shipCoords.push([x, Number(y)+i]);
+            }
+        }
+        // need to compare shipCoordinates with hitCoordinatesArray (needs to be a fn parameter)
+        // if yes, increase weight by factor of 5
+        // if no, normal weight for cell counter for probMap
+    }
     const checkOnBoard = (length, axis, x, y) => {
         let value;
         if (axis) {
