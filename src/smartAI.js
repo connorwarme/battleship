@@ -84,6 +84,10 @@ const addToProbBoard = (gb, probBoard, length, boolean, x, y) => {
     }
     removeHits(gb, probBoard);
 }
+// evaluate how to improve checkPlace for "hunt mode"
+
+
+
 const removeHits = (gb, probBoard) => {
     for (let i = 0; i<gb.board.length; i++) {
         for (let j = 0; j<gb.board[i].length; j++) {
