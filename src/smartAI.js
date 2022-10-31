@@ -62,9 +62,15 @@ const ai = () => {
     gb.create(10);
     const player = computer();
     const fleet = buildFleet();
-    return { player, gb, fleet }
+    const prob = BoardFactory();
+    prob.create(10);
+    const shot = BoardFactory();
+    shot.create(10);
+    return { player, gb, fleet, prob, shot }
 }
 const aiP = ai();
+
+// extras, for testing
 const probBoard = BoardFactory();
 probBoard.create(10);
 const shotBoard = BoardFactory();
@@ -83,6 +89,7 @@ const clearHitCoords = () => {
 
 const addToProbBoard = (gb, probBoard, length, boolean, x, y) => {
     for (let i = 0; i<length; i++) {
+        // comments are older method, didn't differentiate for multiple hits in a row..
         // const hit = gb.checkPlace(length, boolean, x, y);
         const weight = gb.checkProb(length, boolean, x, y, [[5, 5], [5, 6]]);
         if (boolean) {
@@ -136,6 +143,9 @@ const fleetProb = (board, fleet) => {
         shipProb(board, fleet[ship]);
     });
 }
+
+
+
 aiP.gb.board[4][4] = -1;
 aiP.gb.board[5][5] = 1;
 aiP.gb.board[5][6] = 1;
@@ -151,6 +161,20 @@ fleetProb(shotBoard, aiP.fleet);
 // shipProb(aiP.gb, aiP.fleet.carrier);
 console.log(probBoard.board);
 
+const getProbCoords = (board) => {
+    const currentMax = {
+        max: 0,
+    };
+    for (let i=0; i<board.length; i++) {
+        for (let j=0; j<board[i].length; j++) {
+            if (board[i][j] > currentMax.max) {
+                currentMax.max = board[i][j];
+                currentMax.coords = [i, j];
+            }
+        }
+    }
+    return currentMax; // should this just be coordinates or return the whole obj? !!!
+}
 
-
+console.log(getProbCoords(probBoard.board));
 export { target };
