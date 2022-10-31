@@ -67,6 +67,8 @@ const ai = () => {
 const aiP = ai();
 const probBoard = BoardFactory();
 probBoard.create(10);
+const shotBoard = BoardFactory();
+shotBoard.create(10);
 const addToProbBoard = (gb, probBoard, length, boolean, x, y) => {
     for (let i = 0; i<length; i++) {
         const hit = gb.checkPlace(length, boolean, x, y);
@@ -124,7 +126,12 @@ const fleetProb = (board, fleet) => {
 aiP.gb.board[4][4] = -1;
 aiP.gb.board[5][5] = 1;
 aiP.gb.board[5][6] = 1;
-fleetProb(aiP.gb, aiP.fleet);
+
+shotBoard.board[4][4] = -1;
+shotBoard.board[5][5] = 1;
+shotBoard.board[5][6] = 1;
+
+fleetProb(shotBoard, aiP.fleet);
 // shipProb(aiP.gb, aiP.fleet.carrier);
 console.log(probBoard.board);
 
