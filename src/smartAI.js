@@ -69,19 +69,21 @@ const probBoard = BoardFactory();
 probBoard.create(10);
 const shotBoard = BoardFactory();
 shotBoard.create(10);
+
 const addToProbBoard = (gb, probBoard, length, boolean, x, y) => {
     for (let i = 0; i<length; i++) {
-        const hit = gb.checkPlace(length, boolean, x, y);
+        // const hit = gb.checkPlace(length, boolean, x, y);
+        const weight = gb.checkProb(length, boolean, x, y, [[5, 5], [5, 6]]);
         if (boolean) {
-            if (hit) {
-                probBoard[Number(x)+i][y] += 5;
-            }
-            probBoard[Number(x)+i][y] += 1;
+            // if (hit) {
+            //     probBoard[Number(x)+i][y] += 5;
+            // }
+            probBoard[Number(x)+i][y] += weight;
         } else {
-            if (hit) {
-                probBoard[x][Number(y)+i] += 5;
-            }
-            probBoard[x][Number(y)+i] += 1;
+            // if (hit) {
+            //     probBoard[x][Number(y)+i] += 5;
+            // }
+            probBoard[x][Number(y)+i] += weight;
         }
     }
     removeHits(gb, probBoard);
@@ -130,6 +132,8 @@ aiP.gb.board[5][6] = 1;
 shotBoard.board[4][4] = -1;
 shotBoard.board[5][5] = 1;
 shotBoard.board[5][6] = 1;
+shotBoard.board[5][7] = -1;
+shotBoard.board[6][5] = -1;
 
 fleetProb(shotBoard, aiP.fleet);
 // shipProb(aiP.gb, aiP.fleet.carrier);

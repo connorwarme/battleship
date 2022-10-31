@@ -63,7 +63,7 @@ const BoardFactory = () => {
         });
         return value;
     }
-    const checkProb = (length, axis, x, y) => {
+    const checkProb = (length, axis, x, y, hitCoordArray) => {
         let weight = 1;
         const shipCoords = [];
         for (let i=0; i<length; i++) {
@@ -73,6 +73,17 @@ const BoardFactory = () => {
                 shipCoords.push([x, Number(y)+i]);
             }
         }
+        hitCoordArray.forEach(coord => {
+            for (let i=0; i<shipCoords.length; i++) {
+                if (coord[0] == shipCoords[i][0]) {
+                    if (coord[1] == shipCoords[i][1]) {
+                        weight += 5;
+                        console.log(weight);
+                    }
+                }
+            }
+        })
+        return weight;
         // need to compare shipCoordinates with hitCoordinatesArray (needs to be a fn parameter)
         // if yes, increase weight by factor of 5
         // if no, normal weight for cell counter for probMap
@@ -157,7 +168,7 @@ const BoardFactory = () => {
         obj.value = 0;
         return obj;
     }   
-    return { board, create, placeShip, checkPlace, checkMiss, checkOnBoard, receiveAttack, allSunk };
+    return { board, create, placeShip, checkPlace, checkMiss, checkProb, checkOnBoard, receiveAttack, allSunk };
 };
 
 export default BoardFactory;
