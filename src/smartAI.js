@@ -70,6 +70,17 @@ probBoard.create(10);
 const shotBoard = BoardFactory();
 shotBoard.create(10);
 
+const hitCoordsArray = [];
+const addToHitCoords = (input) => {
+    hitCoordsArray.push(input);
+    // return hitCoordsArray; ?? !!! do i need this to be returned?
+}
+const clearHitCoords = () => {
+    while (hitCoordsArray.length > 0) {
+        hitCoordsArray.pop();
+    }
+}
+
 const addToProbBoard = (gb, probBoard, length, boolean, x, y) => {
     for (let i = 0; i<length; i++) {
         // const hit = gb.checkPlace(length, boolean, x, y);
@@ -134,6 +145,7 @@ shotBoard.board[5][5] = 1;
 shotBoard.board[5][6] = 1;
 shotBoard.board[5][7] = -1;
 shotBoard.board[6][5] = -1;
+
 
 fleetProb(shotBoard, aiP.fleet);
 // shipProb(aiP.gb, aiP.fleet.carrier);
