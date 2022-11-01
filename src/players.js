@@ -89,7 +89,7 @@ const computer = () => {
         console.log(object);
         const coord = object.coord;
         if (object.obj.value == true) {
-            if (object.obj.isSunk == true) {
+            if (object.obj.sunk == true) {
                 _clearHitCoords();
             } else {
                 _addToHitCoords(coord);
@@ -143,10 +143,12 @@ const computer = () => {
     const _fleetProb = (board, fleet, prob) => {
         const ships = Object.keys(fleet);
         ships.forEach(ship => {
+            console.log(fleet[ship]);
+            // does this need to run "isSunk" in order to get updated sunk value? !!!
+            if (!(fleet[ship].sunk))
             _shipProb(board, fleet[ship], prob);
         });
     }
-
 
     const _getProbCoords = (board) => {
         const currentMax = {
@@ -168,8 +170,10 @@ const computer = () => {
         const prob = newProb();
         // updated probability board; needs access to user's fleet..? or make a copy for the probBoard, update regularly !!!
         _fleetProb(shot, player.fleet, prob);
+        console.log(prob.board);
         // get coordinates of best cell
         const coord = _getProbCoords(prob.board);
+        console.log(coord);
         // launch attack on those coords
         const obj = {};
         obj.coord = coord.coords;
