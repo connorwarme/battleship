@@ -11,8 +11,11 @@ const PlayerFactory = (codename) => {
 }
 const computer = () => {
     const ai = PlayerFactory('AI Player');
-    const prob = BoardFactory();
-    prob.create(10);
+    const newProb = () => {
+        const prob = BoardFactory();
+        prob.create(10);
+        return prob;
+    }
     const shot = BoardFactory();
     shot.create(10);
 
@@ -83,20 +86,23 @@ const computer = () => {
         }
     }
     const _updateShotBoard = (object) => {
-        if (object.value == true) {
+        console.log(object);
+        const coord = object.coord;
+        if (object.obj.value == true) {
             if (object.obj.isSunk == true) {
                 _clearHitCoords();
             } else {
-                _addToHitCoords(object.coord);
+                _addToHitCoords(coord);
             }
-            shot[object.coord[0]][object.coord[1]] = 1;
+            console.log(hitCoordsArray);
+            shot.board[coord[0]][coord[1]] = 1;
         } else {
-            shot[object.coord[0]][object.coord[1]] = -1;
+            shot.board[coord[0]][coord[1]] = -1;
         }
     }
     const _addToProbBoard = (gb, probBoard, length, boolean, x, y) => {
         for (let i = 0; i<length; i++) {
-            const counterWeight = gb.checkProb(length, boolean, x, y, [[5, 5], [5, 6]]);
+            const counterWeight = gb.checkProb(length, boolean, x, y, hitCoordsArray);
             if (boolean) {
                 probBoard[Number(x)+i][y] += counterWeight;
             } else {
@@ -116,7 +122,7 @@ const computer = () => {
             }
         }
     }
-    const _shipProb = (gb, ship) => {
+    const _shipProb = (gb, ship, prob) => {
         for (let i = 0; i<gb.board.length; i++) {
             for (let j = 0; j<gb.board[i].length; j++) {
                 if (!((gb.checkOnBoard(ship.length, true, i, j)) || 
@@ -134,10 +140,10 @@ const computer = () => {
             }
         }
     }
-    const _fleetProb = (board, fleet) => {
+    const _fleetProb = (board, fleet, prob) => {
         const ships = Object.keys(fleet);
         ships.forEach(ship => {
-            _shipProb(board, fleet[ship]);
+            _shipProb(board, fleet[ship], prob);
         });
     }
 
@@ -158,18 +164,22 @@ const computer = () => {
     }
 
     // build smartAI attack mode:
-    const smartAttack = (gameboard) => {
+    const smartAttack = (player) => {
+        const prob = newProb();
         // updated probability board; needs access to user's fleet..? or make a copy for the probBoard, update regularly !!!
-        const heatMap = _fleetProb(shot, p1.fleet);
+        _fleetProb(shot, player.fleet, prob);
         // get coordinates of best cell
-        const coord = _getProbCoords(heatMap);
+        const coord = _getProbCoords(prob.board);
         // launch attack on those coords
         const obj = {};
-        obj.coord = coord;
-        obj.obj = gameboard.receiveAttack(coord[0], coord[1]);
+        obj.coord = coord.coords;
+        console.log(coord);
+        obj.obj = player.gb.receiveAttack(obj.coord[0], obj.coord[1]);
 
         // check attack intel: hit or miss, sunk?
         _updateShotBoard(obj);
+        console.log(prob.board);
+        console.log(shot.board);
         return obj;
         //
 
