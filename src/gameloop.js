@@ -134,7 +134,7 @@ const loop = (() => {
         } else {
             // ai player makes attack
             // display the move on p1 gameboard
-            result = playerTwo.player.attack(playerOne.gb);
+            result = playerTwo.player.randomAttack(playerOne.gb);
             markCell(result.coord[0], result.coord[1], result.obj.value, playerBoardDOM);
             com.updateText(currentPlayer, false, result.obj.value, result.obj.sunk, result.obj.ship, false);
             switchTurns();

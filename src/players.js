@@ -35,7 +35,7 @@ const computer = () => {
         }
         return coord;
     }
-    const attack = (gameboard) => {
+    const randomAttack = (gameboard) => {
             const coord = _generateCoord();
             // add coordinates to attacksArray
             // launch attack on opposition's board
@@ -65,7 +65,7 @@ const computer = () => {
             };
         });
     };
-    return Object.assign({}, ai, { attack }, { placeFleet });
+    return Object.assign({}, ai, { randomAttack }, { placeFleet });
 }
 
 export { PlayerFactory, computer}
