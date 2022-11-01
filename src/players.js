@@ -144,7 +144,7 @@ const computer = () => {
         const ships = Object.keys(fleet);
         ships.forEach(ship => {
             console.log(fleet[ship]);
-            // does this need to run "isSunk" in order to get updated sunk value? !!!
+            // does this need to run "isSunk" in order to get updated sunk value? 
             if (!(fleet[ship].sunk))
             _shipProb(board, fleet[ship], prob);
         });

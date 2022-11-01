@@ -77,7 +77,7 @@ const BoardFactory = () => {
             for (let i=0; i<shipCoords.length; i++) {
                 if (coord[0] == shipCoords[i][0]) {
                     if (coord[1] == shipCoords[i][1]) {
-                        weight += 5;
+                        weight *= 5;
                     }
                 }
             }
