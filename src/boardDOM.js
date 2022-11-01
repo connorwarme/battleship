@@ -14,7 +14,8 @@ const attackHover = (element) => {
             }
         })
         element.addEventListener('mouseout', () => {
-            const grid = Array.from(document.querySelectorAll('div.cell'));
+            const grid = Array.from(element.parentElement.children);
+            // const grid = Array.from(document.querySelectorAll('div.cell'));
             grid.forEach(cell => {
                 if (cell.classList.length == 1) {
                     cell.style.backgroundColor = "white";
