@@ -1,3 +1,4 @@
+import BoardFactory from "./board";
 // player factory and AI logic
 
 const PlayerFactory = (codename) => {
@@ -10,6 +11,11 @@ const PlayerFactory = (codename) => {
 }
 const computer = () => {
     const ai = PlayerFactory('AI Player');
+    const prob = BoardFactory();
+    prob.create(10);
+    const shot = BoardFactory();
+    shot.create(10);
+
     const _generate = () => Math.floor(Math.random() * 10);
     const _generateRandomAttack = () => {
         let x = _generate();
@@ -65,7 +71,111 @@ const computer = () => {
             };
         });
     };
-    return Object.assign({}, ai, { randomAttack }, { placeFleet });
+
+    const hitCoordsArray = [];
+    const _addToHitCoords = (input) => {
+        hitCoordsArray.push(input);
+        // return hitCoordsArray; ?? !!! do i need this to be returned?
+    }
+    const _clearHitCoords = () => {
+        while (hitCoordsArray.length > 0) {
+            hitCoordsArray.pop();
+        }
+    }
+    const _updateShotBoard = (object) => {
+        if (object.value == true) {
+            if (object.obj.isSunk == true) {
+                _clearHitCoords();
+            } else {
+                _addToHitCoords(object.coord);
+            }
+            shot[object.coord[0]][object.coord[1]] = 1;
+        } else {
+            shot[object.coord[0]][object.coord[1]] = -1;
+        }
+    }
+    const _addToProbBoard = (gb, probBoard, length, boolean, x, y) => {
+        for (let i = 0; i<length; i++) {
+            const counterWeight = gb.checkProb(length, boolean, x, y, [[5, 5], [5, 6]]);
+            if (boolean) {
+                probBoard[Number(x)+i][y] += counterWeight;
+            } else {
+                probBoard[x][Number(y)+i] += counterWeight;
+            }
+        }
+        _removeHits(gb, probBoard);
+    }
+    // evaluate how to improve checkPlace for "hunt mode"
+
+    const _removeHits = (gb, probBoard) => {
+        for (let i = 0; i<gb.board.length; i++) {
+            for (let j = 0; j<gb.board[i].length; j++) {
+                if (gb.board[i][j] > 0) {
+                    probBoard[i][j] = 0;
+                }
+            }
+        }
+    }
+    const _shipProb = (gb, ship) => {
+        for (let i = 0; i<gb.board.length; i++) {
+            for (let j = 0; j<gb.board[i].length; j++) {
+                if (!((gb.checkOnBoard(ship.length, true, i, j)) || 
+                (gb.checkMiss(ship.length, true, i, j)))) {
+                    _addToProbBoard(gb, prob.board, ship.length, true, i, j);
+                }
+            }
+        }
+        for (let i = 0; i<gb.board.length; i++) {
+            for (let j = 0; j<gb.board[i].length; j++) {
+                if (!(gb.checkOnBoard(ship.length, false, i, j) || 
+                gb.checkMiss(ship.length, false, i, j))) {
+                    _addToProbBoard(gb, prob.board, ship.length, false, i, j);
+                }
+            }
+        }
+    }
+    const _fleetProb = (board, fleet) => {
+        const ships = Object.keys(fleet);
+        ships.forEach(ship => {
+            _shipProb(board, fleet[ship]);
+        });
+    }
+
+
+    const _getProbCoords = (board) => {
+        const currentMax = {
+            max: 0,
+        };
+        for (let i=0; i<board.length; i++) {
+            for (let j=0; j<board[i].length; j++) {
+                if (board[i][j] > currentMax.max) {
+                    currentMax.max = board[i][j];
+                    currentMax.coords = [i, j];
+                }
+            }
+        }
+        return currentMax; // should this just be coordinates or return the whole obj? !!!
+    }
+
+    // build smartAI attack mode:
+    const smartAttack = (gameboard) => {
+        // updated probability board; needs access to user's fleet..? or make a copy for the probBoard, update regularly !!!
+        const heatMap = _fleetProb(shot, p1.fleet);
+        // get coordinates of best cell
+        const coord = _getProbCoords(heatMap);
+        // launch attack on those coords
+        const obj = {};
+        obj.coord = coord;
+        obj.obj = gameboard.receiveAttack(coord[0], coord[1]);
+
+        // check attack intel: hit or miss, sunk?
+        _updateShotBoard(obj);
+        return obj;
+        //
+
+    }
+
+    return Object.assign({}, ai, { randomAttack }, { smartAttack }, { placeFleet });
 }
 
 export { PlayerFactory, computer}
