@@ -86,7 +86,19 @@ const clearHitCoords = () => {
         hitCoordsArray.pop();
     }
 }
-
+const updateShotBoard = (object) => {
+    if (object.value == true) {
+        if (object.obj.isSunk == true) {
+            clearHitCoords();
+        } else {
+            addToHitCoords(object.coord);
+        }
+        // needs access to shotBoard !!!
+        shotBoard[object.coord[0]][object.coord[1]] = 1;
+    } else {
+        shotBoard[object.coord[0]][object.coord[1]] = -1;
+    }
+}
 const addToProbBoard = (gb, probBoard, length, boolean, x, y) => {
     for (let i = 0; i<length; i++) {
         // comments are older method, didn't differentiate for multiple hits in a row..
@@ -176,14 +188,20 @@ const getProbCoords = (board) => {
 
 // build smartAI attack mode:
 const attack = (gameboard) => {
-    const coord = _generateCoord();
-    // add coordinates to attacksArray
-    // launch attack on opposition's board
-    attacksArray.push(coord);
+    // updated probability board; needs access to user's fleet..? or make a copy for the probBoard, update regularly !!!
+    const heatMap = fleetProb(shotBoard, p1.fleet);
+    // get coordinates of best cell
+    const coord = getProbCoords(heatMap);
+    // launch attack on those coords
     const obj = {};
     obj.coord = coord;
     obj.obj = gameboard.receiveAttack(coord[0], coord[1]);
+
+    // check attack intel: hit or miss, sunk?
+    updateShotBoard(obj);
     return obj;
+    //
+
 }
 
 console.log(getProbCoords(probBoard.board));
