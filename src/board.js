@@ -149,6 +149,7 @@ const BoardFactory = () => {
             // add miss to array
             // update gameboard w/ -1 (for miss)
             _updateMiss(x, y);
+            // obj.value might need to be "-1" !!!
             obj.value = false;
             // send signal to DOM function to update grid with miss mark !!!
             // needs to switch turns !!!

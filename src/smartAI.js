@@ -108,8 +108,6 @@ const addToProbBoard = (gb, probBoard, length, boolean, x, y) => {
 }
 // evaluate how to improve checkPlace for "hunt mode"
 
-
-
 const removeHits = (gb, probBoard) => {
     for (let i = 0; i<gb.board.length; i++) {
         for (let j = 0; j<gb.board[i].length; j++) {
@@ -174,6 +172,18 @@ const getProbCoords = (board) => {
         }
     }
     return currentMax; // should this just be coordinates or return the whole obj? !!!
+}
+
+// build smartAI attack mode:
+const attack = (gameboard) => {
+    const coord = _generateCoord();
+    // add coordinates to attacksArray
+    // launch attack on opposition's board
+    attacksArray.push(coord);
+    const obj = {};
+    obj.coord = coord;
+    obj.obj = gameboard.receiveAttack(coord[0], coord[1]);
+    return obj;
 }
 
 console.log(getProbCoords(probBoard.board));
