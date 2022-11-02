@@ -7,10 +7,10 @@ const attackHover = (element) => {
             // check if cell has been clicked already
             if (element.classList.value == 'cell') {
                 element.style.cursor = "crosshair";
-                element.style.backgroundColor = "green";
+                element.style.backgroundColor = "#38B000";
             } else {
                 element.style.cursor = "not-allowed";
-                element.style.backgroundColor = "red";
+                element.style.backgroundColor = "#DA2C38";
             }
         })
         element.addEventListener('mouseout', () => {
@@ -20,9 +20,9 @@ const attackHover = (element) => {
                 if (cell.classList.length == 1) {
                     cell.style.backgroundColor = "white";
                 } else if (cell.classList.value == "cell hit") {
-                    cell.style.backgroundColor = "slategray";
+                    cell.style.backgroundColor = "#DA2C38";
                 } else if (cell.classList.value == "cell miss") {
-                    cell.style.backgroundColor = "aquamarine";
+                    cell.style.backgroundColor = "#2364AA";
                 }
             })
         })

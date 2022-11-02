@@ -34,13 +34,13 @@
     border: 1px solid black;
 }
 .ship {
-    background-color: slategray;
+    background-color: slategrey;
 }
 .hit {
-    background-color: darkred;
+    background-color: #DA2C38;
 }
 .miss {
-    background-color: aquamarine;
+    background-color: #2364AA;
 }
 .footerContainer {
     display: flex;
