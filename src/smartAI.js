@@ -76,7 +76,7 @@ probBoard.create(10);
 const shotBoard = BoardFactory();
 shotBoard.create(10);
 
-const hitCoordsArray = [];
+// const hitCoordsArray = [];
 const addToHitCoords = (input) => {
     hitCoordsArray.push(input);
     // return hitCoordsArray; ?? !!! do i need this to be returned?
@@ -203,6 +203,35 @@ const attack = (gameboard) => {
     //
 
 }
-
-console.log(getProbCoords(probBoard.board));
+let hitCoordsArray = [[0,0], [0,1], [0,2], [0,3]];
+const tryIt = (ship) => {
+    const collection = [];
+    hitCoordsArray.forEach(coord => {
+        console.log(coord);
+        for (let i=0; i<ship.coords.length; i++) {
+            if (coord[0] != ship.coords[i][0] || coord[1] != ship.coords[i][1]) {
+                return coord;
+            }
+        }
+        console.log(coord);
+    })
+    return collection;
+}
+const ship1 = {
+    coords: [[0,2], [0,3]],
+}
+const anotherTry = (ship) => {
+    ship.coords.forEach(coord => {
+        let index = hitCoordsArray.findIndex(value => {
+            if (value[0] == coord[0] && value[1] == coord[1]) {
+                return value;
+            }
+        });
+        console.log(index);
+        hitCoordsArray.splice(index, 1);
+    })
+    return hitCoordsArray;
+}
+console.log(anotherTry(ship1));
+// console.log(getProbCoords(probBoard.board));
 export { target };

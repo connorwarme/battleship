@@ -8,6 +8,7 @@ const ShipFactory = (input, mark) => {
     if (mark) {
         marker = mark;
     }
+    const coords = [];
     const getHits = () => {
         return hits;
     }
@@ -22,7 +23,7 @@ const ShipFactory = (input, mark) => {
         hit();
         return isSunk();
     }
-    return { length, sunk, marker, getHits, hit, isSunk, hitPlus}
+    return { length, sunk, marker, coords, getHits, hit, isSunk, hitPlus}
 };
 const buildFleet = () => {
     const submarine = ShipFactory(3, 1);

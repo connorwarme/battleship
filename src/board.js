@@ -21,9 +21,11 @@ const BoardFactory = () => {
         if (axis) {
             for (let i = 0; i<object.length; i++) {
                 board[x+i][y] = object.marker;
+                object.coords.push([x+i, y]);
         }} else {
             for (let i = 0; i<object.length; i++) {
                 board[x][y+i] = object.marker;
+                object.coords.push([x, y+i]);
             }
         }
         shipArray.push(object);
@@ -97,7 +99,7 @@ const BoardFactory = () => {
             return value > board[x].length;
         }
     }
-    const _whichShip = (input) => {
+    const whichShip = (input) => {
         return shipArray.find(index => index.marker === input);
     }
     // pretty sure allSunk is working, 
@@ -111,7 +113,7 @@ const BoardFactory = () => {
         _updateBoard(x, y, -1);
     }
     const _updateHit = (x, y) => {
-        const theShip = _whichShip(board[x][y]);
+        const theShip = whichShip(board[x][y]);
         const sunk = theShip.hitPlus();
         _updateBoard(x, y, (board[x][y] + 10));
         return sunk;
@@ -168,7 +170,7 @@ const BoardFactory = () => {
         obj.value = 0;
         return obj;
     }   
-    return { board, create, placeShip, checkPlace, checkMiss, checkProb, checkOnBoard, receiveAttack, allSunk };
+    return { board, create, placeShip, checkPlace, checkMiss, checkProb, checkOnBoard, whichShip, receiveAttack, allSunk };
 };
 
 export default BoardFactory;

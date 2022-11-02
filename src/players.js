@@ -80,17 +80,30 @@ const computer = () => {
         hitCoordsArray.push(input);
         // return hitCoordsArray; ?? !!! do i need this to be returned?
     }
-    const _clearHitCoords = () => {
-        while (hitCoordsArray.length > 0) {
-            hitCoordsArray.pop();
+    const _clearHitCoords = (ship) => {
+        if (ship.coords.length == hitCoordsArray.length) {
+            while (hitCoordsArray.length > 0) {
+                hitCoordsArray.pop();
+            }
+        } else {
+            ship.coords.forEach(coord => {
+                let index = hitCoordsArray.findIndex(value => {
+                    if (value[0] == coord[0] && value[1] == coord[1]) {
+                        return value;
+                    }
+                })
+                hitCoordsArray.splice(index, 1);
+            })
         }
     }
-    const _updateShotBoard = (object) => {
+    const _updateShotBoard = (object, player) => {
         console.log(object);
         const coord = object.coord;
         if (object.obj.value == true) {
             if (object.obj.sunk == true) {
-                _clearHitCoords();
+                const ship = player.gb.whichShip(object.obj.ship);
+                console.log(ship);
+                _clearHitCoords(ship);
             } else {
                 _addToHitCoords(coord);
             }
@@ -181,7 +194,7 @@ const computer = () => {
         obj.obj = player.gb.receiveAttack(obj.coord[0], obj.coord[1]);
 
         // check attack intel: hit or miss, sunk?
-        _updateShotBoard(obj);
+        _updateShotBoard(obj, player);
         console.log(prob.board);
         console.log(shot.board);
         return obj;
