@@ -80,12 +80,12 @@ const computer = () => {
         hitCoordsArray.push(input);
         // return hitCoordsArray; ?? !!! do i need this to be returned?
     }
-    const _clearHitCoords = (ship) => {
-        // if (ship.coords.length == (hitCoordsArray.length -1)) {
+            // if (ship.coords.length == (hitCoordsArray.length -1)) {
         //     while (hitCoordsArray.length > 0) {
         //         hitCoordsArray.pop();
         //     }
         // } else {
+    const _clearHitCoords = (ship) => {
             ship.coords.forEach(coord => {
                 let index = hitCoordsArray.findIndex(value => {
                     if (value[0] == coord[0] && value[1] == coord[1]) {
@@ -94,7 +94,6 @@ const computer = () => {
                 })
                 hitCoordsArray.splice(index, 1);
             })
-        // }
     }
     const _updateShotBoard = (object, player) => {
         console.log(object);

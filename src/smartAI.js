@@ -203,7 +203,7 @@ const attack = (gameboard) => {
     //
 
 }
-let hitCoordsArray = [[0,0], [0,1], [0,2], [0,3]];
+let hitCoordsArray = [[0,0], [0,1], [0,2], [0,3], [0,5]];
 const tryIt = (ship) => {
     const collection = [];
     hitCoordsArray.forEach(coord => {
