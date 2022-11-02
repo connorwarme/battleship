@@ -80,11 +80,6 @@ const computer = () => {
         hitCoordsArray.push(input);
         // return hitCoordsArray; ?? !!! do i need this to be returned?
     }
-            // if (ship.coords.length == (hitCoordsArray.length -1)) {
-        //     while (hitCoordsArray.length > 0) {
-        //         hitCoordsArray.pop();
-        //     }
-        // } else {
     const _clearHitCoords = (ship) => {
             ship.coords.forEach(coord => {
                 let index = hitCoordsArray.findIndex(value => {
@@ -96,17 +91,14 @@ const computer = () => {
             })
     }
     const _updateShotBoard = (object, player) => {
-        console.log(object);
         const coord = object.coord;
         if (object.obj.value == true) {
             if (object.obj.sunk == true) {
                 const ship = player.gb.whichShip(object.obj.ship);
-                console.log(ship);
                 _clearHitCoords(ship);
             } else {
                 _addToHitCoords(coord);
             }
-            console.log(hitCoordsArray);
             shot.board[coord[0]][coord[1]] = 1;
         } else {
             shot.board[coord[0]][coord[1]] = -1;
@@ -155,7 +147,6 @@ const computer = () => {
     const _fleetProb = (board, fleet, prob) => {
         const ships = Object.keys(fleet);
         ships.forEach(ship => {
-            console.log(fleet[ship]);
             // does this need to run "isSunk" in order to get updated sunk value? 
             if (!(fleet[ship].sunk))
             _shipProb(board, fleet[ship], prob);
@@ -182,20 +173,14 @@ const computer = () => {
         const prob = newProb();
         // updated probability board; needs access to user's fleet..? or make a copy for the probBoard, update regularly !!!
         _fleetProb(shot, player.fleet, prob);
-        console.log(prob.board);
         // get coordinates of best cell
         const coord = _getProbCoords(prob.board);
-        console.log(coord);
         // launch attack on those coords
         const obj = {};
         obj.coord = coord.coords;
-        console.log(coord);
         obj.obj = player.gb.receiveAttack(obj.coord[0], obj.coord[1]);
-
         // check attack intel: hit or miss, sunk?
         _updateShotBoard(obj, player);
-        console.log(prob.board);
-        console.log(shot.board);
         return obj;
         //
 
