@@ -20,9 +20,11 @@ const attackHover = (element) => {
                 if (cell.classList.length == 1) {
                     cell.style.backgroundColor = "white";
                 } else if (cell.classList.value == "cell hit") {
+                    cell.textContent = "🔥";
                     cell.style.backgroundColor = "#DA2C38";
                 } else if (cell.classList.value == "cell miss") {
-                    cell.style.backgroundColor = "#2364AA";
+                    cell.textContent = "🌊";
+                    cell.style.backgroundColor = "#2364AA"
                 }
             })
         })
