@@ -82,7 +82,7 @@ const place = (() => {
                 highlightLength(element, ship.length);
             } else {
                 element.style.cursor = "not-allowed";
-                element.style.backgroundColor = "red";
+                element.style.backgroundColor = "rgb(208, 0, 0)";
             }
         })
         element.addEventListener('mouseout', () => {
