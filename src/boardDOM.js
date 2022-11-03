@@ -10,7 +10,7 @@ const attackHover = (element) => {
                 element.style.backgroundColor = "#38B000";
             } else {
                 element.style.cursor = "not-allowed";
-                element.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+                element.style.backgroundColor = "#000000";
             }
         })
         element.addEventListener('mouseout', () => {
@@ -20,9 +20,11 @@ const attackHover = (element) => {
                 if (cell.classList.length == 1) {
                     cell.style.backgroundColor = "white";
                 } else if (cell.classList.value == "cell hit") {
-                    cell.style.backgroundColor = "#DA2C38";
+                    cell.style.backgroundColor = "rgb(208, 0, 0)";
                 } else if (cell.classList.value == "cell miss") {
-                    cell.style.backgroundColor = "#2364AA"
+                    cell.style.backgroundColor = "rgb(35, 100, 170)"
+                } else if (cell.classList.value == "cell sunk") {
+                    cell.style.backgroundColor = "rgb(208, 0, 0)";
                 }
             })
         })
@@ -60,8 +62,14 @@ const displayShips = (object, boardDOM) => {
         }
     }
 }
-const markCell = (x, y, boolean, boardDOM) => {
-    if (boolean) {
+const markCell = (x, y, result, gb, boardDOM, emoji) => {
+    if (result.sunk) {
+        const ship = gb.whichShip(result.ship);
+        ship.coords.forEach(coord => {
+            boardDOM.children[coord[0]].children[coord[1]].classList = 'cell sunk';
+            boardDOM.children[coord[0]].children[coord[1]].textContent = `${emoji}`;
+        })
+    } else if (result.value) {
         boardDOM.children[x].children[y].classList.add('hit');
         boardDOM.children[x].children[y].textContent = "🔥";
     } else {

@@ -125,7 +125,8 @@ const loop = (() => {
             } else {
                 // user clicked on new coordinates, turn can complete
                 // display the move on ai gameboard
-                markCell(input[0], input[1], result.value, compBoardDOM);
+                console.log(result);
+                markCell(input[0], input[1], result, playerTwo.gb, compBoardDOM, "🔱");
                 com.updateText(currentPlayer, false, result.value, result.sunk, result.ship, true);
                 // check if sunk
                 // display different message...
@@ -135,7 +136,8 @@ const loop = (() => {
             // ai player makes attack
             // display the move on p1 gameboard
             result = playerTwo.player.smartAttack(playerOne);
-            markCell(result.coord[0], result.coord[1], result.obj.value, playerBoardDOM);
+            console.log(result);
+            markCell(result.coord[0], result.coord[1], result.obj, playerOne.gb, playerBoardDOM, "🏴‍☠️");
             com.updateText(currentPlayer, false, result.obj.value, result.obj.sunk, result.obj.ship, false);
             switchTurns();
         }
