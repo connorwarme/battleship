@@ -15,6 +15,8 @@ const place = (() => {
         axisBtn.textContent = `Axis: X`
         const randomBtn = createElement('button', {class: 'randomBtn'});
         randomBtn.textContent = 'Random';
+        const instruct = createElement('div', {class: 'placeInstructions'});
+        instruct.textContent = "Intel: rotate current ship or randomly deploy entire fleet."
 
         // add listeners
         axisBtn.addEventListener('click', () => {
@@ -36,6 +38,7 @@ const place = (() => {
         container.appendChild(buttonC);
         buttonC.appendChild(axisBtn);
         buttonC.appendChild(randomBtn);
+        container.appendChild(instruct);
 
         return container;
     }
@@ -132,17 +135,17 @@ const place = (() => {
     const perShip = (parentDOM, playerBoard, ship) => {
         updateCurrentShip(ship);
         parentDOM.appendChild(buildBoard(playerBoard, false));
-        displayShips(currentBoard, currentDOM.children[1]);
+        displayShips(currentBoard, currentDOM.children[0]);
         addCellListeners(playerBoard, ship);
     }
     const start = (parentDOM, playerObj, opponentObj) => {
-        parentDOM.appendChild(createDisplay(opponentObj));
+        parentDOM.parentElement.children[1].appendChild(createDisplay(opponentObj));
         updateAllCurrents(parentDOM, playerObj);
         nextShip(parentDOM, playerObj);
     }
     const finish = () => {
         com.clear();
-        currentDOM.removeChild(currentDOM.firstChild);
+        // currentDOM.removeChild(currentDOM.firstChild);
         // invoke gameloop step2 -> where 2 boards are displayed
         // a way to transition this (ease-in)? !!!
         loop.launchGame(currentDOM);

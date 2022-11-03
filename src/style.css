@@ -7,10 +7,37 @@
     justify-content: center;
     align-items: center;
 }
+.commContainer {
+    display: grid;
+    justify-items: center;
+}
+.comms {
+    padding: 3vh 5vw;
+    font-size: 32px;
+    display: flex;
+    align-items: center;
+}
+.placeBtnContainer {
+    display: flex;
+    justify-content: center;
+}
+.placeBtnContainer > button {
+    height: 50px;
+    width: 150px;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 2vw;
+    text-align: center;
+}
+.placeInstructions {
+    font-size: 16px;
+    padding: 3vh 3vw 0 3vw;
+    text-align: center;
+}
 .mainContainer {
     display: flex;
     justify-content: center;
-    margin: 100px 0;
+    margin: 5vh 0;
 }
 .initialContent {
     display: grid;
