@@ -16,10 +16,10 @@ const com = (() => {
     }
     const instruct = (player, ship) => {
         const comms = commC.firstChild;
-        comms.textContent = `Admiral ${player.codename}: Place your ${ship}.`;
+        comms.textContent = `${player.codename}: Place your ${ship}.`;
     }
     const message = (player, content) => {
-        commC.firstChild.textContent = `Admiral ${player.codename}: ${content}`;
+        commC.firstChild.textContent = `${player.codename}: ${content}`;
     }
     const shipArray = ['empty', 'submarine', 'patrol boat', 'cruiser', 'destroyer', 'battle carrier'];
     const pronounArray = [{0: 'you', 1: 'their'}, {0: 'they', 1: 'your'}];

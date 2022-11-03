@@ -10,7 +10,7 @@ const PlayerFactory = (codename) => {
     return { codename, wins, attack, addWin };
 }
 const computer = () => {
-    const ai = PlayerFactory('AI Player');
+    const ai = PlayerFactory('The Kraken');
     const newProb = () => {
         const prob = BoardFactory();
         prob.create(10);

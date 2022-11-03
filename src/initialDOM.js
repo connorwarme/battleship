@@ -63,7 +63,11 @@ const mainContent = () => {
     
     const startFn = () => {
         // need a check if input is empty !!!
-        const callsign = input.value;
+        
+        let callsign = 'Aquaman';
+        if (input.value) {
+            callsign = input.value;
+        }
         // clear main container -> prep for board display
         clearMain();
         // initialize game loop?
