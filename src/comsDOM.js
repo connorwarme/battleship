@@ -7,7 +7,7 @@ const com = (() => {
 
     const buildComms = () => {
         const comms = createElement('div', {class: 'comms'});
-        comms.textContent = `comms go here`;
+        comms.textContent = ``;
         commC.appendChild(comms);
         return commC;
     }
