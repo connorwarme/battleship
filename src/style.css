@@ -32,12 +32,16 @@
     height: 48px;
     width: 48px;
     border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
 }
 .ship {
     background-color: slategrey;
 }
 .hit {
-    background-color: #DA2C38;
+    background-color: #D00000;
 }
 .miss {
     background-color: #2364AA;

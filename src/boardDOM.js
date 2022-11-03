@@ -10,7 +10,7 @@ const attackHover = (element) => {
                 element.style.backgroundColor = "#38B000";
             } else {
                 element.style.cursor = "not-allowed";
-                element.style.backgroundColor = "#DA2C38";
+                element.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
             }
         })
         element.addEventListener('mouseout', () => {
@@ -20,10 +20,8 @@ const attackHover = (element) => {
                 if (cell.classList.length == 1) {
                     cell.style.backgroundColor = "white";
                 } else if (cell.classList.value == "cell hit") {
-                    cell.textContent = "🔥";
                     cell.style.backgroundColor = "#DA2C38";
                 } else if (cell.classList.value == "cell miss") {
-                    cell.textContent = "🌊";
                     cell.style.backgroundColor = "#2364AA"
                 }
             })
@@ -65,8 +63,10 @@ const displayShips = (object, boardDOM) => {
 const markCell = (x, y, boolean, boardDOM) => {
     if (boolean) {
         boardDOM.children[x].children[y].classList.add('hit');
+        boardDOM.children[x].children[y].textContent = "🔥";
     } else {
         boardDOM.children[x].children[y].classList.add('miss');
+        boardDOM.children[x].children[y].textContent = "🌊";
     }
 }
 
