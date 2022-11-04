@@ -45,12 +45,42 @@
     justify-items: center;
     gap: 20px;
 }
+.instructionsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.inputContainer {
+    display: grid;
+    place-items: center;
+}
+.inputContainer > label {
+    font-size: 20px;
+}
 .inputField {
     padding: 10px;
     border: 2px solid black;
     border-radius: 10px;
-    margin-left: 5px;
+    margin: 10px;
+    font-size: 18px;
+    text-align: center;
 }
+.inputField:focus::placeholder {
+    color: transparent;
+}
+.start {
+    padding: 15px;
+    border: 4px solid black;
+    border-radius: 10px;
+    font-size: 38px;
+    transition-duration: 500ms;
+    transition-timing-function: ease-in-out;
+}
+.start:hover {
+    cursor: pointer;
+    background-color: lightgrey;
+}
+
 .displayBoard {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
