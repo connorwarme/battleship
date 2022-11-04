@@ -145,6 +145,7 @@ const place = (() => {
     }
     const finish = () => {
         com.clear();
+        console.log(currentDOM);
         // currentDOM.removeChild(currentDOM.firstChild);
         // invoke gameloop step2 -> where 2 boards are displayed
         // a way to transition this (ease-in)? !!!

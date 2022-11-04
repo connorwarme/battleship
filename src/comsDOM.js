@@ -13,6 +13,7 @@ const com = (() => {
     }
     const clear = () => {
         commC.firstChild.textContent = "";
+        commC.removeChild(commC.lastChild);
     }
     const instruct = (player, ship) => {
         const comms = commC.firstChild;
