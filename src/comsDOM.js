@@ -1,5 +1,5 @@
 import { createElement, clearDiv } from "./utility";
-import { makeInitial, makeInitialLite } from "./initialDOM";
+import { makeInitialLite } from "./initialDOM";
 
 // build communication div - for displaying updates / prompts
 const com = (() => {

@@ -45,6 +45,12 @@
     justify-items: center;
     gap: 20px;
 }
+.inputField {
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-left: 5px;
+}
 .displayBoard {
     display: grid;
     grid-template-columns: repeat(10, 1fr);

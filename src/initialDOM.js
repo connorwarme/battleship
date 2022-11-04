@@ -49,11 +49,11 @@ const mainContent = () => {
     const initialC = createElement('div', {class: 'initialContent'});
     const infoC = createElement('div', {class: 'instructionsContainer'});
     const instruct = createElement('div', {class: 'instructions'});
-    instruct.textContent = 'Eliminate the enemy';
+    instruct.textContent = 'Eliminate the enemy!';
     const inputC = createElement('div', {class: 'inputContainer'});
     const input = createElement('input', {type: 'text', id: 'username', class: 'inputField', placeholder: 'Player 1'});
     const inputLabel = createElement('label', {for: 'username'});
-    inputLabel.textContent = 'Username:';
+    inputLabel.textContent = 'Enter Player Name:';
     const startC = createElement('div', {class: 'startContainer'});
     const start = createElement('button', {class: 'start'});
     start.textContent = 'Start Game!'
