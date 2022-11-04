@@ -9,7 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: lightgrey;
+    background-color: white;
 }
 .headerTitle {
     font-size: 50px;
@@ -21,16 +21,13 @@
 .commContainer {
     display: grid;
     justify-items: center;
+    background-color: white;
 }
 .comms {
     padding: 3vh 5vw;
     font-size: 32px;
     display: flex;
     align-items: center;
-    background-color: lightgray;
-}
-.placeContainer {
-    background-color: lightgrey;
 }
 .placeBtnContainer {
     display: flex;
@@ -131,7 +128,7 @@
 .footerContainer {
     display: flex;
     justify-content: center;
-    background-color: lightgrey;
+    background-color: white;
 }
 .footerBox {
     display: grid;
