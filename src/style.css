@@ -1,9 +1,10 @@
 * {
     padding: 0;
     margin: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 .body {
-    background-color: rgb(35, 100, 170);
+    /* background-color: rgb(35, 100, 170); */
 }
 .headerContainer {
     display: flex;
@@ -12,10 +13,11 @@
     background-color: white;
 }
 .headerTitle {
-    font-size: 50px;
+    font-family: Times, Georgia;
+    font-size: 70px;
     font-weight: 700;
     border-bottom: 8px solid black;
-    padding: 20px 0 10px 0;
+    padding: 20px 0 0 0;
     margin-bottom: 20px;
 }
 .commContainer {
@@ -62,6 +64,10 @@
     justify-content: center;
     align-items: center;
 }
+.instructions {
+    font-size: 28px;
+    font-style: italic;
+}
 .inputContainer {
     display: grid;
     place-items: center;
@@ -80,17 +86,25 @@
 .inputField:focus::placeholder {
     color: transparent;
 }
+.startContainer {
+    display: flex;
+    align-items: center;
+}
 .start {
-    padding: 15px;
+    padding: 10px;
     border: 4px solid black;
     border-radius: 10px;
-    font-size: 38px;
+    font-size: 28px;
     transition-duration: 500ms;
     transition-timing-function: ease-in-out;
 }
 .start:hover {
     cursor: pointer;
     background-color: lightgrey;
+}
+.start:active {
+    transform: scale(0.98);
+    box-shadow: 2px 2px 5px black;
 }
 
 .displayBoard {
