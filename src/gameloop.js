@@ -140,11 +140,12 @@ const loop = (() => {
             markCell(result.coord[0], result.coord[1], result.obj, playerOne.gb, playerBoardDOM, "🏴‍☠️");
             com.updateText(currentPlayer, false, result.obj.value, result.obj.sunk, result.obj.ship, false);
             switchTurns();
+            result = result.obj;
         }
         if (!playerTurn && (!result.allSunk)) {
             setTimeout(() => {
                 turn(false); 
-            }, 500);
+            }, 2000);
         }
         if (result.allSunk) {
             // switch turns (back to winning player)
