@@ -51,7 +51,7 @@ const mainContent = () => {
     const instruct = createElement('div', {class: 'instructions'});
     instruct.textContent = 'Eliminate the enemy fleet!';
     const inputC = createElement('div', {class: 'inputContainer'});
-    const input = createElement('input', {type: 'text', id: 'username', class: 'inputField', placeholder: 'Player 1'});
+    const input = createElement('input', {type: 'text', id: 'username', class: 'inputField', placeholder: 'Aquaman 🔱'});
     const inputLabel = createElement('label', {for: 'username'});
     inputLabel.textContent = 'Enter Player Name:';
     const startC = createElement('div', {class: 'startContainer'});
@@ -64,7 +64,7 @@ const mainContent = () => {
     const startFn = () => {
         // need a check if input is empty !!!
         
-        let callsign = 'Aquaman';
+        let callsign = 'Aquaman 🔱';
         if (input.value) {
             callsign = input.value;
         }

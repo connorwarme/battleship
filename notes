@@ -2,4 +2,4 @@ battleship notes:
 
 - style end game 
 - the remove ship from hits array doesn't work quite perfectly... not sure why/what about it.
-- 
+- get displayBoard grid to have height dictated by content inside (game board) and not by parent element height
