@@ -1,7 +1,7 @@
 import BoardFactory from "./board";
 import { PlayerFactory, computer } from "./players";
 import { ShipFactory, buildFleet } from "./ship";
-import { buildBoard, displayShips, markCell } from "./boardDOM";
+import { buildBoard, displayShips, markCell, buildBoardAndLabel } from "./boardDOM";
 import { com } from './comsDOM';
 import { place } from './placeFleetDOM';
 
@@ -68,12 +68,12 @@ const loop = (() => {
     }
     const switchTurns = () => playerTurn = !playerTurn;
     const initialTurn = (board1, board2, parentDOM) => {
-        parentDOM.appendChild(buildBoard(board1, false));
-        displayShips(board1, parentDOM.firstChild);
+        parentDOM.appendChild(buildBoardAndLabel(board1, false, 'friendly'));
+        displayShips(board1, parentDOM.firstChild.lastChild);
         playerBoardDOM = parentDOM.firstChild;
-        parentDOM.appendChild(buildBoard(board2, true, loop.turn));
+        parentDOM.appendChild(buildBoardAndLabel(board2, true, 'enemy', loop.turn));
         // displayShips(board2, parentDOM.lastChild);
-        compBoardDOM = parentDOM.lastChild;
+        compBoardDOM = parentDOM.lastChild.lastChild;
         com.message(playerOne.player, `launch an attack!`);
     }
     const initializeGame = (callsign, parentDOM) => {

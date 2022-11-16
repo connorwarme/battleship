@@ -84,5 +84,11 @@ const displayLabel = (message) => {
     labelContainer.appendChild(label);
     return labelContainer;
 }
+const buildBoardAndLabel = (object, boolean, message, funct) => {
+    const boardContainer = createElement('div', {class: "boardContainer"});
+    boardContainer.appendChild(displayLabel(message));
+    boardContainer.appendChild(buildBoard(object, boolean, funct));
+    return boardContainer;
+}
 
-export { buildBoard, displayShips, markCell, displayLabel };
+export { buildBoard, displayShips, markCell, buildBoardAndLabel };
