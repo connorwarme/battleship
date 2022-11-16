@@ -77,6 +77,12 @@ const markCell = (x, y, result, gb, boardDOM, emoji) => {
         boardDOM.children[x].children[y].textContent = "🌊";
     }
 }
+const displayLabel = (message) => {
+    const labelContainer = createElement('div', {class: "labelContainer"});
+    const label = createElement('div', {class: 'boardLabel'});
+    label.textContent = `${message} waters`;
+    labelContainer.appendChild(label);
+    return labelContainer;
+}
 
-
-export { buildBoard, displayShips, markCell };
+export { buildBoard, displayShips, markCell, displayLabel };
