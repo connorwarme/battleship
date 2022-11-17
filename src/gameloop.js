@@ -4,6 +4,7 @@ import { ShipFactory, buildFleet } from "./ship";
 import { buildBoard, displayShips, markCell, buildBoardAndLabel } from "./boardDOM";
 import { com } from './comsDOM';
 import { place } from './placeFleetDOM';
+import createLegend from "./legendDOM";
 
 // game loop
 // initialize w/ p1 and gameboard1
@@ -70,10 +71,11 @@ const loop = (() => {
     const initialTurn = (board1, board2, parentDOM) => {
         parentDOM.appendChild(buildBoardAndLabel(board1, false, 'friendly'));
         displayShips(board1, parentDOM.firstChild.lastChild);
-        playerBoardDOM = parentDOM.firstChild;
+        playerBoardDOM = parentDOM.firstChild.lastChild;
         parentDOM.appendChild(buildBoardAndLabel(board2, true, 'enemy', loop.turn));
         // displayShips(board2, parentDOM.lastChild);
         compBoardDOM = parentDOM.lastChild.lastChild;
+        parentDOM.appendChild(createLegend());
         com.message(playerOne.player, `launch an attack!`);
     }
     const initializeGame = (callsign, parentDOM) => {
