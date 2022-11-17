@@ -144,6 +144,32 @@
 .sunk {
     background-color: rgb(208, 0, 0);
 }
+.emojiLi {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+.emojiBox {
+    height: 38px;
+    width: 38px;
+    border: 1px solid black;
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.legendBox,
+.objectiveBox, 
+.instructBox {
+    font-style: italic;
+    font-size: 24px;
+}
+.emojiLi,
+.objectiveText,
+.instructText {
+    font-style: normal;
+    font-size: 18px;
+}
 .endContainer {
     display: grid;
     grid-template-rows: repeat(4, 1fr);
