@@ -44,24 +44,19 @@ const createLegend = () => {
         list.appendChild(li);
     })
     legendBox.appendChild(list);
-    container.appendChild(legendBox);
-    // const waveLi = createElement('li', {class: 'waveLi'});
-    // const waveBox = createElement('div', {class: 'waveBox miss'});
-    // waveBox.textContent = "🌊";
-    // const waveText = createElement('div', {class: 'waveText'});
-    // waveText.textContent = '- attack miss';
-    // waveLi.appendChild(waveBox);
-    // waveLi.appendChild(waveText);
-    // const fireLi = createElement('li', {class: 'fireLi'});
-    // const fireBox = createElement('div', {class: 'fireBox hit'});
-    // fireBox.textContent = "🔥";
-    // const fireText = createElement('div', {class: 'fireText'});
-    // fireText.textContent = '- attack hit';
-    // fireLi.appendChild(fireBox);
-    // fireLi.appendChild(fireText); 
+    container.appendChild(legendBox); 
     const instructBox = createElement('div', {class: 'instructBox'});
     instructBox.textContent = "Instructions:";
-
+    const instructText = createElement('div', {class: 'instructText'});
+    instructText.textContent = 'Select coordinates in enemy waters to launch an attack. The board will indicate a hit or miss, or if you sunk the enemy ship. Find and eliminate all five enemy ships before they eliminate yours!'
+    const objectiveBox = createElement('div', {class: 'objectiveBox'});
+    objectiveBox.textContent = 'Objective:';
+    const objectiveText = createElement('div', {class: 'objectiveText'});
+    objectiveText.textContent = 'Sink the enemy fleet!';
+    objectiveBox.appendChild(objectiveText);
+    container.appendChild(objectiveBox);
+    instructBox.appendChild(instructText);
+    container.appendChild(instructBox);
     return container;
 }
 
