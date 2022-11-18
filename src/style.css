@@ -169,6 +169,7 @@
     justify-content: center;
     align-items: center;
     font-size: 32px;
+    border-radius: 5px;
 }
 .ship {
     background-color: lightslategray;
@@ -186,6 +187,12 @@
     background-color: white;
     border-radius: 15px;
 }
+.legendBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .emojiLi {
     list-style: none;
     display: flex;
@@ -200,6 +207,7 @@
     justify-content: center;
     align-items: center;
     margin-right: 8px;
+    border-radius: 5px;
 }
 .legendBox,
 .objectiveBox, 
