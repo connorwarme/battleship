@@ -51,14 +51,19 @@
     padding: 3vh 3vw 0 3vw;
     text-align: center;
 }
-.mainContainer {
+.main {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 3vh 0;
     flex-grow: 1;
 }
+.mainContainer {
+    display: grid;
+    grid-template-columns: 3fr 2fr 3fr;
+}
 .initialContent {
+    grid-column: 2/3;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     justify-items: center;
@@ -113,10 +118,19 @@
 }
 
 .displayBoard {
+    grid-column: 2/3;
+    max-height: 420px;
+    max-width: 420px;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     gap: 2px;
     margin: 0 auto;
+}
+.mainContainer .boardContainer:nth-child(2) {
+    grid-column: 3/4;
+}
+.legendContainer {
+    grid-area: 1/2/2/3;
 }
 .col {
     display: grid;
