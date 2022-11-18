@@ -45,6 +45,7 @@ const footer = () => {
 }
 // 
 const mainContent = () => {
+    const main = createElement('div', {class: "main"});
     const mainC = createElement('div', {class: 'mainContainer'});
     const initialC = createElement('div', {class: 'initialContent'});
     const infoC = createElement('div', {class: 'instructionsContainer'});
@@ -79,6 +80,7 @@ const mainContent = () => {
     })
 
     // append it all together
+    main.appendChild(mainC);
     mainC.appendChild(initialC);
     initialC.appendChild(infoC);
     infoC.appendChild(instruct);
@@ -88,7 +90,7 @@ const mainContent = () => {
     initialC.appendChild(startC);
     startC.appendChild(start);
 
-    return mainC;
+    return main;
 }
 
 //

@@ -87,6 +87,7 @@ const loop = (() => {
         // needs to be checked !!!
         p2.player.placeFleet(p2);
         // needs to invoke fn for user to place their ships... !!!
+        console.log(parentDOM);
         place.start(parentDOM, p1, p2);
 ;
         // initial turn ?

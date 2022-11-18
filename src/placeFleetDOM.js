@@ -139,7 +139,7 @@ const place = (() => {
         addCellListeners(playerBoard, ship);
     }
     const start = (parentDOM, playerObj, opponentObj) => {
-        parentDOM.parentElement.children[1].appendChild(createDisplay(opponentObj));
+        parentDOM.parentElement.parentElement.children[1].appendChild(createDisplay(opponentObj));
         updateAllCurrents(parentDOM, playerObj);
         nextShip(parentDOM, playerObj);
     }
