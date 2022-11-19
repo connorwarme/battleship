@@ -7,8 +7,8 @@
     background-color: #90e0ef;
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    width: 100vw;
+    min-height: 100vh;
+    min-width: 100vw;
 }
 .headerContainer {
     display: flex;
@@ -299,7 +299,6 @@
 .footerContainer {
     display: flex;
     justify-content: center;
-    background-color:#90e0ef;
 }
 .footerBox {
     display: grid;
