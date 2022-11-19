@@ -26,26 +26,41 @@
     justify-items: center;
 }
 .comms {
-    padding: 2vh 5vw;
+    padding: 1vh 3vw;
     font-size: 32px;
+    font-weight: 600;
     display: flex;
     align-items: center;
+    background-color: black;
+    color:#90e0ef;
+    border-radius: 15px;
+    border: 4px solid #90e0ef;
+    outline: 4px solid black;
+    margin-bottom: 20px;
 }
 .placeBtnContainer {
     display: flex;
     justify-content: center;
 }
 .placeBtnContainer > button {
-    height: 50px;
-    width: 150px;
     font-size: 24px;
     font-weight: 600;
+    padding: 10px 25px;
     margin: 0 2vw;
     text-align: center;
     background-color: white;
-    border: 3px solid #90e0ef;
-    outline: 3px solid white;
+    border: none;
     border-radius: 10px;
+    box-shadow: inset 0 0 5px rgb(45, 100, 170);
+    transition-duration: 250ms;
+    transition-timing-function: ease-in-out;
+}
+.placeBtnContainer > button:hover {
+    cursor: pointer;
+    outline: 2px solid black;
+}
+.placeBtnContainer > button:active {
+    transform: scale(0.98);
 }
 .placeInstructions {
     font-size: 16px;
@@ -115,6 +130,7 @@
     border: 4px solid black;
     border-radius: 10px;
     font-size: 28px;
+    font-weight: 600;
     transition-duration: 300ms;
     transition-timing-function: ease-in-out;
 }
