@@ -61,6 +61,7 @@
 }
 .placeBtnContainer > button:active {
     transform: scale(0.98);
+    box-shadow: 2px 2px 5px black;
 }
 .placeInstructions {
     font-size: 16px;
@@ -255,9 +256,13 @@
 }
 .endContainer {
     display: grid;
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    padding: 50px;
+    border: 16px double black;
+    border-radius: 25px;
 }
 .banner {
+    text-align: center;
     font-size: 50px;
     font-weight: 600;
 }
@@ -271,10 +276,11 @@
     font-size: 38px;
     transition-duration: 500ms;
     transition-timing-function: ease-in-out;
+    background-color: white;
 }
 .playAgain:hover {
     cursor: pointer;
-    background-color: lightgrey;
+    transform: scale(1.1);
 }
 .playAgain:active {
     transform: scale(0.98);
