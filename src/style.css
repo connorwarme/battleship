@@ -36,7 +36,7 @@
     font-family: 'Russo', Times, Georgia;
     font-size: 70px;
     font-weight: 700;
-    padding: 20px 0 0 0;
+    padding: 15px 0 0 0;
 }
 .commContainer {
     display: grid;
@@ -55,11 +55,17 @@
     border-radius: 15px;
     border: 4px solid #90e0ef;
     outline: 4px solid black;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+}
+.placeContainer {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin-bottom: 15px;
 }
 .placeBtnContainer {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 .placeBtnContainer > button {
     font-family: 'Russo', Georgia, 'Times New Roman', Times, serif;
