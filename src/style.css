@@ -26,10 +26,12 @@
     justify-items: center;
 }
 .comms {
+    min-width: 850px;
     padding: 1vh 3vw;
     font-size: 32px;
     font-weight: 600;
     display: flex;
+    justify-content: center;
     align-items: center;
     background-color: black;
     color:#90e0ef;
@@ -259,6 +261,9 @@
     color: black;
     font-weight: 500;
 }
+.instructText {
+    padding: 0 8px;
+}
 .endContainer {
     display: grid;
     grid-template-rows: repeat(3, 1fr);
@@ -294,6 +299,7 @@
 .footerContainer {
     display: flex;
     justify-content: center;
+    background-color:#90e0ef;
 }
 .footerBox {
     display: grid;
