@@ -64,9 +64,11 @@
     box-shadow: 2px 2px 5px black;
 }
 .placeInstructions {
-    font-size: 16px;
     padding: 2vh 2vw;
     text-align: center;
+}
+.instructTitle {
+    font-size: 24px;
 }
 .main {
     display: flex;
@@ -78,7 +80,7 @@
 .mainContainer {
     display: grid;
     grid-template-columns: 3fr 2fr 3fr;
-    padding: 20px 0 20px 0;
+    padding: 0 0 20px 0;
 }
 .initialContent {
     grid-column: 2/3;

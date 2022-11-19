@@ -12,17 +12,23 @@ const place = (() => {
         const container = createElement('div', {class: "placeContainer"});
         const buttonC = createElement('div', {class: 'placeBtnContainer'});
         const axisBtn = createElement('button', {class: 'axisBtn'});
-        axisBtn.textContent = `Axis: X`
+        axisBtn.textContent = `Rotate`
         const randomBtn = createElement('button', {class: 'randomBtn'});
         randomBtn.textContent = 'Random';
         const instruct = createElement('div', {class: 'placeInstructions'});
-        instruct.textContent = "Intel: rotate current ship or randomly deploy entire fleet."
+        const instructTitle = createElement('div', {class: 'instructTitle'});
+        instructTitle.textContent = "Instructions:"
+        const instructText1 = createElement('div', {class: "instructText"});
+        instructText1.textContent = `Select coordinates on board to place current ship.`;
+        const instructText2 = createElement('div', {class: "instructText"});
+        instructText2.textContent = `Use buttons to rotate ship or randomly deploy entire fleet.`
 
         // add listeners
         axisBtn.addEventListener('click', () => {
             axis = !axis;
             let text = axis ? 'X' : 'Y';
-            axisBtn.textContent = `Axis: ${text}`;
+            // axisBtn.textContent = `Axis: ${text}`;
+            axisBtn.textContent = 'Rotate';
             // delete current board
             currentDOM.removeChild(currentDOM.lastChild);
             // build new board w/ correct listeners
@@ -39,6 +45,9 @@ const place = (() => {
         buttonC.appendChild(axisBtn);
         buttonC.appendChild(randomBtn);
         container.appendChild(instruct);
+        instruct.appendChild(instructTitle);
+        instruct.appendChild(instructText1);
+        instruct.appendChild(instructText2);
 
         return container;
     }
