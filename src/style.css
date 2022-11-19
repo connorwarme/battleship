@@ -4,7 +4,7 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 .body {
-    /* background-color: rgb(35, 100, 170); */
+    background-color: #90e0ef;
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -14,22 +14,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
 }
 .headerTitle {
     font-family: Times, Georgia;
     font-size: 70px;
     font-weight: 700;
-    border-bottom: 8px solid black;
     padding: 20px 0 0 0;
 }
 .commContainer {
     display: grid;
     justify-items: center;
-    background-color: white;
 }
 .comms {
-    padding: 3vh 5vw;
+    padding: 2vh 5vw;
     font-size: 32px;
     display: flex;
     align-items: center;
@@ -45,20 +42,22 @@
     font-weight: 600;
     margin: 0 2vw;
     text-align: center;
+    background-color: white;
+    border: 3px solid #90e0ef;
+    outline: 3px solid white;
+    border-radius: 10px;
 }
 .placeInstructions {
     font-size: 16px;
-    padding: 3vh 3vw 0 3vw;
+    padding: 2vh 2vw;
     text-align: center;
 }
 .main {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 3vh 0;
     flex-grow: 1;
     background-color:#90e0ef;
-    box-shadow: 0 0 20px rgb(35, 100, 170);
 }
 .mainContainer {
     display: grid;
@@ -68,14 +67,18 @@
 .initialContent {
     grid-column: 2/3;
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
     justify-items: center;
     gap: 20px;
+    padding: 50px;
+    border: 16px double black;
+    border-radius: 25px;
 }
 .instructionsContainer {
     display: flex;
     justify-content: center;
     align-items: center;
+    min-width: 300px;
 }
 .instructions {
     font-size: 28px;
@@ -96,6 +99,9 @@
     font-size: 18px;
     text-align: center;
 }
+.inputField:focus {
+    outline: none;
+}
 .inputField:focus::placeholder {
     color: transparent;
 }
@@ -104,16 +110,17 @@
     align-items: center;
 }
 .start {
-    padding: 10px;
+    padding: 10px 20px;
+    background-color: white;
     border: 4px solid black;
     border-radius: 10px;
     font-size: 28px;
-    transition-duration: 500ms;
+    transition-duration: 300ms;
     transition-timing-function: ease-in-out;
 }
 .start:hover {
     cursor: pointer;
-    background-color: lightgrey;
+    transform: scale(1.1);
 }
 .start:active {
     transform: scale(0.98);
@@ -130,6 +137,7 @@
     padding: 10px;
     border: 5px solid  white;
     border-radius: 10px;
+    box-shadow: inset 0 0 40px rgb(35, 100, 170);
 }
 .mainContainer .boardContainer:nth-child(2) {
     grid-column: 3/4;
@@ -138,6 +146,8 @@
     display: grid;
     grid-template-rows: 1fr 2fr 4fr;
     grid-area: 1/2/2/3;
+    padding: 10px;
+    box-shadow: inset 0 0 10px rgb(45, 100, 170);
 }
 .legendBox {
     grid-row: 3/4;
@@ -156,6 +166,8 @@
 .boardLabel {
     text-transform: uppercase;
     text-align: center;
+    font-weight: 700;
+    padding-bottom: 5px;
 }
 .col {
     display: grid;
@@ -214,12 +226,16 @@
 .instructBox {
     font-style: italic;
     font-size: 24px;
+    font-weight: 700;
+    color: #0077B6;
 }
 .emojiLi,
 .objectiveText,
 .instructText {
     font-style: normal;
     font-size: 18px;
+    color: black;
+    font-weight: 500;
 }
 .endContainer {
     display: grid;
@@ -251,7 +267,6 @@
 .footerContainer {
     display: flex;
     justify-content: center;
-    background-color: white;
 }
 .footerBox {
     display: grid;
