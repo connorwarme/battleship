@@ -345,3 +345,33 @@
 .linkContainer > a > img:hover {
     transform: rotateZ(360deg);
 }
+
+@media (min-width: 950px) and (max-width: 1350px) {
+    .comms {
+        min-width: 750px;
+    }
+    .mainContainer {
+        grid-template-columns: 1fr 450px 0.5fr 450px 1fr;
+        grid-template-rows: 500px 300px;
+        align-items: center;
+        width: 100vw;
+    }
+    .mainContainer .boardContainer:first-child {
+        grid-area: 1/2/2/3;
+    }
+    .mainContainer .boardContainer:nth-child(2) {
+        grid-area: 1/4/2/5;
+    }
+    .legendContainer {
+        grid-area: 2/2/3/-2;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        height: 250px;
+        width: 750px;
+        justify-self: center;
+    }
+    .legendBox {
+        grid-area: 1/2/3/3;
+    }
+}
