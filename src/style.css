@@ -28,15 +28,21 @@
     min-width: 100vw;
 }
 .headerContainer {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    justify-items: center;
     align-items: center;
 }
 .headerTitle {
+    grid-column: 2/16;
     font-family: 'Russo', Times, Georgia;
     font-size: 70px;
     font-weight: 700;
     padding: 15px 0 0 0;
+}
+.menuBtnContainer {
+    display: none;
+    grid-column: 16/17;
 }
 .commContainer {
     display: grid;
@@ -391,8 +397,16 @@
         font-size: 28px;
     }
 }
-@media (min-width: 500px) and (max-width: 950px) {
+@media (min-width: 550px) and (max-width: 950px) {
+    .menuBtnContainer {
+        display: block;
+    }
+    .menuBtn {
+        height: 40px;
+        width: 40px;
+    }
     .comms {
+        min-width: none;
         width: 100vw;
     }
     .mainContainer {

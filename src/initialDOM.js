@@ -1,4 +1,5 @@
 import { createElement, clearDiv } from "./utility";
+import Info from './icons/info.svg';
 import Github from './icons/github.svg';
 import LinkedIn from './icons/linkedin.svg';
 import { PlayerFactory } from "./players";
@@ -13,7 +14,15 @@ const header = () => {
     const headC = createElement('div', {class: 'headerContainer'});
     const title = createElement('div', {class: 'headerTitle'});
     title.textContent = 'BATTLESHIP';
+    const menuBtnContainer = createElement('div', {class: 'menuBtnContainer'});
+    const menuBtn = createElement('div', {class: 'menuBtn'});
+    const menuIcon = createElement('img', {class: 'menuIcon'});
+    menuIcon.src = Info;
+    menuIcon.alt = 'Info';
     headC.appendChild(title);
+    headC.appendChild(menuBtnContainer);
+    menuBtnContainer.appendChild(menuBtn);
+    menuBtn.appendChild(menuIcon);
     return headC;
 }
 //
