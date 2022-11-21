@@ -248,6 +248,7 @@
 .legendContainer {
     background-color: white;
     border-radius: 15px;
+    margin-top: 10px;
 }
 .legendBox {
     display: flex;
@@ -313,10 +314,11 @@
     transition-duration: 500ms;
     transition-timing-function: ease-in-out;
     background-color: white;
+    box-shadow: inset 0 0 5px #0077B6;
 }
 .playAgain:hover {
     cursor: pointer;
-    transform: scale(1.1);
+    box-shadow: 0 0 5px #0077B6;
 }
 .playAgain:active {
     transform: scale(0.98);
@@ -347,12 +349,15 @@
 }
 
 @media (min-width: 950px) and (max-width: 1350px) {
+    .initialContent {
+        grid-area: 1/3/3/4;
+    }
     .comms {
         min-width: 750px;
     }
     .mainContainer {
-        grid-template-columns: 1fr 450px 0.5fr 450px 1fr;
-        grid-template-rows: 500px 300px;
+        grid-template-columns: 1fr 18fr 0.5fr 18fr 1fr;
+        grid-template-rows: 2fr 1fr;
         align-items: center;
         width: 100vw;
     }
@@ -361,6 +366,9 @@
     }
     .mainContainer .boardContainer:nth-child(2) {
         grid-area: 1/4/2/5;
+    }
+    .displayBoard {
+        grid-area: 1/3/3/4;
     }
     .legendContainer {
         grid-area: 2/2/3/-2;
