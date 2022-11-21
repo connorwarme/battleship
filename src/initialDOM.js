@@ -8,8 +8,26 @@ import { com } from "./comsDOM";
 // build initial page
 // pt 1 - header and footer 
 // pt 2 - body (title, instructions, user name input, start btn)
-
+let headerBtn = false;
 //
+const btnShow = (mainC) => {
+    mainC.children[0].style.display = "none";
+    mainC.children[1].style.display = "none";
+    mainC.children[2].style.display = "grid";
+}
+const btnHide = (mainC) => {
+    mainC.children[0].style.display = "block";
+    mainC.children[1].style.display = "block";
+    mainC.children[2].style.display = "none";
+}
+const headerBtnFn = (mainC) => {
+    headerBtn = !headerBtn;
+    if (headerBtn) {
+        btnShow(mainC);
+    } else {
+        btnHide(mainC);
+    }
+}
 const header = () => {
     const headC = createElement('div', {class: 'headerContainer'});
     const title = createElement('div', {class: 'headerTitle'});
@@ -19,6 +37,10 @@ const header = () => {
     const menuIcon = createElement('img', {class: 'menuIcon'});
     menuIcon.src = Info;
     menuIcon.alt = 'Info';
+
+    menuBtn.addEventListener('click', () => {
+        headerBtnFn(document.querySelector('div.mainContainer'));
+    })
     headC.appendChild(title);
     headC.appendChild(menuBtnContainer);
     menuBtnContainer.appendChild(menuBtn);

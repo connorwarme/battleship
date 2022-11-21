@@ -101,6 +101,7 @@ const loop = (() => {
         return { p1, p2 }
     }
     const launchGame = (parentDOM) => {
+        console.log(parentDOM)
         initialTurn(playerOne.gb, playerTwo.gb, parentDOM);
     }
     const restartFn = () => {

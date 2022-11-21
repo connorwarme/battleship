@@ -25,8 +25,8 @@ const place = (() => {
 
         // add listeners
         axisBtn.addEventListener('click', () => {
-            axis = !axis;
-            let text = axis ? 'X' : 'Y';
+            // axis = !axis;
+            // let text = axis ? 'X' : 'Y';
             // axisBtn.textContent = `Axis: ${text}`;
             axisBtn.textContent = 'Rotate';
             // delete current board
@@ -157,6 +157,9 @@ const place = (() => {
         // invoke gameloop step2 -> where 2 boards are displayed
         // a way to transition this (ease-in)? !!!
         loop.launchGame(currentDOM);
+        if (window.matchMedia('(min-width: 550px)')) {
+            currentDOM.parentElement.parentElement.children[0].children[1].style.display = "block";
+        }
     }
     return { hover, start };
 })();
