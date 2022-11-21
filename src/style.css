@@ -391,3 +391,29 @@
         font-size: 28px;
     }
 }
+@media (min-width: 500px) and (max-width: 950px) {
+    .comms {
+        width: 100vw;
+    }
+    .mainContainer {
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-columns: 1fr;
+    }
+    .initialContent {
+        grid-row: 1/4;
+        grid-column: 1/2;
+    }
+    .mainContainer .boardContainer:first-child {
+        grid-row: 2/3;
+        grid-column: 1/2;
+        margin-top: 10px;
+    }
+    .mainContainer .boardContainer:nth-child(2) {
+        grid-row: 1/2;
+        grid-column: 1/2;
+    }
+    .legendContainer {
+        grid-row: 3/4;
+        grid-column: 1/2;
+    }
+}
