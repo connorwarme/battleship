@@ -366,12 +366,20 @@
         grid-area: 2/2/3/-2;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
-        height: 250px;
+        grid-template-rows: 1fr 1fr 1fr;
+        height: 220px;
         width: 750px;
         justify-self: center;
     }
     .legendBox {
-        grid-area: 1/2/3/3;
+        grid-area: 1/2/4/3;
+    }
+    .instructBox {
+        grid-row: 2/4;
+    }
+    .emojiBox {
+        height: 36px;
+        width: 36px;
+        font-size: 28px;
     }
 }
