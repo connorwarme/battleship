@@ -72,13 +72,14 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    align-items: center;
 }
 .placeBtnContainer > button {
     font-family: 'Russo', Georgia, 'Times New Roman', Times, serif;
     font-size: 20px;
     font-weight: 500;
-    padding: 10px 25px;
-    margin: 0 2vw;
+    height: 44px;
+    width: 125px;
     text-align: center;
     background-color: white;
     border: none;
@@ -180,7 +181,7 @@
     box-shadow: 2px 2px 5px black;
 }
 .displayBoard {
-    grid-column: 2/3;
+    grid-area: 1/2/4/3;
     max-height: 418px;
     max-width: 418px;
     display: grid;
@@ -398,36 +399,43 @@
     }
 }
 @media (min-width: 550px) and (max-width: 950px) {
-    .menuBtnContainer {
-        display: block;
-    }
     .menuBtn {
         height: 40px;
         width: 40px;
     }
     .comms {
-        min-width: none;
-        width: 100vw;
+        min-width: 0;
+        width: 100%;
+        padding: 1vh 0;
+        font-size: 20px;
+        border-radius: 0;
+        margin-bottom: 5px;
+    }
+    .placeBtnContainer > button {
+        font-size: 18px;
+    }
+    .instructTitle {
+        font-size: 20px;
+    }
+    .placeInstrucions .instructText {
+        font-size: 14px;
     }
     .mainContainer {
         grid-template-rows: repeat(3, 1fr);
         grid-template-columns: 1fr;
     }
     .initialContent {
-        grid-row: 1/4;
-        grid-column: 1/2;
+        grid-area: 1/1/4/2;
     }
     .mainContainer .boardContainer:first-child {
-        grid-row: 2/3;
-        grid-column: 1/2;
+        grid-area: 2/1/3/2;
         margin-top: 10px;
     }
     .mainContainer .boardContainer:nth-child(2) {
-        grid-row: 1/2;
-        grid-column: 1/2;
+        grid-area: 1/1/2/2;
+        margin-top: 10px;
     }
     .legendContainer {
-        grid-row: 3/4;
-        grid-column: 1/2;
+        grid-area: 3/1/4/2;
     }
 }
