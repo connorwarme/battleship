@@ -83,7 +83,7 @@ const loop = (() => {
         const p2 = initialize(false);
         console.log(p1);
         console.log(p2);
-        parentDOM.parentElement.parentElement.children[1].firstChild.style.display = "flex"
+        parentDOM.parentElement.parentElement.children[1].firstChild.style.display = "flex";
         // have AI place fleet, randomly
         // needs to be checked !!!
         p2.player.placeFleet(p2);
