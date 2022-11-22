@@ -44,6 +44,9 @@
     display: none;
     grid-column: 16/17;
 }
+.menuBtn:hover {
+    cursor: pointer;
+}
 .commContainer {
     display: grid;
     justify-items: center;
@@ -485,9 +488,30 @@
     .cell {
         height: 25px;
         width: 25px;
+        font-size: 20px;
     }
     .mainContainer {
         padding-bottom: 10px;
+    }
+    .legendContainer {
+        width: 90%;
+        justify-self: center;
+        margin-top: 5px;
+    }
+    .objectiveBox,
+    .instructBox,
+    .legendBox {
+        font-size: 16px;
+    }
+    .objectiveText,
+    .instructText,
+    .emojiLi {
+        font-size: 14px;
+    }
+    .emojiBox {
+        height: 25px;
+        width: 25px;
+        font-size: 20px;
     }
     .gitIcon,
     .linkIcon {
