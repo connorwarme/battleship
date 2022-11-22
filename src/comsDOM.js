@@ -46,7 +46,7 @@ const com = (() => {
       commC.firstChild.textContent = `${playerName.codename} attacks and ${strike}`;
     }
   };
-  const endGame = (player, restartFn) => {
+  const endGame = (player) => {
     const mainC = commC.nextElementSibling;
     // clear comms and main
     clearDiv(commC);
@@ -69,7 +69,6 @@ const com = (() => {
       // clear content
       mainC.parentElement.removeChild(mainC);
       commC.parentElement.removeChild(commC);
-      restartFn();
       makeInitialLite();
     });
     // hide info button
