@@ -1,8 +1,10 @@
 import BoardFactory from "./board";
 import { computer } from "./players";
 import { buildFleet } from "./ship";
-// implement improved tactics for AI player
+// this served as my working doc as I learned how to improve the AI
+// the final code ended up being included in player.js
 
+// implement improved tactics for AI player
 const target = (() => {
     // target mode: after hit, return adjacent squares and attack those
     // target improved: if multiple hits are horizontal, prefer continued attacks along horizontal until sunk
@@ -93,7 +95,7 @@ const updateShotBoard = (object) => {
         } else {
             addToHitCoords(object.coord);
         }
-        // needs access to shotBoard !!!
+        // needs access to shotBoard
         shotBoard[object.coord[0]][object.coord[1]] = 1;
     } else {
         shotBoard[object.coord[0]][object.coord[1]] = -1;
