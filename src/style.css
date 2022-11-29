@@ -511,6 +511,23 @@
         width: 25px;
         font-size: 20px;
     }
+    .endContainer {
+        padding: 0;
+        place-items: center;
+        min-height: 275px;
+    }
+    .banner {
+        min-width: 260px;
+        font-size: 36px;
+    }
+    .winner {
+        font-size: 28px;
+    }
+    .playAgain {
+        font-size: 24px;
+        font-weight: 700px;
+        padding: 10px 30px;
+    }
     .gitIcon,
     .linkIcon {
         height: 25px;
