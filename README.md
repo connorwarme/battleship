@@ -1,6 +1,5 @@
 # [Battleship]  
-* under development  
-* approach: TDD (first time), using Jest 
+![preview](https://github.com/connorwarme/weather/blob/main/screenshots/la.png?raw=true "preview")    
 
 ## objectives  
 * create browser-playable version of classic Battleship game  
@@ -16,9 +15,11 @@
 * added instructions and emojis to improve UX  
 
 ## screenshots  
-* 
+* place fleet page  
+* let the battle begin!
+* mobile version:  
   
-# improvements  
+## improvements  
 * a glitch where removing sunk ship coordinates from the hitsArray doesn't work perfectly. I'm not certain why/what is happening, as it appears to occasionally remove more hits (beyond the coordinates of the ship that was just sunk).  
   
 # [WeatherWatch](https://connorwarme.github.io/weather/): a weather app  
