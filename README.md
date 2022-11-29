@@ -1,4 +1,4 @@
-# [Battleship]  
+# [Battleship](https://connorwarme.github.io/battleship/) 
 ![preview](https://github.com/connorwarme/battleship/blob/main/screenshots/begin.png?raw=true "preview")    
 
 ## objectives  
@@ -13,6 +13,7 @@
 * initial foray into testing, with Jest, which took time to learn and required adjusting workflow (write test first, run it to make sure it failed, then write code, test, and refactor/continue)  
 * I enjoyed creating an AI that offers more of a challenge for the player (median game length: ~47 moves) as opposed to simply generating random shots (median length: ~97 moves). I gathered insights from posts by [Nick Berry](https://www.datagenetics.com/blog/december32011/) and [Aydin Schwartz](https://towardsdatascience.com/coding-an-intelligent-battleship-agent-bf0064a4b319).  
 * added instructions and emojis to improve UX  
+* built w/ Javascript, Webpack, Jest, CSS
 
 ## screenshots  
 * place fleet page  
