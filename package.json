@@ -1,7 +1,7 @@
 {
   "name": "battleship",
   "version": "1.0.0",
-  "description": "* under development   * approach: TDD (first time), using Jest",
+  "description": "browser playable version of the classic game",
   "main": "index.js",
   "private": "true",
   "scripts": {
