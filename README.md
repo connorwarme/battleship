@@ -1,5 +1,5 @@
 # [Battleship]  
-![preview](https://github.com/connorwarme/weather/blob/main/screenshots/la.png?raw=true "preview")    
+![preview](https://github.com/connorwarme/battleship/blob/main/screenshots/begin.png?raw=true "preview")    
 
 ## objectives  
 * create browser-playable version of classic Battleship game  
@@ -16,36 +16,12 @@
 
 ## screenshots  
 * place fleet page  
-* let the battle begin!
+![placeFleet](https://github.com/connorwarme/battleship/blob/main/screenshots/place.png?raw=true "placeFleet")  
+* let the battle begin!  
+![battle](https://github.com/connorwarme/battleship/blob/main/screenshots/battle.png?raw=true "battle")  
 * mobile version:  
+![mobilePlaceFleet](https://github.com/connorwarme/battleship/blob/main/screenshots/mobilebattle.png?raw=true "mobilePlaceFleet")  
+![mobileBattle](https://github.com/connorwarme/battleship/blob/main/screenshots/mobilebattle.png?raw=true "mobileBattle")  
   
 ## improvements  
 * a glitch where removing sunk ship coordinates from the hitsArray doesn't work perfectly. I'm not certain why/what is happening, as it appears to occasionally remove more hits (beyond the coordinates of the ship that was just sunk).  
-  
-# [WeatherWatch](https://connorwarme.github.io/weather/): a weather app  
-  
-![preview](https://github.com/connorwarme/weather/blob/main/screenshots/la.png?raw=true "preview")  
-
-## objectives  
-* provide weather for given location   
-* utilize OpenWeatherMap API  
-* display images that correlate with weather data  
-* create toggle for Fahrenheit / Celsius  
-* implement mobile-friendly UI  
-  
-## reflections  
-* initial foray into asynchronous JS (learned promises, async/await syntax, fetch API, utilize data returned)  
-* strove for simplicity and clarity in UI  
-* first effort at a mobile-friendly app  
- 
-## screenshots  
-* mobile friendly UI - added menu button to select view: current info, detailed data, and forecast  
-![main](https://github.com/connorwarme/weather/blob/main/screenshots/mobilea.png?raw=true "main")  
-![details](https://github.com/connorwarme/weather/blob/main/screenshots/mobileb.png?raw=true "details")  
-![forecast](https://github.com/connorwarme/weather/blob/main/screenshots/mobilec.png?raw=true "forecast")  
-  
-* the whole page:  
-![full](https://github.com/connorwarme/weather/blob/main/screenshots/nyfull!.png?raw=true "full")  
-  
-## notes  
-* to future self: Safari processes date differently. for Firefox and Chrome, format of '2022-10-01 11:57:00' works fine. Safari needs '2022-10-01T11:57:00', which I accomplished with a dateString.replace(/ /g,"T").  
