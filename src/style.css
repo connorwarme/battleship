@@ -410,6 +410,8 @@
         padding: 1vh 0;
         font-size: 20px;
         border-radius: 0;
+        border-right: none;
+        border-left: none;
         margin-bottom: 5px;
     }
     .placeBtnContainer > button {

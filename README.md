@@ -20,7 +20,7 @@
 * let the battle begin!  
 ![battle](https://github.com/connorwarme/battleship/blob/main/screenshots/battle.png?raw=true "battle")  
 * mobile version:  
-![mobilePlaceFleet](https://github.com/connorwarme/battleship/blob/main/screenshots/mobilebattle.png?raw=true "mobilePlaceFleet")  
+![mobilePlaceFleet](https://github.com/connorwarme/battleship/blob/main/screenshots/mobileplace.png?raw=true "mobilePlaceFleet")  
 ![mobileBattle](https://github.com/connorwarme/battleship/blob/main/screenshots/mobilebattle.png?raw=true "mobileBattle")  
   
 ## improvements  
