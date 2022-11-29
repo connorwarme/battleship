@@ -137,7 +137,6 @@ const BoardFactory = () => {
         obj.sunk = true;
         if (allSunk()) {
           obj.allSunk = true;
-          console.log("Game over");
         }
       }
       obj.ship = obj.value;

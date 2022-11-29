@@ -72,7 +72,7 @@ const com = (() => {
       makeInitialLite();
     });
     // hide info button
-    mainC.parentElement.children[1].firstChild.style.display = "none";
+    mainC.parentElement.children[0].lastChild.style.display = "none";
   };
   return { buildComms, clear, instruct, message, updateText, endGame };
 })();
